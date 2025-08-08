@@ -11,5 +11,16 @@ config_version=5
 [application]
 
 config/name="Battle Snake"
+run/main_scene="res://ui/menu_scenes/main_menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/scale=3.0
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

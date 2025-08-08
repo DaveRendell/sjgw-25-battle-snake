@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://csdq1d4xjg3h5"]
+
+[ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="1_qu2o4"]
+[ext_resource type="Script" uid="uid://o75v5123h8fk" path="res://ui/menu_scenes/main_menu.gd" id="2_r1w7f"]
+
+[node name="MainMenu" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_qu2o4")
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_bottom = 16
+script = ExtResource("2_r1w7f")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "BATTLE SNAKE"
+horizontal_alignment = 1
+
+[node name="Options" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="1pGameButton" type="Button" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "1P GAME"
+
+[node name="SelectedIndicator" type="Label" parent="Options/1pGameButton"]
+layout_mode = 0
+offset_left = -24.0
+offset_top = 4.0
+offset_right = 16.0
+offset_bottom = 20.0
+text = "▶"
+
+[node name="2pGameButton" type="Button" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "2P GAME"
+
+[node name="ScoreboardButton" type="Button" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "SCOREBOARD"
+
+[node name="SettingsButton" type="Button" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "SETTINGS"
