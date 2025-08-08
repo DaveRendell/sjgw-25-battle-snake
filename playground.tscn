@@ -1,8 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://fkjuulv4hjf"]
+[gd_scene load_steps=5 format=3 uid="uid://fkjuulv4hjf"]
 
+[ext_resource type="Script" uid="uid://bcdjqrhby8xta" path="res://entities/components/circle.gd" id="1_rupst"]
 [ext_resource type="PackedScene" uid="uid://sphf7vd1y2ld" path="res://entities/player/player.tscn" id="1_wt17y"]
+[ext_resource type="Script" uid="uid://dfpolplr30ngc" path="res://entities/components/trail_follower.gd" id="3_m8u5f"]
+[ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="4_is3ju"]
 
 [node name="Playground" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_wt17y")]
 position = Vector2(320, 180)
+
+[node name="Follower" type="Node2D" parent="."]
+
+[node name="Circle" type="Node2D" parent="Follower"]
+script = ExtResource("1_rupst")
+color = Color(0.30384, 0.54, 0.1944, 1)
+
+[node name="TrailFollower" type="Node" parent="Follower" node_paths=PackedStringArray("trail")]
+script = ExtResource("3_m8u5f")
+trail = NodePath("../../Player/Trail")
+metadata/_custom_type_script = "uid://dfpolplr30ngc"
+
+[node name="Trail" type="Node" parent="Follower"]
+script = ExtResource("4_is3ju")
+metadata/_custom_type_script = "uid://fbcs0md2xng0"
+
+[node name="Follower2" type="Node2D" parent="."]
+
+[node name="Circle" type="Node2D" parent="Follower2"]
+script = ExtResource("1_rupst")
+color = Color(0.30384, 0.54, 0.1944, 1)
+
+[node name="TrailFollower" type="Node" parent="Follower2" node_paths=PackedStringArray("trail")]
+script = ExtResource("3_m8u5f")
+trail = NodePath("../../Follower/Trail")
+metadata/_custom_type_script = "uid://dfpolplr30ngc"
+
+[node name="Trail" type="Node" parent="Follower2"]
+script = ExtResource("4_is3ju")
+metadata/_custom_type_script = "uid://fbcs0md2xng0"
+
+[node name="Follower3" type="Node2D" parent="."]
+
+[node name="Circle" type="Node2D" parent="Follower3"]
+script = ExtResource("1_rupst")
+color = Color(0.30384, 0.54, 0.1944, 1)
+
+[node name="TrailFollower" type="Node" parent="Follower3" node_paths=PackedStringArray("trail")]
+script = ExtResource("3_m8u5f")
+trail = NodePath("../../Follower2/Trail")
+metadata/_custom_type_script = "uid://dfpolplr30ngc"
+
+[node name="Trail" type="Node" parent="Follower3"]
+script = ExtResource("4_is3ju")
+metadata/_custom_type_script = "uid://fbcs0md2xng0"
+
+[editable path="Player"]

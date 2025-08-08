@@ -14,4 +14,4 @@ class_name VehicleMovement extends Node
 @export var speed: float = 50.0
 
 func _physics_process(delta: float) -> void:
-	parent.position += (speed / 60) * heading.normalized()	
+	parent.position += delta * speed * heading.normalized()	
