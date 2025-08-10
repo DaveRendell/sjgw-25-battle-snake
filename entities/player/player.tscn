@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://sphf7vd1y2ld"]
+[gd_scene load_steps=7 format=3 uid="uid://sphf7vd1y2ld"]
 
+[ext_resource type="Script" uid="uid://b3p656wwfrdje" path="res://entities/player/player.gd" id="1_8fjmc"]
 [ext_resource type="Script" uid="uid://bcdjqrhby8xta" path="res://entities/components/circle.gd" id="1_abrql"]
 [ext_resource type="Script" uid="uid://b26x67y683mfj" path="res://entities/components/vehicle_movement.gd" id="2_sglur"]
 [ext_resource type="Script" uid="uid://cqaw6dfxajor3" path="res://entities/components/player_steering.gd" id="3_bls4j"]
@@ -7,6 +8,7 @@
 [ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="5_fkugw"]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_8fjmc")
 
 [node name="Circle" type="Node2D" parent="."]
 script = ExtResource("1_abrql")
