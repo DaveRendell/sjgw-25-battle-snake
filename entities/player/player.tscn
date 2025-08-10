@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://sphf7vd1y2ld"]
+[gd_scene load_steps=8 format=3 uid="uid://sphf7vd1y2ld"]
 
 [ext_resource type="Script" uid="uid://b3p656wwfrdje" path="res://entities/player/player.gd" id="1_8fjmc"]
 [ext_resource type="Script" uid="uid://bcdjqrhby8xta" path="res://entities/components/circle.gd" id="1_abrql"]
@@ -7,11 +7,20 @@
 [ext_resource type="Script" uid="uid://qfo3na3v3p6v" path="res://input/player_input.gd" id="4_fkugw"]
 [ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="5_fkugw"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8fjmc"]
+radius = 16.0
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_8fjmc")
 
 [node name="Circle" type="Node2D" parent="."]
 script = ExtResource("1_abrql")
+
+[node name="Collider" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+shape = SubResource("CircleShape2D_8fjmc")
 
 [node name="VehicleMovement" type="Node" parent="."]
 script = ExtResource("2_sglur")

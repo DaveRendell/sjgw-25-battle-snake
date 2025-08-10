@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnd4xtxejul7q"]
+
+[ext_resource type="Script" uid="uid://bcdjqrhby8xta" path="res://entities/components/circle.gd" id="1_8nhup"]
+[ext_resource type="Script" uid="uid://dfpolplr30ngc" path="res://entities/components/trail_follower.gd" id="2_a1bec"]
+[ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="3_sht4x"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_234jw"]
+radius = 16.0
+
+[node name="Segment" type="Node2D"]
+
+[node name="Circle" type="Node2D" parent="."]
+script = ExtResource("1_8nhup")
+color = Color(0.333333, 0.690196, 0.235294, 1)
+metadata/_custom_type_script = "uid://bcdjqrhby8xta"
+
+[node name="Collider" type="StaticBody2D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+shape = SubResource("CircleShape2D_234jw")
+
+[node name="TrailFollower" type="Node" parent="."]
+script = ExtResource("2_a1bec")
+metadata/_custom_type_script = "uid://dfpolplr30ngc"
+
+[node name="Trail" type="Node" parent="."]
+script = ExtResource("3_sht4x")
+metadata/_custom_type_script = "uid://fbcs0md2xng0"

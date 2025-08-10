@@ -14,4 +14,5 @@ class_name VehicleMovement extends Node
 @export var speed: float = 50.0
 
 func _physics_process(delta: float) -> void:
-	parent.position += delta * speed * heading.normalized()	
+	parent.position += delta * speed * heading.normalized()
+	parent.rotation = heading.rotated(TAU / 4).angle()
