@@ -26,6 +26,7 @@ window/stretch/scale=3.0
 2d_physics/layer_1="Entities"
 2d_physics/layer_2="Pickups"
 2d_physics/layer_3="Mobs"
+2d_physics/layer_4="Segments"
 
 [rendering]
 

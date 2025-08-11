@@ -1,8 +1,15 @@
 class_name Player extends Node2D
 
+signal health_changed(health: int)
+signal xp_changed(to_level_up: int)
+signal destroyed
+
 const SEGMENT = preload("res://entities/player/segment.tscn")
 
 var following_segments: Array[Node2D] = []
+var health: int = 5
+var xp: int = 0
+
 @onready var _trail: Trail = $Trail
 @onready var collider: StaticBody2D = $Collider
 
@@ -22,3 +29,41 @@ func add_segment_to_tail() -> void:
 	
 	trail_to_follow.get_parent().add_sibling(segment, true)
 	following_segments.append(segment)
+
+func _on_mouth_area_entered(area: Area2D) -> void:
+	area.get_parent().queue_free()
+	xp += 1
+	
+	var needed_for_level_up = 5
+	
+	if xp == needed_for_level_up:
+		xp -= needed_for_level_up
+		add_segment_to_tail.call_deferred()
+	
+	xp_changed.emit(needed_for_level_up - xp)
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body.get_parent() is Mob:
+		var mob: Mob = body.get_parent()
+		_on_mob_collision(mob)
+	
+	if body.get_parent() is Segment:
+		_on_segment_collision()
+
+func _on_mob_collision(mob: Mob) -> void:
+	mob.destroy(false)
+	
+	health -= 1
+	health_changed.emit(health)
+	
+	if health == 0:
+		_game_over()
+
+func _on_segment_collision() -> void:
+	_game_over()
+
+func _game_over() -> void:
+	queue_free()
+	for segment in following_segments:
+		segment.queue_free()
+	destroyed.emit()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://bgeyr231l5ca6"]
 
 [ext_resource type="Script" uid="uid://btyutyr4turgr" path="res://entities/components/triangle.gd" id="1_ap34t"]
-[ext_resource type="Script" uid="uid://djdo1le1ay61m" path="res://entities/mob.gd" id="1_egk6g"]
+[ext_resource type="Script" uid="uid://djdo1le1ay61m" path="res://entities/mobs/mob.gd" id="1_egk6g"]
 [ext_resource type="Script" uid="uid://b26x67y683mfj" path="res://entities/components/vehicle_movement.gd" id="2_snvjy"]
 [ext_resource type="Script" uid="uid://cqru7phnxp24n" path="res://entities/components/boid_steering.gd" id="3_egk6g"]
 [ext_resource type="Script" uid="uid://rwhujoi55543" path="res://entities/boid_behaviours/attract.gd" id="4_n2vji"]
@@ -12,7 +12,7 @@
 radius = 48.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_o00ia"]
-radius = 16.0
+radius = 8.0
 
 [node name="Mob" type="Node2D"]
 script = ExtResource("1_egk6g")
@@ -35,17 +35,17 @@ metadata/_custom_type_script = "uid://cqru7phnxp24n"
 script = ExtResource("4_n2vji")
 metadata/_custom_type_script = "uid://rwhujoi55543"
 
-[node name="Avoid" type="Node" parent="BoidSteering" node_paths=PackedStringArray("range", "own_collider")]
+[node name="Avoid" type="Node" parent="BoidSteering" node_paths=PackedStringArray("behaviour_range", "own_collider")]
 script = ExtResource("5_oesyv")
 weight = 48.0
-range = NodePath("../../BehaviourRange")
+behaviour_range = NodePath("../../BehaviourRange")
 own_collider = NodePath("../../Collider")
 metadata/_custom_type_script = "uid://y0g5eucy4u0n"
 
-[node name="Align" type="Node" parent="BoidSteering" node_paths=PackedStringArray("range", "own_collider")]
+[node name="Align" type="Node" parent="BoidSteering" node_paths=PackedStringArray("behaviour_range", "own_collider")]
 script = ExtResource("6_snvjy")
 weight = 8.0
-range = NodePath("../../BehaviourRange")
+behaviour_range = NodePath("../../BehaviourRange")
 own_collider = NodePath("../../Collider")
 metadata/_custom_type_script = "uid://dcn5v68viapqi"
 
@@ -56,6 +56,7 @@ collision_layer = 0
 shape = SubResource("CircleShape2D_is3ju")
 
 [node name="Collider" type="StaticBody2D" parent="."]
+collision_layer = 5
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]

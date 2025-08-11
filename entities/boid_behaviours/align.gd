@@ -1,11 +1,11 @@
 class_name Align extends BoidBehaviour
 
 @export var weight: float = 1.0
-@export var range: Area2D
+@export var behaviour_range: Area2D
 @export var own_collider: CollisionObject2D
 
 func get_vector(location: Vector2) -> Vector2:
-	var other_entities: Array[Node2D] = range.get_overlapping_bodies()
+	var other_entities: Array[Node2D] = behaviour_range.get_overlapping_bodies()
 	
 	var ret: Vector2 = Vector2.ZERO
 	

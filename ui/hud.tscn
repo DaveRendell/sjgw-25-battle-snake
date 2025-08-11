@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg1ux6jueq7i5"]
+
+[ext_resource type="Script" uid="uid://cm3dxobl100r6" path="res://ui/hud.gd" id="1_276te"]
+[ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="1_rbyyf"]
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_276te")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_rbyyf")
+
+[node name="Margins" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="Score" type="Label" parent="Control/Margins"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "SCORE: 0"
+
+[node name="Health" type="Label" parent="Control/Margins"]
+custom_minimum_size = Vector2(208, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "HEALTH: ♥♥♥♥♥"
+
+[node name="LevelUp" type="Label" parent="Control/Margins"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "TO LVL UP: 5"
+
+[node name="GameOver" type="Label" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -11.5
+offset_right = 72.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "GAME OVER"
+horizontal_alignment = 1

@@ -1,13 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnd4xtxejul7q"]
+[gd_scene load_steps=7 format=3 uid="uid://bnd4xtxejul7q"]
 
 [ext_resource type="Script" uid="uid://bcdjqrhby8xta" path="res://entities/components/circle.gd" id="1_8nhup"]
+[ext_resource type="Script" uid="uid://dwe56ightov3" path="res://entities/player/segment.gd" id="1_a1bec"]
 [ext_resource type="Script" uid="uid://dfpolplr30ngc" path="res://entities/components/trail_follower.gd" id="2_a1bec"]
 [ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="3_sht4x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_234jw"]
 radius = 16.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8nhup"]
+radius = 16.0
+
 [node name="Segment" type="Node2D"]
+script = ExtResource("1_a1bec")
 
 [node name="Circle" type="Node2D" parent="."]
 script = ExtResource("1_8nhup")
@@ -15,6 +20,7 @@ color = Color(0.333333, 0.690196, 0.235294, 1)
 metadata/_custom_type_script = "uid://bcdjqrhby8xta"
 
 [node name="Collider" type="StaticBody2D" parent="."]
+collision_layer = 9
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
@@ -27,3 +33,12 @@ metadata/_custom_type_script = "uid://dfpolplr30ngc"
 [node name="Trail" type="Node" parent="."]
 script = ExtResource("3_sht4x")
 metadata/_custom_type_script = "uid://fbcs0md2xng0"
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+shape = SubResource("CircleShape2D_8nhup")
+
+[connection signal="body_entered" from="HurtBox" to="." method="_on_hurt_box_body_entered"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2mdb63ecwnwr"]
+
+[ext_resource type="Script" uid="uid://bcdjqrhby8xta" path="res://entities/components/circle.gd" id="1_oxkk6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_01eld"]
+radius = 2.0
+
+[node name="Pickup" type="Node2D"]
+
+[node name="Circle" type="Node2D" parent="."]
+script = ExtResource("1_oxkk6")
+radius = 2.0
+color = Color(0, 0.584139, 0.720552, 1)
+metadata/_custom_type_script = "uid://bcdjqrhby8xta"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_01eld")
