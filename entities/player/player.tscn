@@ -69,5 +69,7 @@ script = ExtResource("7_qiwj3")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://duyukryhjo182"
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [connection signal="area_entered" from="Mouth" to="." method="_on_mouth_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
