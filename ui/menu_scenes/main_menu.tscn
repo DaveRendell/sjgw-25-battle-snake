@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://csdq1d4xjg3h5"]
+[gd_scene load_steps=6 format=3 uid="uid://csdq1d4xjg3h5"]
 
 [ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="1_qu2o4"]
 [ext_resource type="Script" uid="uid://o75v5123h8fk" path="res://ui/menu_scenes/main_menu.gd" id="2_r1w7f"]
 [ext_resource type="Script" uid="uid://qfo3na3v3p6v" path="res://input/player_input.gd" id="3_80c2c"]
 [ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="4_cqn4u"]
+[ext_resource type="Texture2D" uid="uid://bel545cwvnn2b" path="res://ui/menu_scenes/title.png" id="4_lw4sb"]
 
 [node name="MainMenu" type="MarginContainer"]
 anchors_preset = 15
@@ -12,17 +13,15 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_qu2o4")
-theme_override_constants/margin_top = 32
+theme_override_constants/margin_top = 48
 theme_override_constants/margin_bottom = 16
 script = ExtResource("2_r1w7f")
 
-[node name="Title" type="RichTextLabel" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 2
 size_flags_vertical = 0
-bbcode_enabled = true
-text = "BATTLE SNAKE"
-fit_content = true
-horizontal_alignment = 1
+texture = ExtResource("4_lw4sb")
+stretch_mode = 3
 
 [node name="Options" type="VBoxContainer" parent="."]
 layout_mode = 2
