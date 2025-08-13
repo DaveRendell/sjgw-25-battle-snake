@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://fkjuulv4hjf"]
+[gd_scene load_steps=8 format=3 uid="uid://fkjuulv4hjf"]
 
 [ext_resource type="Script" uid="uid://vdflwkc6eb6n" path="res://level/grid.gd" id="1_is3ju"]
 [ext_resource type="PackedScene" uid="uid://cg1ux6jueq7i5" path="res://ui/hud.tscn" id="1_m8u5f"]
 [ext_resource type="PackedScene" uid="uid://sphf7vd1y2ld" path="res://entities/player/player.tscn" id="1_wt17y"]
 [ext_resource type="PackedScene" uid="uid://bgeyr231l5ca6" path="res://entities/mobs/mob.tscn" id="2_wt17y"]
+[ext_resource type="PackedScene" uid="uid://c2mdb63ecwnwr" path="res://entities/pickup.tscn" id="5_o00ia"]
+[ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="6_4bqqs"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_m8u5f"]
 viewport_path = NodePath("TextureRect/SubViewport")
@@ -64,5 +66,22 @@ player = NodePath("../Player")
 position = Vector2(179, 107)
 player = NodePath("../Player")
 
+[node name="Pickup" parent="TextureRect/SubViewport" instance=ExtResource("5_o00ia")]
+position = Vector2(1599, 727)
+
+[node name="Pickup2" parent="TextureRect/SubViewport" instance=ExtResource("5_o00ia")]
+position = Vector2(1587, 854)
+
+[node name="Pickup3" parent="TextureRect/SubViewport" instance=ExtResource("5_o00ia")]
+position = Vector2(1691, 683)
+
+[node name="Pickup4" parent="TextureRect/SubViewport" instance=ExtResource("5_o00ia")]
+position = Vector2(1511, 946)
+
+[node name="Pickup5" parent="TextureRect/SubViewport" instance=ExtResource("5_o00ia")]
+position = Vector2(1652, 611)
+
 [node name="Hud" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_m8u5f")]
 player = NodePath("../TextureRect/SubViewport/Player")
+
+[node name="ShaderLayer" parent="." instance=ExtResource("6_4bqqs")]

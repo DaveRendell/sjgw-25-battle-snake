@@ -1,6 +1,7 @@
 class_name Mob extends Node2D
 
 const PICKUP = preload("res://entities/pickup.tscn")
+const EXPLOSION = preload("res://effects/explosion.tscn")
 
 @onready var attract: Attract = $BoidSteering/Attract
 @onready var avoid: Avoid = $BoidSteering/Avoid
@@ -17,4 +18,10 @@ func destroy(drop_pickup: bool = true) -> void:
 		var pickup = PICKUP.instantiate()
 		pickup.position = position
 		add_sibling.call_deferred(pickup)
+		
+	var explosion = EXPLOSION.instantiate()
+	explosion.position = position
+	add_sibling.call_deferred(explosion)
+	SfxManager.play_explosion()
+	
 	queue_free()

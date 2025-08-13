@@ -39,6 +39,9 @@ func _on_mouth_area_entered(area: Area2D) -> void:
 	if xp == needed_for_level_up:
 		xp -= needed_for_level_up
 		add_segment_to_tail.call_deferred()
+		SfxManager.play_level_up()
+	else:
+		SfxManager.play_pickup()
 	
 	xp_changed.emit(needed_for_level_up - xp)
 

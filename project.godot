@@ -15,6 +15,10 @@ run/main_scene="res://ui/menu_scenes/main_menu.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+SfxManager="*res://effects/sfx_manager.gd"
+
 [display]
 
 window/size/viewport_width=1920
@@ -30,4 +34,5 @@ window/stretch/scale=3.0
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
