@@ -2,6 +2,7 @@ class_name Hud extends CanvasLayer
 
 @export var player: Player
 
+@onready var score_label: Label = $Control/Margins/Score
 @onready var health_label: Label = $Control/Margins/Health
 @onready var level_up: Label = $Control/Margins/LevelUp
 @onready var game_over_label: Label = $Control/GameOver
@@ -11,6 +12,7 @@ func _ready() -> void:
 	player.health_changed.connect(_on_player_health_changed)
 	player.xp_changed.connect(_on_player_xp_changed)
 	player.destroyed.connect(game_over)
+	ScoreManager.score_changed.connect(_set_score)
 
 func _on_player_health_changed(health: int) -> void:
 	var health_text = "HEALTH: "
@@ -21,6 +23,9 @@ func _on_player_health_changed(health: int) -> void:
 func _on_player_xp_changed(to_level_up: int) -> void:
 	var xp_text = "TO LVL UP: " + str(to_level_up)
 	level_up.text = xp_text
+
+func _set_score(score: int) -> void:
+	score_label.text = "SCORE: %d" % score
 
 func game_over() -> void:
 	game_over_label.show()

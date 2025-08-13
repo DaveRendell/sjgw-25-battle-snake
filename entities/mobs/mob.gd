@@ -23,5 +23,6 @@ func destroy(drop_pickup: bool = true) -> void:
 	explosion.position = position
 	add_sibling.call_deferred(explosion)
 	SfxManager.play_explosion()
+	ScoreManager.increase_score(250)
 	
 	queue_free()

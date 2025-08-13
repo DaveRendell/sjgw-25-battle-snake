@@ -44,7 +44,7 @@ func _2p_game_pressed() -> void:
 	print("2P Game selected")
 
 func _scoreboard_pressed() -> void:
-	print("Scoreboard pressed")
+	get_tree().change_scene_to_file("res://ui/menu_scenes/scoreboard_page.tscn")
 
 func _settings_pressed() -> void:
 	print("Settings selected")

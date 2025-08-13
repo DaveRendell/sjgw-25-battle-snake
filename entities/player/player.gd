@@ -16,6 +16,7 @@ var xp: int = 0
 @export var separation: float = 35.0
 
 func _ready() -> void:
+	ScoreManager.reset_score()
 	for i in 5:
 		add_segment_to_tail.call_deferred()
 
@@ -33,6 +34,7 @@ func add_segment_to_tail() -> void:
 func _on_mouth_area_entered(area: Area2D) -> void:
 	area.get_parent().queue_free()
 	xp += 1
+	ScoreManager.increase_score(750)
 	
 	var needed_for_level_up = 5
 	
