@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnssbrxn1nyq0"]
+
+[ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="1_81xax"]
+[ext_resource type="Script" uid="uid://7bgc3e22atdp" path="res://ui/menu_scenes/score_enter_screen.gd" id="2_ke6r0"]
+[ext_resource type="PackedScene" uid="uid://torkf5owghwh" path="res://ui/scoreboard/scoreboard.tscn" id="2_pttp3"]
+[ext_resource type="Script" uid="uid://qfo3na3v3p6v" path="res://input/player_input.gd" id="4_rehgx"]
+[ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="5_rehgx"]
+
+[node name="ScoreEntryScreen" type="MarginContainer"]
+custom_minimum_size = Vector2(320, 0)
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_81xax")
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("2_ke6r0")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/separation = 16
+
+[node name="YourScore" type="Label" parent="Layout"]
+layout_mode = 2
+text = "YOUR SCORE: 1000"
+
+[node name="NameEntry" type="Label" parent="Layout"]
+layout_mode = 2
+text = "ENTER YOUR NAME: AAA"
+
+[node name="Scoreboard" parent="." instance=ExtResource("2_pttp3")]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource("4_rehgx")
+metadata/_custom_type_script = "uid://qfo3na3v3p6v"
+
+[node name="ShaderLayer" parent="." instance=ExtResource("5_rehgx")]

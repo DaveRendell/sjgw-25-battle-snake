@@ -26,4 +26,6 @@ func game_over() -> void:
 	game_over_label.show()
 	var final_y_position = game_over_label.position.y
 	game_over_label.position.y = -30
-	create_tween().tween_property(game_over_label, "position:y", final_y_position, 0.25)
+	await create_tween().tween_property(game_over_label, "position:y", final_y_position, 0.25).finished
+	await get_tree().create_timer(2.0).timeout
+	get_tree().change_scene_to_file("res://ui/menu_scenes/score_enter_screen.tscn")
