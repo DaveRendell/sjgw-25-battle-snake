@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://djdo1le1ay61m" path="res://entities/mobs/mob.gd" id="1_egk6g"]
 [ext_resource type="Script" uid="uid://b26x67y683mfj" path="res://entities/components/vehicle_movement.gd" id="2_snvjy"]
 [ext_resource type="Script" uid="uid://cqru7phnxp24n" path="res://entities/components/boid_steering.gd" id="3_egk6g"]
-[ext_resource type="Script" uid="uid://rwhujoi55543" path="res://entities/boid_behaviours/attract.gd" id="4_n2vji"]
-[ext_resource type="Script" uid="uid://y0g5eucy4u0n" path="res://entities/boid_behaviours/avoid.gd" id="5_oesyv"]
-[ext_resource type="Script" uid="uid://dcn5v68viapqi" path="res://entities/boid_behaviours/align.gd" id="6_snvjy"]
+[ext_resource type="Script" uid="uid://rwhujoi55543" path="res://entities/mobs/boid_behaviours/attract.gd" id="4_n2vji"]
+[ext_resource type="Script" uid="uid://y0g5eucy4u0n" path="res://entities/mobs/boid_behaviours/avoid.gd" id="5_oesyv"]
+[ext_resource type="Script" uid="uid://dcn5v68viapqi" path="res://entities/mobs/boid_behaviours/align.gd" id="6_snvjy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_is3ju"]
 radius = 48.0

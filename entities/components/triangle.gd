@@ -7,7 +7,7 @@ class_name Triangle extends Node2D
 		queue_redraw()
 @export var height: float = 16:
 	set(value):
-		base = value
+		height = value
 		queue_redraw()
 @export var color: Color = Color.FIREBRICK:
 	set(value):
