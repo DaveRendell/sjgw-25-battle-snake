@@ -4,13 +4,26 @@ signal up_pressed
 signal down_pressed
 signal accept_pressed
 
-var player_prefix = "ui"
+var player_prefix = "p1":
+	set(value):
+		player_prefix = value
+		_set_input_groups()
 
-var _input_group_up = StringName(player_prefix + "_up")
-var _input_group_down = StringName(player_prefix + "_down")
-var _input_group_left = StringName(player_prefix + "_left")
-var _input_group_right = StringName(player_prefix + "_right")
-var _input_group_accept = StringName(player_prefix + "_accept")
+var _input_group_up: StringName
+var _input_group_down: StringName
+var _input_group_left: StringName
+var _input_group_right: StringName
+var _input_group_accept: StringName
+
+func _set_input_groups() -> void:
+	_input_group_up = StringName(player_prefix + "_up")
+	_input_group_down = StringName(player_prefix + "_down")
+	_input_group_left = StringName(player_prefix + "_left")
+	_input_group_right = StringName(player_prefix + "_right")
+	_input_group_accept = StringName(player_prefix + "_accept")
+
+func _ready() -> void:
+	_set_input_groups()
 
 # Returns float between -1.0 and 1.0 representing horizontal player joystick position 
 func get_x_axis() -> float:

@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://coyd2vrm1s34e"]
+
+[ext_resource type="Script" uid="uid://cng5ok307wgqo" path="res://level/multi_player.gd" id="1_jhgwf"]
+[ext_resource type="PackedScene" uid="uid://chw2th4yxcai0" path="res://effects/background.tscn" id="1_y6kvv"]
+[ext_resource type="Script" uid="uid://vdflwkc6eb6n" path="res://level/grid.gd" id="2_jhgwf"]
+[ext_resource type="PackedScene" uid="uid://sphf7vd1y2ld" path="res://entities/player/player.tscn" id="3_wmikq"]
+[ext_resource type="PackedScene" uid="uid://cg1ux6jueq7i5" path="res://ui/hud.tscn" id="4_7bxhl"]
+[ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="5_7fmv7"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m8u5f"]
+viewport_path = NodePath("TextureRect/SubViewport1")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_jhgwf"]
+viewport_path = NodePath("TextureRect2/SubViewport2")
+
+[node name="MultiPlayer" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jhgwf")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("ViewportTexture_m8u5f")
+
+[node name="SubViewport1" type="SubViewport" parent="TextureRect"]
+unique_name_in_owner = true
+size = Vector2i(320, 360)
+
+[node name="Camera1" type="Camera2D" parent="TextureRect/SubViewport1"]
+unique_name_in_owner = true
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+layout_mode = 2
+texture = SubResource("ViewportTexture_jhgwf")
+
+[node name="SubViewport2" type="SubViewport" parent="TextureRect2"]
+unique_name_in_owner = true
+size = Vector2i(320, 360)
+
+[node name="Camera2" type="Camera2D" parent="TextureRect2/SubViewport2"]
+unique_name_in_owner = true
+
+[node name="Hud" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_7bxhl")]
+player = NodePath("../SubViewport/Player1")
+
+[node name="ShaderLayer" parent="." instance=ExtResource("5_7fmv7")]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+unique_name_in_owner = true
+
+[node name="Parallax2D" type="Parallax2D" parent="SubViewport"]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(640, 360)
+
+[node name="Background" parent="SubViewport/Parallax2D" instance=ExtResource("1_y6kvv")]
+
+[node name="StaticBackground" type="Parallax2D" parent="SubViewport"]
+repeat_size = Vector2(640, 640)
+
+[node name="Grid" type="Node2D" parent="SubViewport/StaticBackground"]
+script = ExtResource("2_jhgwf")
+height = 640
+colour = Color(0.223529, 0.0901961, 0.294118, 0.576471)
+metadata/_custom_type_script = "uid://vdflwkc6eb6n"
+
+[node name="Player1" parent="SubViewport" instance=ExtResource("3_wmikq")]
+unique_name_in_owner = true
+position = Vector2(381, 132)
+
+[node name="Player2" parent="SubViewport" instance=ExtResource("3_wmikq")]
+unique_name_in_owner = true
+position = Vector2(381, 300)
+player_prefix = "p2"

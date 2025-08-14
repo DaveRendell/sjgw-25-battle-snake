@@ -57,6 +57,7 @@ vehicle_movement = NodePath("../VehicleMovement")
 metadata/_custom_type_script = "uid://cqaw6dfxajor3"
 
 [node name="PlayerInput" type="Node" parent="PlayerSteering"]
+unique_name_in_owner = true
 script = ExtResource("4_fkugw")
 metadata/_custom_type_script = "uid://qfo3na3v3p6v"
 
@@ -69,7 +70,8 @@ script = ExtResource("7_qiwj3")
 player = NodePath("..")
 metadata/_custom_type_script = "uid://duyukryhjo182"
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+unique_name_in_owner = true
 
 [connection signal="area_entered" from="Mouth" to="." method="_on_mouth_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

@@ -7,22 +7,16 @@ const EXPLOSION = preload("res://effects/explosion.tscn")
 @onready var avoid: Avoid = $BoidSteering/Avoid
 @onready var align: Align = $BoidSteering/Align
 
-@export var player: Player
-
-func _ready() -> void:
-	attract.target = player
-	avoid.exception = player.collider
-
 func destroy(drop_pickup: bool = true) -> void:
 	if drop_pickup:
 		var pickup = PICKUP.instantiate()
 		pickup.position = position
 		add_sibling.call_deferred(pickup)
+		ScoreManager.increase_score(250)
 		
 	var explosion = EXPLOSION.instantiate()
 	explosion.position = position
 	add_sibling.call_deferred(explosion)
 	SfxManager.play_explosion()
-	ScoreManager.increase_score(250)
 	
 	queue_free()

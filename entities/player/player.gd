@@ -6,6 +6,9 @@ signal destroyed
 
 const SEGMENT = preload("res://entities/player/segment.tscn")
 
+@onready var player_input: PlayerInput = %PlayerInput
+@onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
+
 var following_segments: Array[Node2D] = []
 var health: int = 5
 var xp: int = 0
@@ -15,8 +18,11 @@ var xp: int = 0
 
 @export var separation: float = 35.0
 
+@export var player_prefix: String = "p1"
+
 func _ready() -> void:
 	ScoreManager.reset_score()
+	player_input.player_prefix = player_prefix
 	for i in 5:
 		add_segment_to_tail.call_deferred()
 
@@ -68,6 +74,7 @@ func _on_segment_collision() -> void:
 	_game_over()
 
 func _game_over() -> void:
+	PlayerManager.players.erase(self)
 	queue_free()
 	for segment in following_segments:
 		segment.queue_free()

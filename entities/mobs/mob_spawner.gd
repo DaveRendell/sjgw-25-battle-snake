@@ -18,7 +18,6 @@ func spawn_mob() -> void:
 	var mob = MOB.instantiate()
 	
 	mob.position = _parent.position + relative_position
-	mob.player = player
 	_parent.add_sibling.call_deferred(mob)
 	
 	get_tree().create_timer(timeout).timeout.connect(spawn_mob)

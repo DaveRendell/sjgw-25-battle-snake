@@ -12,7 +12,7 @@ func get_vector(location: Vector2) -> Vector2:
 	
 	for entity: Node2D in other_entities:
 		if entity == own_collider: continue
-		if entity == exception: continue
+		if PlayerManager.players.any(func(player: Player): return player.collider == entity): continue
 		
 		var magnitude = 1 / entity.global_position.distance_squared_to(location)
 		ret += magnitude * entity.global_position.direction_to(location)
