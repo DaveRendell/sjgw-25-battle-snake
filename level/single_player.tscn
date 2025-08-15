@@ -1,13 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://fkjuulv4hjf"]
+[gd_scene load_steps=9 format=3 uid="uid://fkjuulv4hjf"]
 
 [ext_resource type="Script" uid="uid://vdflwkc6eb6n" path="res://level/grid.gd" id="1_is3ju"]
 [ext_resource type="PackedScene" uid="uid://cg1ux6jueq7i5" path="res://ui/hud.tscn" id="1_m8u5f"]
 [ext_resource type="Script" uid="uid://q2hhk2id4iks" path="res://level/single_player.gd" id="1_oj2lp"]
 [ext_resource type="PackedScene" uid="uid://sphf7vd1y2ld" path="res://entities/player/player.tscn" id="1_wt17y"]
 [ext_resource type="PackedScene" uid="uid://chw2th4yxcai0" path="res://effects/background.tscn" id="1_ynsuh"]
-[ext_resource type="PackedScene" uid="uid://ce0374r0oynk5" path="res://entities/mobs/trailer_mob/trailer_mob.tscn" id="5_yj44l"]
 [ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="6_4bqqs"]
-[ext_resource type="PackedScene" uid="uid://bsagiimfsoh6q" path="res://entities/mobs/wide_mob/wide_mob.tscn" id="6_jdgbd"]
+[ext_resource type="PackedScene" uid="uid://84pik03yyo2a" path="res://entities/mobs/jormungandr/jormungandr.tscn" id="7_yj44l"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_m8u5f"]
 viewport_path = NodePath("TextureRect/SubViewport")
@@ -53,14 +52,11 @@ metadata/_custom_type_script = "uid://vdflwkc6eb6n"
 [node name="Player" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("1_wt17y")]
 unique_name_in_owner = true
 
-[node name="TrailerMob" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("5_yj44l")]
-position = Vector2(200, 200)
-
-[node name="WideMob" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("6_jdgbd")]
-position = Vector2(400, 25)
-
 [node name="Camera2D" type="Camera2D" parent="TextureRect/SubViewport/GameWorld"]
 unique_name_in_owner = true
+
+[node name="Jormungandr" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("7_yj44l")]
+position = Vector2(791, 387)
 
 [node name="Hud" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_m8u5f")]
 player = NodePath("../TextureRect/SubViewport/GameWorld/Player")

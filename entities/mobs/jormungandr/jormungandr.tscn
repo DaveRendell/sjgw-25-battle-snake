@@ -1,0 +1,67 @@
+[gd_scene load_steps=11 format=3 uid="uid://84pik03yyo2a"]
+
+[ext_resource type="Script" uid="uid://8n8iycrh7tt" path="res://entities/mobs/jormungandr/jormungandr.gd" id="1_a78gw"]
+[ext_resource type="Script" uid="uid://btyutyr4turgr" path="res://entities/components/triangle.gd" id="2_laqkk"]
+[ext_resource type="Script" uid="uid://b26x67y683mfj" path="res://entities/components/vehicle_movement.gd" id="3_gng5u"]
+[ext_resource type="Script" uid="uid://cqru7phnxp24n" path="res://entities/components/boid_steering.gd" id="4_oo7y3"]
+[ext_resource type="Script" uid="uid://csm10132uq4ly" path="res://entities/mobs/boid_behaviours/encircle.gd" id="5_8g7nw"]
+[ext_resource type="Script" uid="uid://ccoo7rbor1to6" path="res://entities/mobs/boid_behaviours/maintain_distance.gd" id="6_a78gw"]
+[ext_resource type="Script" uid="uid://dq1ffjlcyvgr0" path="res://entities/components/boid_debug.gd" id="7_a78gw"]
+[ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="8_pyit7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_is3ju"]
+radius = 48.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o00ia"]
+radius = 8.0
+
+[node name="Jormungandr" type="Node2D"]
+script = ExtResource("1_a78gw")
+
+[node name="Triangle" type="Node2D" parent="."]
+script = ExtResource("2_laqkk")
+base = 48.0
+height = 64.0
+color = Color(1, 1, 1, 1)
+metadata/_custom_type_script = "uid://btyutyr4turgr"
+
+[node name="VehicleMovement" type="Node" parent="."]
+script = ExtResource("3_gng5u")
+speed = 80.0
+metadata/_custom_type_script = "uid://b26x67y683mfj"
+
+[node name="BoidSteering" type="Node" parent="." node_paths=PackedStringArray("vehicle_movement")]
+script = ExtResource("4_oo7y3")
+vehicle_movement = NodePath("../VehicleMovement")
+metadata/_custom_type_script = "uid://cqru7phnxp24n"
+
+[node name="Encircle" type="Node" parent="BoidSteering"]
+script = ExtResource("5_8g7nw")
+metadata/_custom_type_script = "uid://csm10132uq4ly"
+
+[node name="MaintainDistance" type="Node" parent="BoidSteering"]
+script = ExtResource("6_a78gw")
+target_distance = 300.0
+metadata/_custom_type_script = "uid://ccoo7rbor1to6"
+
+[node name="BehaviourRange" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviourRange"]
+shape = SubResource("CircleShape2D_is3ju")
+
+[node name="Collider" type="StaticBody2D" parent="."]
+collision_layer = 5
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collider"]
+shape = SubResource("CircleShape2D_o00ia")
+
+[node name="BoidDebug" type="Node2D" parent="." node_paths=PackedStringArray("boid_steering")]
+script = ExtResource("7_a78gw")
+boid_steering = NodePath("../BoidSteering")
+metadata/_custom_type_script = "uid://dq1ffjlcyvgr0"
+
+[node name="Trail" type="Node" parent="."]
+script = ExtResource("8_pyit7")
+metadata/_custom_type_script = "uid://fbcs0md2xng0"

@@ -8,4 +8,4 @@ class_name PlayerSteering extends Node
 
 func _physics_process(delta: float) -> void:
 	var rotation = delta * steer_speed * player_input.get_x_axis()
-	vehicle_movement.heading = vehicle_movement.heading.rotated(rotation)
+	vehicle_movement.ideal_heading = vehicle_movement.heading.rotated(rotation)

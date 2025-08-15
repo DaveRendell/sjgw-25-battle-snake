@@ -13,6 +13,12 @@ class_name VehicleMovement extends Node
 # The vehicle travels that distance in a second
 @export var speed: float = 50.0
 
+@export var turning_speed: float = 0.5
+
+@export var ideal_heading: Vector2 = Vector2.RIGHT 
+
 func _physics_process(delta: float) -> void:
+	if heading != ideal_heading:
+		heading = ideal_heading.normalized()
 	parent.position += delta * speed * heading.normalized()
 	parent.rotation = heading.rotated(TAU / 4).angle()
