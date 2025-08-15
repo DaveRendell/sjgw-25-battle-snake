@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://1knk7xnj1xpw"]
+
+[ext_resource type="PackedScene" uid="uid://bnd4xtxejul7q" path="res://entities/player/segments/normal_segment/segment.tscn" id="1_nyeyl"]
+[ext_resource type="Script" uid="uid://bywbwp4uyjba" path="res://entities/player/segments/cannon_segment/cannon.gd" id="2_ttqw1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a0e14"]
+radius = 64.0
+
+[node name="CannonSegment" instance=ExtResource("1_nyeyl")]
+
+[node name="Circle" parent="." index="0"]
+color = Color(0.860119, 0.470817, 0.332333, 1)
+
+[node name="Cannon" type="Node2D" parent="." index="5" node_paths=PackedStringArray("target_range")]
+script = ExtResource("2_ttqw1")
+target_range = NodePath("../CannonRange")
+metadata/_custom_type_script = "uid://bywbwp4uyjba"
+
+[node name="CannonRange" type="Area2D" parent="." index="6"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CannonRange" index="0"]
+shape = SubResource("CircleShape2D_a0e14")

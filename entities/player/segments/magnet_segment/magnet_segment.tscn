@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://dnowkdaiu8o2d"]
+
+[ext_resource type="PackedScene" uid="uid://bnd4xtxejul7q" path="res://entities/player/segments/normal_segment/segment.tscn" id="1_8bki3"]
+[ext_resource type="Script" uid="uid://c7paq54bpmjg7" path="res://entities/player/segments/magnet_segment/magnet.gd" id="2_l34ci"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g5f7k"]
+radius = 72.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l34ci"]
+radius = 16.0
+
+[node name="MagnetSegment" instance=ExtResource("1_8bki3")]
+
+[node name="Circle" parent="." index="0"]
+color = Color(0.223975, 0.63851, 0.837784, 1)
+
+[node name="Magnet" type="Node2D" parent="." index="5" node_paths=PackedStringArray("magnet_range", "magnet_pickup_range")]
+script = ExtResource("2_l34ci")
+magnet_range = NodePath("../MagnetRange")
+magnet_pickup_range = NodePath("../MagnetPickupRange")
+metadata/_custom_type_script = "uid://c7paq54bpmjg7"
+
+[node name="MagnetRange" type="Area2D" parent="." index="6"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetRange" index="0"]
+shape = SubResource("CircleShape2D_g5f7k")
+
+[node name="MagnetPickupRange" type="Area2D" parent="." index="7"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetPickupRange" index="0"]
+shape = SubResource("CircleShape2D_l34ci")

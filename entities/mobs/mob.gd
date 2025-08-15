@@ -3,6 +3,8 @@ class_name Mob extends Node2D
 const PICKUP = preload("res://entities/pickup.tscn")
 const EXPLOSION = preload("res://effects/explosion.tscn")
 
+@export var health: int = 1
+
 func destroy(drop_pickup: bool = true) -> void:
 	if drop_pickup:
 		var pickup = PICKUP.instantiate()
@@ -16,3 +18,7 @@ func destroy(drop_pickup: bool = true) -> void:
 	SfxManager.play_explosion()
 	
 	queue_free()
+
+func deal_damage(amount: int) -> void:
+	health -= amount
+	if health <= 0: destroy(true)

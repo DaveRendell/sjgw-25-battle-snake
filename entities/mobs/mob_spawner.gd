@@ -22,7 +22,7 @@ func _pick_spawn_scenario() -> void:
 	var wide_probability = 0.1
 	var trailer_probability = 0.1
 	var swarm_probability = 0.1
-	var wall_probability = 0.5
+	var wall_probability = 0.05
 	var surrounder_probability = 0.01
 	
 	var angle = randf_range(0, TAU)

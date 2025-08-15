@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfta8j8h8b7mj"]
+
+[ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="1_d153d"]
+[ext_resource type="Script" uid="uid://0wjmcpyaa7ox" path="res://ui/segment_select.gd" id="2_47oek"]
+[ext_resource type="Script" uid="uid://qfo3na3v3p6v" path="res://input/player_input.gd" id="3_qqfc1"]
+
+[node name="SegmentSelect" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("2_47oek")
+
+[node name="Background" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(360, 128)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -64.0
+offset_right = 180.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme = ExtResource("1_d153d")
+color = Color(0.166853, 0.166853, 0.166853, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Title" type="Label" parent="Background/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+text = "CHOOSE A POWER-UP!"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/margin_left = 24
+
+[node name="Options" type="VBoxContainer" parent="Background/MarginContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 16
+
+[node name="CannonOption" type="Label" parent="Background/MarginContainer/MarginContainer/Options"]
+layout_mode = 2
+text = "CANNON"
+
+[node name="MagnetOption" type="Label" parent="Background/MarginContainer/MarginContainer/Options"]
+layout_mode = 2
+text = "MAGNET"
+
+[node name="OtherOption" type="Label" parent="Background/MarginContainer/MarginContainer/Options"]
+layout_mode = 2
+text = "??????"
+
+[node name="Selector" type="Label" parent="Background"]
+layout_mode = 2
+offset_left = -24.0
+offset_right = -8.0
+offset_bottom = 16.0
+text = "▶"
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource("3_qqfc1")
+metadata/_custom_type_script = "uid://qfo3na3v3p6v"

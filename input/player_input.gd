@@ -33,4 +33,3 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(_input_group_up): up_pressed.emit()
 	if event.is_action_pressed(_input_group_down): down_pressed.emit()
 	if event.is_action_pressed(_input_group_accept): accept_pressed.emit()
-	

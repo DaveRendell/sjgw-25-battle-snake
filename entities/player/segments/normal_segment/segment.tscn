@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://bnd4xtxejul7q"]
 
 [ext_resource type="Script" uid="uid://bcdjqrhby8xta" path="res://entities/components/circle.gd" id="1_8nhup"]
-[ext_resource type="Script" uid="uid://dwe56ightov3" path="res://entities/player/segment.gd" id="1_a1bec"]
+[ext_resource type="Script" uid="uid://dwe56ightov3" path="res://entities/player/segments/normal_segment/segment.gd" id="1_a1bec"]
 [ext_resource type="Script" uid="uid://dfpolplr30ngc" path="res://entities/components/trail_follower.gd" id="2_a1bec"]
 [ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="3_sht4x"]
 
