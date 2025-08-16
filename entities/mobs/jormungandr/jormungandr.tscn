@@ -17,6 +17,7 @@ radius = 8.0
 
 [node name="Jormungandr" type="Node2D"]
 script = ExtResource("1_a78gw")
+health = 100
 
 [node name="Triangle" type="Node2D" parent="."]
 script = ExtResource("2_laqkk")
@@ -65,3 +66,13 @@ metadata/_custom_type_script = "uid://dq1ffjlcyvgr0"
 [node name="Trail" type="Node" parent="."]
 script = ExtResource("8_pyit7")
 metadata/_custom_type_script = "uid://fbcs0md2xng0"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -0.499998)
+scale = Vector2(3.3, 3.45)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered" flags=6]

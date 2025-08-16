@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="SpawnProfile" load_steps=2 format=3 uid="uid://du4l7iuho2q1n"]
+
+[ext_resource type="Script" uid="uid://f40a5rijb1u7" path="res://level/spawn_profile.gd" id="1_4i8mu"]
+
+[resource]
+script = ExtResource("1_4i8mu")
+spawn_enemies = true
+spawn_timeout = 4.0
+wide_probability = 0.0
+trailer_probability = 0.0
+swarm_probability = 0.0
+wall_probability = 0.0
+surrounder_probability = 0.0
+metadata/_custom_type_script = "uid://f40a5rijb1u7"

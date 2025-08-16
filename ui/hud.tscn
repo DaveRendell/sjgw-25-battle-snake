@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cm3dxobl100r6" path="res://ui/hud.gd" id="1_276te"]
 [ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="1_rbyyf"]
 
-[node name="Hud" type="CanvasLayer"]
+[node name="Hud" type="CanvasLayer" groups=["hud"]]
 script = ExtResource("1_276te")
 
 [node name="Control" type="Control" parent="."]

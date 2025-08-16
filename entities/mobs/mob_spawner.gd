@@ -19,36 +19,32 @@ func on_timeout() -> void:
 	get_tree().create_timer(timeout).timeout.connect(on_timeout)
 
 func _pick_spawn_scenario() -> void:
-	var wide_probability = 0.1
-	var trailer_probability = 0.1
-	var swarm_probability = 0.1
-	var wall_probability = 0.05
-	var surrounder_probability = 0.01
+	var spawn_profile: SpawnProfile = SpawnManager.get_spawn_profile()
+	if not spawn_profile.spawn_enemies: return
 	
 	var angle = randf_range(0, TAU)
 	var relative_position = radius * Vector2.from_angle(angle)
 	
 	var p = randf()
-	if p < wide_probability: return _spawn(WIDE_MOB, relative_position)
-	else: p -= wide_probability
+	if p < spawn_profile.wide_probability: return _spawn(WIDE_MOB, relative_position)
+	else: p -= spawn_profile.wide_probability
 	
-	if p < trailer_probability: return _spawn(TRAILER_MOB, relative_position)
-	else: p -= trailer_probability
+	if p < spawn_profile.trailer_probability: return _spawn(TRAILER_MOB, relative_position)
+	else: p -= spawn_profile.trailer_probability
 	
-	if p < swarm_probability: return _spawn_swarm(MOB, relative_position, 64, 5)
-	else: p -= swarm_probability
+	if p < spawn_profile.swarm_probability: return _spawn_swarm(MOB, relative_position, 64, 5)
+	else: p -= spawn_profile.swarm_probability
 	
-	if p < wall_probability:
+	if p < spawn_profile.wall_probability:
 		var wall_length = 5
 		var offset_vector: Vector2 = 80 * relative_position.normalized().rotated(TAU / 4)
 		for i in wall_length:
 			var j = i - ceil(float(wall_length) / 2)
 			_spawn(WIDE_MOB, relative_position + j * offset_vector)
-			
-	else: p -= wall_probability
+	else: p -= spawn_profile.wall_probability
 	
-	if p < surrounder_probability: return _spawn_swarm(MOB, Vector2.ZERO, radius, 50)
-	else: p -= surrounder_probability
+	if p < spawn_profile.surrounder_probability: return _spawn_swarm(MOB, Vector2.ZERO, radius, 50)
+	else: p -= spawn_profile.surrounder_probability
 	
 	return _spawn(MOB, relative_position)
 

@@ -16,7 +16,6 @@ func get_vector(location: Vector2) -> Vector2:
 			closest_distance = distance
 	
 	var factor = (closest_distance - target_distance) * (closest_distance - target_distance) / 25000
-	prints(closest_distance, target_distance, factor)
 	if closest_distance > target_distance:
 		return weight * factor * location.direction_to(closest_position)
 	elif closest_distance < target_distance:

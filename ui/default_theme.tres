@@ -1,9 +1,16 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://45pn6nywi1h5"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://45pn6nywi1h5"]
 
 [ext_resource type="FontFile" uid="uid://dkog0isxw1u0e" path="res://ui/fonts/PressStart2P-vaV7.ttf" id="1_vos2p"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vos2p"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vos2p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4llc"]
+bg_color = Color(0.749417, 0.215161, 0.228002, 1)
+
 [resource]
 default_font = ExtResource("1_vos2p")
 Button/styles/normal = SubResource("StyleBoxEmpty_vos2p")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_vos2p")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_i4llc")

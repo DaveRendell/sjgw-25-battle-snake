@@ -30,11 +30,13 @@ func _ready() -> void:
 		add_segment_to_tail.call_deferred()
 
 func add_segment_to_tail(allow_choose: bool = false) -> void:
-	var trail_to_follow: Trail = _trail if following_segments.is_empty() else following_segments[following_segments.size() - 1].get_node("Trail")
-	
 	var segment_scene: PackedScene = await choose_segment() if allow_choose && ((following_segments.size() - 2) % 3 == 0) else SEGMENT
-	
+	add_segment(segment_scene)
+
+func add_segment(segment_scene: PackedScene) -> void:
 	var segment: Segment = segment_scene.instantiate()
+	
+	var trail_to_follow: Trail = _trail if following_segments.is_empty() else following_segments[following_segments.size() - 1].get_node("Trail")
 	segment.player = self
 	var trail_follower = segment.get_node("TrailFollower")
 	trail_follower.trail = trail_to_follow

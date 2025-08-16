@@ -11,6 +11,7 @@ extends HBoxContainer
 
 func _ready() -> void:
 	PlayerManager.players = [player_1, player_2]
+	SpawnManager.start_game()
 	player_1.remote_transform_2d.remote_path = camera_1.get_path()
 	player_2.remote_transform_2d.remote_path = camera_2.get_path()
 	
