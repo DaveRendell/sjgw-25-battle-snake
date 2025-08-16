@@ -3,7 +3,7 @@ const WARNING = preload("res://entities/mobs/jormungandr/warning.tscn")
 const JORMUNGANDR = preload("res://entities/mobs/jormungandr/jormungandr.tscn")
 var stage_id: int = 0
 var stage_timer: Timer
-var normal_stage_timeout = 5.0
+var normal_stage_timeout = 60.0
 
 var _stages = [
 	preload("res://level/spawn_profiles/stage0.tres"),

@@ -68,7 +68,7 @@ func consume_pickup(area: Area2D) -> void:
 	xp += 1
 	ScoreManager.increase_score(750)
 	
-	var needed_for_level_up = 10
+	var needed_for_level_up = 5
 	
 	if xp == needed_for_level_up:
 		xp -= needed_for_level_up

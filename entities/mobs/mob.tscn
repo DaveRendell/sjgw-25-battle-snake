@@ -35,6 +35,7 @@ metadata/_custom_type_script = "uid://cqru7phnxp24n"
 
 [node name="Attract" type="Node" parent="BoidSteering"]
 script = ExtResource("4_n2vji")
+weight = 2.0
 metadata/_custom_type_script = "uid://rwhujoi55543"
 
 [node name="Avoid" type="Node" parent="BoidSteering" node_paths=PackedStringArray("behaviour_range", "own_collider")]
