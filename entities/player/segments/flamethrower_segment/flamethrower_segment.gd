@@ -30,6 +30,5 @@ func _on_hit_timer_timeout() -> void:
 	mobs_on_fire.append_array(flame_box_2.get_overlapping_bodies())
 	for mob_hitbox in mobs_on_fire:
 		var mob: Mob = mob_hitbox.get_parent()
-		print("burn baby burn")
 		mob.deal_damage(1)
 	

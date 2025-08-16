@@ -147,3 +147,7 @@ func _draw() -> void:
 
 func _physics_process(_delta: float) -> void:
 	queue_redraw()
+
+func boost_speed() -> void:
+	var vehicle_movement: VehicleMovement = $VehicleMovement
+	vehicle_movement.speed += 8
