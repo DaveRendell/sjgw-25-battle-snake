@@ -20,6 +20,7 @@ script = ExtResource("1_egk6g")
 
 [node name="Triangle" type="Node2D" parent="."]
 script = ExtResource("1_ap34t")
+filled = true
 metadata/_custom_type_script = "uid://btyutyr4turgr"
 
 [node name="VehicleMovement" type="Node" parent="."]

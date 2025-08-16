@@ -15,6 +15,7 @@ metadata/_custom_type_script = "uid://djdo1le1ay61m"
 
 [node name="Rectangle" type="Node2D" parent="."]
 script = ExtResource("2_oi2fa")
+filled = true
 metadata/_custom_type_script = "uid://dr50ubsrl6g1"
 
 [node name="Collider" type="StaticBody2D" parent="."]

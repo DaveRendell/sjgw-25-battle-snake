@@ -1,6 +1,11 @@
 @tool
 class_name Circle extends Node2D
 
+@export var filled: bool = false:
+	set(value):
+		filled = value
+		queue_redraw()
+
 @export var radius: float = 16:
 	set(value):
 		radius = value

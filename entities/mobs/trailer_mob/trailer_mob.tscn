@@ -22,6 +22,7 @@ metadata/_custom_type_script = "uid://djdo1le1ay61m"
 
 [node name="Triangle" type="Node2D" parent="."]
 script = ExtResource("2_evd1x")
+filled = true
 base = 24.0
 height = 24.0
 color = Color(0.608182, 0.340431, 0.0822599, 1)
