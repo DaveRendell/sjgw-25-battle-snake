@@ -25,3 +25,4 @@ func _shoot() -> void:
 	shell.velocity = launch_vector
 	shell.position = _parent.position
 	_parent.add_sibling(shell)
+	SfxManager.play_shoot()

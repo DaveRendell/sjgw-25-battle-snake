@@ -26,3 +26,4 @@ func deal_damage(amount: int) -> void:
 	health -= amount
 	health_changed.emit(health)
 	if health <= 0: destroy(true)
+	else: SfxManager.play_mob_oof()

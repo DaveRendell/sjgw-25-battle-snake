@@ -22,14 +22,17 @@ func _ready() -> void:
 	_player_input.down_pressed.connect(_down_pressed)
 	_player_input.accept_pressed.connect(func():
 		var selected_option: Button = _options.get_child(_selected_item_index)
+		SfxManager.play_blip()
 		selected_option.pressed.emit())
 	
 func _down_pressed() -> void:
 	_selected_item_index = posmod(_selected_item_index + 1, _options.get_child_count())
+	SfxManager.play_blip()
 	_update_selected_indicator()
 
 func _up_pressed() -> void:
 	_selected_item_index = posmod(_selected_item_index - 1, _options.get_child_count())
+	SfxManager.play_blip()
 	_update_selected_indicator()
 
 func _update_selected_indicator() -> void:

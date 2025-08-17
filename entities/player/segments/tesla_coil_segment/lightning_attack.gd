@@ -50,6 +50,7 @@ func _get_next_in_chain() -> Mob:
 	return closest_mob
 
 func _on_tick_timer_timeout() -> void:
+	if connected_mobs.size() > 0: SfxManager.play_thunder()
 	connected_mobs.map(func(mob): if mob: mob.deal_damage.call_deferred(1))
 	ticks -= 1
 	if ticks <= 0:

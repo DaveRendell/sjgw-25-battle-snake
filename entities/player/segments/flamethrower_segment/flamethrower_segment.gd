@@ -10,6 +10,7 @@ func _ready() -> void:
 	turn_off_flames()
 
 func run_flames() -> void:
+	SfxManager.play_flames()
 	flames_1.emitting = true
 	flames_2.emitting = true
 	_flames_on = true

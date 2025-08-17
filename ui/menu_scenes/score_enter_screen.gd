@@ -40,13 +40,16 @@ func _ready() -> void:
 
 func _up_pressed() -> void:
 	current_character_index = posmod(current_character_index + 1, 26)
+	SfxManager.play_blip()
 	_update_label()
 
 func _down_pressed() -> void:
 	current_character_index = posmod(current_character_index - 1, 26)
+	SfxManager.play_blip()
 	_update_label()
 
 func _accept_pressed() -> void:
+	SfxManager.play_blip()
 	entered_name += current_character
 	if entered_name.length() == 3:
 		ScoreManager.record_score(entered_name, _player_score)

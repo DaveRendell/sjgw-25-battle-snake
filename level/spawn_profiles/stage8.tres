@@ -5,11 +5,16 @@
 [resource]
 script = ExtResource("1_8x5qk")
 spawn_enemies = true
-spawn_timeout = 4.0
-wide_probability = 0.0
-trailer_probability = 0.0
-swarm_probability = 0.0
-wall_probability = 0.0
-surrounder_probability = 0.0
+spawn_timeout = 0.75
+wide_probability = 0.1
+trailer_probability = 0.2
+swarm_probability = 0.2
+wall_probability = 0.2
+surrounder_probability = 0.02
+better_probability = 0.4
+cannon = true
+booster = true
+magnet = true
 flamethrower = true
+teslacoil = true
 metadata/_custom_type_script = "uid://f40a5rijb1u7"

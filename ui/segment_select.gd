@@ -26,13 +26,16 @@ func _ready() -> void:
 
 func _up_pressed() -> void:
 	_selected_index = posmod(_selected_index - 1, options_list.size())
+	SfxManager.play_blip()
 	_set_selected()
 
 func _down_pressed() -> void:
 	_selected_index = posmod(_selected_index + 1, options_list.size())
+	SfxManager.play_blip()
 	_set_selected()
 
 func _accept_pressed() -> void:
+	SfxManager.play_blip()
 	option_selected.emit(_selected_index)
 
 func _set_selected() -> void:

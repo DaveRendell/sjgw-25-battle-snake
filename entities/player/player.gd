@@ -37,11 +37,11 @@ var xp: int = 0
 func _ready() -> void:
 	ScoreManager.reset_score()
 	player_input.player_prefix = player_prefix
-	for i in 4:
+	for i in 2:
 		add_segment_to_tail.call_deferred()
 
 func add_segment_to_tail(allow_choose: bool = false) -> void:
-	var segment_scene: PackedScene = await choose_segment() if allow_choose && ((following_segments.size() - 2) % 3 == 0) else SEGMENT
+	var segment_scene: PackedScene = await choose_segment() if allow_choose && ((following_segments.size()) % 3 == 0) else SEGMENT
 	add_segment(segment_scene)
 
 func add_segment(segment_scene: PackedScene) -> void:
@@ -91,7 +91,7 @@ func consume_pickup(area: Area2D) -> void:
 	xp += 1
 	ScoreManager.increase_score(750)
 	
-	var needed_for_level_up = 3
+	var needed_for_level_up = following_segments.size()
 	
 	if xp == needed_for_level_up:
 		xp -= needed_for_level_up
@@ -115,6 +115,7 @@ func _on_mob_collision(mob: Mob) -> void:
 	
 	health -= 1
 	health_changed.emit(health)
+	SfxManager.play_player_oof()
 	
 	if health == 0:
 		_game_over()

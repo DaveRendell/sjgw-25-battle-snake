@@ -15,8 +15,9 @@ radius = 48.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_o00ia"]
 radius = 8.0
 
-[node name="Mob" type="Node2D"]
+[node name="BetterMob" type="Node2D"]
 script = ExtResource("1_elr5t")
+health = 4
 
 [node name="Triangle" type="Node2D" parent="."]
 script = ExtResource("2_5w84x")
