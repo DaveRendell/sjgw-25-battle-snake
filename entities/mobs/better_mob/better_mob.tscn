@@ -49,7 +49,7 @@ metadata/_custom_type_script = "uid://y0g5eucy4u0n"
 
 [node name="Align" type="Node" parent="BoidSteering" node_paths=PackedStringArray("behaviour_range", "own_collider")]
 script = ExtResource("7_h0w84")
-weight = 8.0
+weight = 0.1
 behaviour_range = NodePath("../../BehaviourRange")
 own_collider = NodePath("../../Collider")
 metadata/_custom_type_script = "uid://dcn5v68viapqi"

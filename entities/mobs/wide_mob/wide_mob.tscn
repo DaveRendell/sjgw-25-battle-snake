@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsagiimfsoh6q"]
+[gd_scene load_steps=8 format=3 uid="uid://bsagiimfsoh6q"]
 
 [ext_resource type="Script" uid="uid://djdo1le1ay61m" path="res://entities/mobs/mob.gd" id="1_hqgwt"]
 [ext_resource type="Script" uid="uid://dr50ubsrl6g1" path="res://entities/components/rectangle.gd" id="2_vtjyn"]
 [ext_resource type="Script" uid="uid://b26x67y683mfj" path="res://entities/components/vehicle_movement.gd" id="3_6c0g7"]
 [ext_resource type="Script" uid="uid://cqru7phnxp24n" path="res://entities/components/boid_steering.gd" id="4_4jplt"]
 [ext_resource type="Script" uid="uid://rwhujoi55543" path="res://entities/mobs/boid_behaviours/attract.gd" id="5_pavbl"]
-[ext_resource type="Script" uid="uid://y0g5eucy4u0n" path="res://entities/mobs/boid_behaviours/avoid.gd" id="6_fpx05"]
-[ext_resource type="Script" uid="uid://dcn5v68viapqi" path="res://entities/mobs/boid_behaviours/align.gd" id="7_s8doe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_is3ju"]
 radius = 48.0
@@ -28,6 +26,7 @@ metadata/_custom_type_script = "uid://dr50ubsrl6g1"
 [node name="VehicleMovement" type="Node" parent="."]
 script = ExtResource("3_6c0g7")
 speed = 5.0
+turning_speed = 0.05
 metadata/_custom_type_script = "uid://b26x67y683mfj"
 
 [node name="BoidSteering" type="Node" parent="." node_paths=PackedStringArray("vehicle_movement")]
@@ -38,20 +37,6 @@ metadata/_custom_type_script = "uid://cqru7phnxp24n"
 [node name="Attract" type="Node" parent="BoidSteering"]
 script = ExtResource("5_pavbl")
 metadata/_custom_type_script = "uid://rwhujoi55543"
-
-[node name="Avoid" type="Node" parent="BoidSteering" node_paths=PackedStringArray("behaviour_range", "own_collider")]
-script = ExtResource("6_fpx05")
-weight = 48.0
-behaviour_range = NodePath("../../BehaviourRange")
-own_collider = NodePath("../../Collider")
-metadata/_custom_type_script = "uid://y0g5eucy4u0n"
-
-[node name="Align" type="Node" parent="BoidSteering" node_paths=PackedStringArray("behaviour_range", "own_collider")]
-script = ExtResource("7_s8doe")
-weight = 8.0
-behaviour_range = NodePath("../../BehaviourRange")
-own_collider = NodePath("../../Collider")
-metadata/_custom_type_script = "uid://dcn5v68viapqi"
 
 [node name="BehaviourRange" type="Area2D" parent="."]
 collision_layer = 0

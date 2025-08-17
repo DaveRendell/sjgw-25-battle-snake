@@ -26,6 +26,7 @@ metadata/_custom_type_script = "uid://btyutyr4turgr"
 [node name="VehicleMovement" type="Node" parent="."]
 script = ExtResource("2_snvjy")
 speed = 30.0
+turning_speed = 1.0
 metadata/_custom_type_script = "uid://b26x67y683mfj"
 
 [node name="BoidSteering" type="Node" parent="." node_paths=PackedStringArray("vehicle_movement")]
@@ -47,7 +48,7 @@ metadata/_custom_type_script = "uid://y0g5eucy4u0n"
 
 [node name="Align" type="Node" parent="BoidSteering" node_paths=PackedStringArray("behaviour_range", "own_collider")]
 script = ExtResource("6_snvjy")
-weight = 8.0
+weight = 0.5
 behaviour_range = NodePath("../../BehaviourRange")
 own_collider = NodePath("../../Collider")
 metadata/_custom_type_script = "uid://dcn5v68viapqi"

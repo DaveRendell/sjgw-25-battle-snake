@@ -13,8 +13,8 @@ func get_vector(location: Vector2) -> Vector2:
 		if entity == own_collider: continue
 		
 		var magnitude = 1 / entity.global_position.distance_squared_to(location)
-		if entity.has_node("VehicleMovement"):
-			var other_movement: VehicleMovement = entity.get_node("VehicleMovement")
+		if entity.get_parent().has_node("VehicleMovement"):
+			var other_movement: VehicleMovement = entity.get_parent().get_node("VehicleMovement")
 			ret += magnitude * other_movement.heading.normalized()
 	
 	return weight * ret.normalized()

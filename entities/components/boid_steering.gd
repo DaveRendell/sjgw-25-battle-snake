@@ -19,5 +19,4 @@ func _physics_process(_delta: float) -> void:
 		debug_vectors.set(behaviour.name, behaviour_vector)
 	if ideal_vector.length() == 0: return
 	ideal_vector = ideal_vector.normalized()
-	
 	vehicle_movement.ideal_heading = ideal_vector
