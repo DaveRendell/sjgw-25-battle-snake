@@ -21,8 +21,9 @@ health = 4
 
 [node name="Triangle" type="Node2D" parent="."]
 script = ExtResource("2_5w84x")
-filled = true
 color = Color(0.501164, 0.210052, 0.715373, 1)
+outline_color = null
+outline_width = null
 metadata/_custom_type_script = "uid://btyutyr4turgr"
 
 [node name="VehicleMovement" type="Node" parent="."]

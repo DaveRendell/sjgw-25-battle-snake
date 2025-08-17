@@ -20,7 +20,9 @@ script = ExtResource("1_egk6g")
 
 [node name="Triangle" type="Node2D" parent="."]
 script = ExtResource("1_ap34t")
-filled = true
+color = Color(0.665736, 0.396708, 2.88785e-07, 1)
+outline_color = Color(0.968064, 0.983656, 0.843374, 1)
+outline_width = 1.0
 metadata/_custom_type_script = "uid://btyutyr4turgr"
 
 [node name="VehicleMovement" type="Node" parent="."]
@@ -54,6 +56,7 @@ own_collider = NodePath("../../Collider")
 metadata/_custom_type_script = "uid://dcn5v68viapqi"
 
 [node name="BehaviourRange" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -61,6 +64,7 @@ collision_mask = 4
 shape = SubResource("CircleShape2D_is3ju")
 
 [node name="Collider" type="StaticBody2D" parent="."]
+visible = false
 collision_layer = 5
 collision_mask = 0
 

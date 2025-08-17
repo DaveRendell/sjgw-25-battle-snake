@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://84pik03yyo2a"]
 
 [ext_resource type="Script" uid="uid://8n8iycrh7tt" path="res://entities/mobs/jormungandr/jormungandr.gd" id="1_a78gw"]
-[ext_resource type="Script" uid="uid://btyutyr4turgr" path="res://entities/components/triangle.gd" id="2_laqkk"]
 [ext_resource type="Script" uid="uid://b26x67y683mfj" path="res://entities/components/vehicle_movement.gd" id="3_gng5u"]
 [ext_resource type="Script" uid="uid://cqru7phnxp24n" path="res://entities/components/boid_steering.gd" id="4_oo7y3"]
 [ext_resource type="Script" uid="uid://csm10132uq4ly" path="res://entities/mobs/boid_behaviours/encircle.gd" id="5_8g7nw"]
 [ext_resource type="Script" uid="uid://ccoo7rbor1to6" path="res://entities/mobs/boid_behaviours/maintain_distance.gd" id="6_a78gw"]
 [ext_resource type="Script" uid="uid://dq1ffjlcyvgr0" path="res://entities/components/boid_debug.gd" id="7_a78gw"]
+[ext_resource type="Script" uid="uid://dfateb8yaoroi" path="res://entities/components/snake_graphics.gd" id="8_dnqwt"]
 [ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="8_pyit7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_is3ju"]
@@ -18,13 +18,6 @@ radius = 8.0
 [node name="Jormungandr" type="Node2D"]
 script = ExtResource("1_a78gw")
 health = 100
-
-[node name="Triangle" type="Node2D" parent="."]
-script = ExtResource("2_laqkk")
-base = 48.0
-height = 64.0
-color = Color(1, 1, 1, 1)
-metadata/_custom_type_script = "uid://btyutyr4turgr"
 
 [node name="VehicleMovement" type="Node" parent="."]
 script = ExtResource("3_gng5u")
@@ -73,6 +66,15 @@ autostart = true
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -0.499998)
 scale = Vector2(3.3, 3.45)
+
+[node name="SnakeGraphics" type="Node2D" parent="."]
+script = ExtResource("8_dnqwt")
+colour = Color(0.817324, 0.913215, 0.989904, 1)
+outline_colour = Color(0.796446, 0.31883, 0.759028, 1)
+outline_width = 4.0
+body_width = 36.0
+head_width = 24.0
+metadata/_custom_type_script = "uid://dfateb8yaoroi"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered" flags=6]

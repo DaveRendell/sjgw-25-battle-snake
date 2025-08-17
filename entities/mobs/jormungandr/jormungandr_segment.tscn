@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://c7lkvcjw6wwjo"]
+[gd_scene load_steps=6 format=3 uid="uid://c7lkvcjw6wwjo"]
 
 [ext_resource type="Script" uid="uid://c1q6xh4esfnbr" path="res://entities/mobs/jormungandr/jormungandr_segment.gd" id="1_r4g13"]
-[ext_resource type="Script" uid="uid://dr50ubsrl6g1" path="res://entities/components/rectangle.gd" id="2_w860g"]
 [ext_resource type="Script" uid="uid://dfpolplr30ngc" path="res://entities/components/trail_follower.gd" id="3_pwkto"]
 [ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="4_48d5j"]
 [ext_resource type="Script" uid="uid://cwbdmt31inne3" path="res://entities/components/rotator.gd" id="5_6o1iy"]
@@ -12,13 +11,6 @@ size = Vector2(64, 36)
 [node name="JormungandrSegment" type="Node2D"]
 script = ExtResource("1_r4g13")
 metadata/_custom_type_script = "uid://djdo1le1ay61m"
-
-[node name="Rectangle" type="Node2D" parent="."]
-script = ExtResource("2_w860g")
-width = 64.0
-height = 36.0
-color = Color(1, 1, 1, 1)
-metadata/_custom_type_script = "uid://dr50ubsrl6g1"
 
 [node name="Collider" type="StaticBody2D" parent="."]
 collision_layer = 5

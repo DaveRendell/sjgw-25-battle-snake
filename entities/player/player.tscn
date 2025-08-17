@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://sphf7vd1y2ld"]
+[gd_scene load_steps=11 format=3 uid="uid://sphf7vd1y2ld"]
 
 [ext_resource type="Script" uid="uid://b3p656wwfrdje" path="res://entities/player/player.gd" id="1_8fjmc"]
 [ext_resource type="Script" uid="uid://bcdjqrhby8xta" path="res://entities/components/circle.gd" id="1_abrql"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://qfo3na3v3p6v" path="res://input/player_input.gd" id="4_fkugw"]
 [ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="5_fkugw"]
 [ext_resource type="Script" uid="uid://duyukryhjo182" path="res://entities/mobs/mob_spawner.gd" id="7_qiwj3"]
+[ext_resource type="Script" uid="uid://dfateb8yaoroi" path="res://entities/components/snake_graphics.gd" id="8_26q78"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8fjmc"]
 radius = 8.0
@@ -40,7 +41,6 @@ shape = SubResource("CapsuleShape2D_8fjmc")
 [node name="Circle" type="Node2D" parent="."]
 visible = false
 script = ExtResource("1_abrql")
-filled = null
 
 [node name="Collider" type="StaticBody2D" parent="."]
 collision_mask = 0
@@ -74,6 +74,10 @@ metadata/_custom_type_script = "uid://duyukryhjo182"
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 unique_name_in_owner = true
+
+[node name="SnakeGraphics" type="Node2D" parent="."]
+script = ExtResource("8_26q78")
+metadata/_custom_type_script = "uid://dfateb8yaoroi"
 
 [connection signal="area_entered" from="Mouth" to="." method="_on_mouth_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

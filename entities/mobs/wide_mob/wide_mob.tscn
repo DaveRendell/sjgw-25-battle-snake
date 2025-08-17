@@ -18,9 +18,9 @@ health = 4
 
 [node name="Rectangle" type="Node2D" parent="."]
 script = ExtResource("2_vtjyn")
-filled = true
 width = 72.0
-color = Color(0.724105, 0.587165, 0.172762, 1)
+color = Color(0.826874, 0.525524, 0.207922, 1)
+outline_color = Color(1, 1, 1, 1)
 metadata/_custom_type_script = "uid://dr50ubsrl6g1"
 
 [node name="VehicleMovement" type="Node" parent="."]
