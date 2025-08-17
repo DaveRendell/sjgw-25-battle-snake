@@ -1,6 +1,6 @@
 class_name Avoid extends BoidBehaviour
 
-@export var weight: float = 1.0
+@export var weight: float = 0.2
 @export var behaviour_range: Area2D
 @export var own_collider: CollisionObject2D
 @export var exception: Node2D

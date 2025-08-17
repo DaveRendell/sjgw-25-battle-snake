@@ -11,4 +11,5 @@ trailer_probability = 0.0
 swarm_probability = 0.0
 wall_probability = 0.0
 surrounder_probability = 0.0
+flamethrower = true
 metadata/_custom_type_script = "uid://f40a5rijb1u7"

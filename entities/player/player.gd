@@ -8,6 +8,17 @@ const SEGMENT_SELECT = preload("res://ui/segment_select.tscn")
 const SEGMENT = preload("res://entities/player/segments/normal_segment/segment.tscn")
 const CANNON_SEGMENT = preload("res://entities/player/segments/cannon_segment/cannon_segment.tscn")
 const MAGNET_SEGMENT = preload("res://entities/player/segments/magnet_segment/magnet_segment.tscn")
+const BOOSTER_SEGMENT = preload("res://entities/player/segments/booster_segment/booster_segment.tscn")
+const FLAMETHROWER_SEGMENT = preload("res://entities/player/segments/flamethrower_segment/flamethrower_segment.tscn")
+const TESLA_COIL_SEGMENT = preload("res://entities/player/segments/tesla_coil_segment/tesla_coil_segment.tscn")
+
+var segments_by_name = {
+	"CANNON": CANNON_SEGMENT,
+	"BOOSTER": BOOSTER_SEGMENT,
+	"MAGNET": MAGNET_SEGMENT,
+	"FLAMETHROWER": FLAMETHROWER_SEGMENT,
+	"TESLACOIL": TESLA_COIL_SEGMENT,
+}
 
 @onready var player_input: PlayerInput = %PlayerInput
 @onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
@@ -47,8 +58,20 @@ func add_segment(segment_scene: PackedScene) -> void:
 	following_segments.append(segment)
 
 func choose_segment() -> PackedScene:
+	var spawn_profile = SpawnManager.get_spawn_profile()
+	var possible_segments: Array[String] = []
+	if spawn_profile.cannon: possible_segments.append("CANNON")
+	if spawn_profile.booster: possible_segments.append("BOOSTER")
+	if spawn_profile.flamethrower: possible_segments.append("FLAMETHROWER")
+	if spawn_profile.magnet: possible_segments.append("MAGNET")
+	if spawn_profile.teslacoil: possible_segments.append("TESLACOIL")
+	
+	var first_offer: String = possible_segments.pick_random()
+	var second_offer: String = first_offer
+	while second_offer == first_offer: second_offer = possible_segments.pick_random()
+	
 	var segment_select = SEGMENT_SELECT.instantiate()
-	segment_select.options_list.assign(["CANNON", "MAGNET", "PLAIN JANE"])
+	segment_select.options_list.assign([first_offer, second_offer])
 	segment_select.player_prefix = player_input.player_prefix
 	
 	get_tree().paused = true
@@ -58,7 +81,7 @@ func choose_segment() -> PackedScene:
 	get_tree().paused = false
 	segment_select.queue_free()
 	
-	return [CANNON_SEGMENT, MAGNET_SEGMENT, SEGMENT][selected_index]
+	return segments_by_name[[first_offer, second_offer][selected_index]]
 
 func _on_mouth_area_entered(area: Area2D) -> void:
 	consume_pickup(area)
@@ -68,7 +91,7 @@ func consume_pickup(area: Area2D) -> void:
 	xp += 1
 	ScoreManager.increase_score(750)
 	
-	var needed_for_level_up = 5
+	var needed_for_level_up = 3
 	
 	if xp == needed_for_level_up:
 		xp -= needed_for_level_up

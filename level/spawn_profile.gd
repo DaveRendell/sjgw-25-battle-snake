@@ -10,6 +10,12 @@ class_name SpawnProfile extends Resource
 @export var wall_probability: float = 0.0
 @export var surrounder_probability: float = 0.0
 
+@export var cannon: bool = true
+@export var booster: bool = true
+@export var magnet: bool = true
+@export var flamethrower: bool = true
+@export var teslacoil: bool = true
+
 func with_spawn_timeout(_spawn_timeout: float) -> SpawnProfile:
 	spawn_timeout = _spawn_timeout
 	return self

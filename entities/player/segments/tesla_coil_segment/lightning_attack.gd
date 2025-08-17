@@ -23,6 +23,7 @@ func _ready() -> void:
 			bolts = bolts.slice(0, position_in_chain)
 		)
 		await get_tree().physics_frame
+	connected_mobs = connected_mobs.filter(func(mob): return mob != null)
 	for i in connected_mobs.size():
 		var bolt = LIGHTNING_BOLT.instantiate()
 		bolt.from = start_point if i == 0 else connected_mobs[i - 1]
