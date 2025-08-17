@@ -33,7 +33,7 @@ func start_custom(profile: SpawnProfile) -> void:
 func _on_timeout() -> void:
 	stage_id += 1
 	print("Setting stage to %d" % stage_id)
-	if stage_id == 9:
+	if stage_id % 10 == 9:
 		stage_timer.stop()
 		MusicManager.start_boss_music()
 		
@@ -48,6 +48,13 @@ func _on_timeout() -> void:
 		jormungandr.position = boss_spawn_point
 		
 		p1.get_parent().add_child(jormungandr)
+		
+		jormungandr.destroyed.connect(func():
+			stage_id += 1
+			MusicManager.start_stage_music())
 
 func get_spawn_profile() -> SpawnProfile:
+	if stage_id > 9:
+		if stage_id % 10 == 9: return _stages[9]
+		return _stages[8]
 	return _stages[stage_id]
