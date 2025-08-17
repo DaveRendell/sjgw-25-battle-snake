@@ -54,7 +54,8 @@ func _draw() -> void:
 		var relative_position = segment.position - position
 		var new_left = (relative_position + Vector2(0, -body_width / 2).rotated(segment.rotation)).rotated(-rotation)
 		var new_right = (relative_position + Vector2(0, body_width / 2).rotated(segment.rotation)).rotated(-rotation)
-		draw_colored_polygon([last_left, last_right, new_right, new_left], colour)
+		draw_colored_polygon([last_left, last_right, new_right], colour)
+		draw_colored_polygon([last_left, new_right, new_left], colour)
 		draw_line(last_left, new_left, outline_colour, outline_width)
 		draw_line(last_right, new_right, outline_colour, outline_width)
 		last_left = new_left

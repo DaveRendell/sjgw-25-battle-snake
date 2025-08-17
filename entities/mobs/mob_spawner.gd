@@ -3,6 +3,7 @@ class_name MobSpawner extends Node
 const MOB = preload("res://entities/mobs/mob.tscn")
 const TRAILER_MOB = preload("res://entities/mobs/trailer_mob/trailer_mob.tscn")
 const WIDE_MOB = preload("res://entities/mobs/wide_mob/wide_mob.tscn")
+const BETTER_MOB = preload("res://entities/mobs/better_mob/better_mob.tscn")
 
 @export var radius: float = 400
 @export var timeout: float = 4.0
@@ -45,6 +46,9 @@ func _pick_spawn_scenario() -> void:
 	
 	if p < spawn_profile.surrounder_probability: return _spawn_swarm(MOB, Vector2.ZERO, radius, 50)
 	else: p -= spawn_profile.surrounder_probability
+	
+	if p < spawn_profile.better_probability: return _spawn_swarm(BETTER_MOB, relative_position, 64, 5)
+	else: p -= spawn_profile.better_probability
 	
 	return _spawn(MOB, relative_position)
 

@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bgeyr231l5ca6"]
+[gd_scene load_steps=11 format=3 uid="uid://dqvka8b0ye3ls"]
 
-[ext_resource type="Script" uid="uid://btyutyr4turgr" path="res://entities/components/triangle.gd" id="1_ap34t"]
-[ext_resource type="Script" uid="uid://djdo1le1ay61m" path="res://entities/mobs/mob.gd" id="1_egk6g"]
-[ext_resource type="Script" uid="uid://b26x67y683mfj" path="res://entities/components/vehicle_movement.gd" id="2_snvjy"]
-[ext_resource type="Script" uid="uid://cqru7phnxp24n" path="res://entities/components/boid_steering.gd" id="3_egk6g"]
-[ext_resource type="Script" uid="uid://rwhujoi55543" path="res://entities/mobs/boid_behaviours/attract.gd" id="4_n2vji"]
-[ext_resource type="Script" uid="uid://y0g5eucy4u0n" path="res://entities/mobs/boid_behaviours/avoid.gd" id="5_oesyv"]
-[ext_resource type="Script" uid="uid://dcn5v68viapqi" path="res://entities/mobs/boid_behaviours/align.gd" id="6_snvjy"]
-[ext_resource type="Script" uid="uid://dq1ffjlcyvgr0" path="res://entities/components/boid_debug.gd" id="8_0faom"]
+[ext_resource type="Script" uid="uid://djdo1le1ay61m" path="res://entities/mobs/mob.gd" id="1_elr5t"]
+[ext_resource type="Script" uid="uid://btyutyr4turgr" path="res://entities/components/triangle.gd" id="2_5w84x"]
+[ext_resource type="Script" uid="uid://b26x67y683mfj" path="res://entities/components/vehicle_movement.gd" id="3_sip0r"]
+[ext_resource type="Script" uid="uid://cqru7phnxp24n" path="res://entities/components/boid_steering.gd" id="4_pmeag"]
+[ext_resource type="Script" uid="uid://rwhujoi55543" path="res://entities/mobs/boid_behaviours/attract.gd" id="5_7uvyd"]
+[ext_resource type="Script" uid="uid://y0g5eucy4u0n" path="res://entities/mobs/boid_behaviours/avoid.gd" id="6_2q8jl"]
+[ext_resource type="Script" uid="uid://dcn5v68viapqi" path="res://entities/mobs/boid_behaviours/align.gd" id="7_h0w84"]
+[ext_resource type="Script" uid="uid://dq1ffjlcyvgr0" path="res://entities/components/boid_debug.gd" id="8_ve560"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_is3ju"]
 radius = 48.0
@@ -16,37 +16,38 @@ radius = 48.0
 radius = 8.0
 
 [node name="Mob" type="Node2D"]
-script = ExtResource("1_egk6g")
+script = ExtResource("1_elr5t")
 
 [node name="Triangle" type="Node2D" parent="."]
-script = ExtResource("1_ap34t")
+script = ExtResource("2_5w84x")
 filled = true
+color = Color(0.501164, 0.210052, 0.715373, 1)
 metadata/_custom_type_script = "uid://btyutyr4turgr"
 
 [node name="VehicleMovement" type="Node" parent="."]
-script = ExtResource("2_snvjy")
-speed = 30.0
+script = ExtResource("3_sip0r")
+speed = 40.0
 metadata/_custom_type_script = "uid://b26x67y683mfj"
 
 [node name="BoidSteering" type="Node" parent="." node_paths=PackedStringArray("vehicle_movement")]
-script = ExtResource("3_egk6g")
+script = ExtResource("4_pmeag")
 vehicle_movement = NodePath("../VehicleMovement")
 metadata/_custom_type_script = "uid://cqru7phnxp24n"
 
 [node name="Attract" type="Node" parent="BoidSteering"]
-script = ExtResource("4_n2vji")
+script = ExtResource("5_7uvyd")
 weight = 2.0
 metadata/_custom_type_script = "uid://rwhujoi55543"
 
 [node name="Avoid" type="Node" parent="BoidSteering" node_paths=PackedStringArray("behaviour_range", "own_collider")]
-script = ExtResource("5_oesyv")
+script = ExtResource("6_2q8jl")
 weight = 200.0
 behaviour_range = NodePath("../../BehaviourRange")
 own_collider = NodePath("../../Collider")
 metadata/_custom_type_script = "uid://y0g5eucy4u0n"
 
 [node name="Align" type="Node" parent="BoidSteering" node_paths=PackedStringArray("behaviour_range", "own_collider")]
-script = ExtResource("6_snvjy")
+script = ExtResource("7_h0w84")
 weight = 8.0
 behaviour_range = NodePath("../../BehaviourRange")
 own_collider = NodePath("../../Collider")
@@ -54,7 +55,7 @@ metadata/_custom_type_script = "uid://dcn5v68viapqi"
 
 [node name="BehaviourRange" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 4
+collision_mask = 12
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviourRange"]
 shape = SubResource("CircleShape2D_is3ju")
@@ -67,6 +68,6 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_o00ia")
 
 [node name="BoidDebug" type="Node2D" parent="." node_paths=PackedStringArray("boid_steering")]
-script = ExtResource("8_0faom")
+script = ExtResource("8_ve560")
 boid_steering = NodePath("../BoidSteering")
 metadata/_custom_type_script = "uid://dq1ffjlcyvgr0"

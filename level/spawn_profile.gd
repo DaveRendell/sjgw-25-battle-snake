@@ -9,6 +9,7 @@ class_name SpawnProfile extends Resource
 @export var swarm_probability: float = 0.0
 @export var wall_probability: float = 0.0
 @export var surrounder_probability: float = 0.0
+@export var better_probability: float = 0.0
 
 @export var cannon: bool = true
 @export var booster: bool = true
