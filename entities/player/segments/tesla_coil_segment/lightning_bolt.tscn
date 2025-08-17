@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://c5dhv860n1p3h"]
+
+[ext_resource type="Shader" uid="uid://6q0qdef5h5bp" path="res://entities/player/segments/tesla_coil_segment/lightning_bolt.gdshader" id="1_j3utn"]
+[ext_resource type="Script" uid="uid://dovplyq224afu" path="res://entities/player/segments/tesla_coil_segment/lightning_bolt.gd" id="2_mp4i2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xalap"]
+shader = ExtResource("1_j3utn")
+shader_parameter/lightning_number = 5
+shader_parameter/amplitude = Vector2(2, 1)
+shader_parameter/offset = 0.45
+shader_parameter/thickness = 0.02
+shader_parameter/speed = 1.0
+shader_parameter/base_color = Color(0.466667, 1, 1, 1)
+shader_parameter/glow_thickness = 0.08
+shader_parameter/glow_color = Color(0.0980392, 0.486275, 0.729412, 0.792157)
+shader_parameter/alpha = 1.0
+
+[sub_resource type="Gradient" id="Gradient_qmobo"]
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_uwanb"]
+gradient = SubResource("Gradient_qmobo")
+
+[node name="LightningBolt" type="Sprite2D"]
+material = SubResource("ShaderMaterial_xalap")
+scale = Vector2(1, 8)
+texture = SubResource("GradientTexture1D_uwanb")
+script = ExtResource("2_mp4i2")
+
+[node name="Lifespan" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Lifespan" to="." method="_on_lifespan_timeout"]

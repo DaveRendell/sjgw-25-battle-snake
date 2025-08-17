@@ -26,6 +26,10 @@ func start_game(start_stage: int = 0) -> void:
 	add_child(stage_timer)
 	stage_timer.start(normal_stage_timeout)
 
+func start_custom(profile: SpawnProfile) -> void:
+	_stages = [profile]
+	stage_id = 0
+
 func _on_timeout() -> void:
 	stage_id += 1
 	print("Setting stage to %d" % stage_id)

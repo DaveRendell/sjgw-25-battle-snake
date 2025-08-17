@@ -1,0 +1,91 @@
+[gd_scene load_steps=9 format=3 uid="uid://dduqbu3i84pws"]
+
+[ext_resource type="Script" uid="uid://dbigl50nqtf0p" path="res://entities/player/segments/tesla_coil_segment/tesla_coil_test_scene.gd" id="1_u6eiu"]
+[ext_resource type="PackedScene" uid="uid://chw2th4yxcai0" path="res://effects/background.tscn" id="2_7dmj2"]
+[ext_resource type="Script" uid="uid://vdflwkc6eb6n" path="res://level/grid.gd" id="3_vas3c"]
+[ext_resource type="PackedScene" uid="uid://sphf7vd1y2ld" path="res://entities/player/player.tscn" id="4_v5w4v"]
+[ext_resource type="PackedScene" uid="uid://bgeyr231l5ca6" path="res://entities/mobs/mob.tscn" id="5_cnxwg"]
+[ext_resource type="PackedScene" uid="uid://cg1ux6jueq7i5" path="res://ui/hud.tscn" id="6_hdwa6"]
+[ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="7_kbkg1"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_m8u5f"]
+viewport_path = NodePath("TextureRect/SubViewport")
+
+[node name="SinglePlayer" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_u6eiu")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_m8u5f")
+
+[node name="SubViewport" type="SubViewport" parent="TextureRect"]
+size = Vector2i(640, 360)
+
+[node name="GameWorld" type="Node2D" parent="TextureRect/SubViewport"]
+
+[node name="Parallax2D" type="Parallax2D" parent="TextureRect/SubViewport/GameWorld"]
+scroll_scale = Vector2(0, 0)
+repeat_size = Vector2(640, 360)
+
+[node name="Background" parent="TextureRect/SubViewport/GameWorld/Parallax2D" instance=ExtResource("2_7dmj2")]
+
+[node name="StaticBackground" type="Parallax2D" parent="TextureRect/SubViewport/GameWorld"]
+repeat_size = Vector2(640, 640)
+
+[node name="Grid" type="Node2D" parent="TextureRect/SubViewport/GameWorld/StaticBackground"]
+script = ExtResource("3_vas3c")
+height = 640
+colour = Color(0.223529, 0.0901961, 0.294118, 0.576471)
+metadata/_custom_type_script = "uid://vdflwkc6eb6n"
+
+[node name="Player" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("4_v5w4v")]
+unique_name_in_owner = true
+
+[node name="Camera2D" type="Camera2D" parent="TextureRect/SubViewport/GameWorld"]
+unique_name_in_owner = true
+
+[node name="Mob" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("5_cnxwg")]
+position = Vector2(217, 112)
+
+[node name="Mob2" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("5_cnxwg")]
+position = Vector2(217, 112)
+
+[node name="Mob3" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("5_cnxwg")]
+position = Vector2(217, 112)
+
+[node name="Mob4" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("5_cnxwg")]
+position = Vector2(217, 112)
+
+[node name="Mob5" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("5_cnxwg")]
+position = Vector2(217, 112)
+
+[node name="Mob6" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("5_cnxwg")]
+position = Vector2(217, 112)
+
+[node name="Mob7" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("5_cnxwg")]
+position = Vector2(217, 112)
+
+[node name="Mob8" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("5_cnxwg")]
+position = Vector2(217, 112)
+
+[node name="Mob9" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("5_cnxwg")]
+position = Vector2(200, 112)
+
+[node name="Mob10" parent="TextureRect/SubViewport/GameWorld" instance=ExtResource("5_cnxwg")]
+position = Vector2(217, 112)
+
+[node name="Hud" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_hdwa6")]
+player = NodePath("../TextureRect/SubViewport/GameWorld/Player")
+
+[node name="ShaderLayer" parent="." instance=ExtResource("7_kbkg1")]
