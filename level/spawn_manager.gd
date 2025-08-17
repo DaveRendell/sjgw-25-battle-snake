@@ -7,14 +7,6 @@ var normal_stage_timeout = 60.0
 
 var _stages = [
 	preload("res://level/spawn_profiles/stage0.tres"),
-	preload("res://level/spawn_profiles/stage1.tres"),
-	preload("res://level/spawn_profiles/stage2.tres"),
-	preload("res://level/spawn_profiles/stage3.tres"),
-	preload("res://level/spawn_profiles/stage4.tres"),
-	preload("res://level/spawn_profiles/stage5.tres"),
-	preload("res://level/spawn_profiles/stage6.tres"),
-	preload("res://level/spawn_profiles/stage7.tres"),
-	preload("res://level/spawn_profiles/stage8.tres"),
 	preload("res://level/spawn_profiles/stage9.tres"),
 ]
 
@@ -33,7 +25,7 @@ func start_custom(profile: SpawnProfile) -> void:
 func _on_timeout() -> void:
 	stage_id += 1
 	print("Setting stage to %d" % stage_id)
-	if stage_id % 10 == 9:
+	if stage_id % _stages.size() == (_stages.size() - 1):
 		stage_timer.stop()
 		MusicManager.start_boss_music()
 		
@@ -54,7 +46,7 @@ func _on_timeout() -> void:
 			MusicManager.start_stage_music())
 
 func get_spawn_profile() -> SpawnProfile:
-	if stage_id > 9:
-		if stage_id % 10 == 9: return _stages[9]
-		return _stages[8]
+	if stage_id > _stages.size():
+		if stage_id % _stages.size() == (_stages.size() - 1): return _stages.back()
+		return _stages[_stages.size() - 2]
 	return _stages[stage_id]

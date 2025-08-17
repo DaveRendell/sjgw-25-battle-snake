@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cqitqejllbd1y"]
+
+[ext_resource type="Script" uid="uid://c6p4vwu0berel" path="res://entities/mobs/formations/mob_swarm.gd" id="1_5sxnt"]
+
+[node name="MobSwarm" type="Node2D"]
+script = ExtResource("1_5sxnt")

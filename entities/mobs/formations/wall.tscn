@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bl41kkuuay3np"]
+
+[ext_resource type="Script" uid="uid://cgmqsnuwjxysy" path="res://entities/mobs/formations/wall.gd" id="1_tfyo6"]
+
+[node name="Wall" type="Node2D"]
+script = ExtResource("1_tfyo6")

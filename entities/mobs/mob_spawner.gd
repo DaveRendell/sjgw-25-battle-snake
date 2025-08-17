@@ -26,6 +26,19 @@ func _pick_spawn_scenario() -> void:
 	var angle = randf_range(0, TAU)
 	var relative_position = radius * Vector2.from_angle(angle)
 	
+	var total_weight = spawn_profile.spawn_rates.values().reduce(func(a, b): return a + b, 0)
+	var mob_pick = total_weight * randf()
+	
+	var acc = 0.0
+	var mob_scene: PackedScene
+	for test_scene in spawn_profile.spawn_rates.keys():
+		acc += spawn_profile.spawn_rates[test_scene]
+		if acc >= mob_pick:
+			mob_scene = test_scene
+			break
+	_spawn(mob_scene, relative_position)
+	return
+	
 	var p = randf()
 	if p < spawn_profile.wide_probability: return _spawn(WIDE_MOB, relative_position)
 	else: p -= spawn_profile.wide_probability

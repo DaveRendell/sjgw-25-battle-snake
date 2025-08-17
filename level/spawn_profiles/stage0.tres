@@ -1,20 +1,18 @@
-[gd_resource type="Resource" script_class="SpawnProfile" load_steps=2 format=3 uid="uid://du4l7iuho2q1n"]
+[gd_resource type="Resource" script_class="SpawnProfile" load_steps=3 format=3 uid="uid://du4l7iuho2q1n"]
 
 [ext_resource type="Script" uid="uid://f40a5rijb1u7" path="res://level/spawn_profile.gd" id="1_4i8mu"]
+[ext_resource type="PackedScene" uid="uid://bl41kkuuay3np" path="res://entities/mobs/formations/wall.tscn" id="2_u0rbt"]
 
 [resource]
 script = ExtResource("1_4i8mu")
 spawn_enemies = true
 spawn_timeout = 3.0
-wide_probability = 0.0
-trailer_probability = 1.0
-swarm_probability = 0.0
-wall_probability = 0.0
-surrounder_probability = 0.0
-better_probability = 0.0
 cannon = true
 booster = true
 magnet = false
 flamethrower = false
 teslacoil = false
+spawn_rates = Dictionary[PackedScene, float]({
+ExtResource("2_u0rbt"): 1.0
+})
 metadata/_custom_type_script = "uid://f40a5rijb1u7"
