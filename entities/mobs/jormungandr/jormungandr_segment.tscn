@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://cwbdmt31inne3" path="res://entities/components/rotator.gd" id="5_6o1iy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nu051"]
-size = Vector2(64, 36)
+size = Vector2(64, 78)
 
 [node name="JormungandrSegment" type="Node2D"]
 script = ExtResource("1_r4g13")
@@ -30,3 +30,8 @@ metadata/_custom_type_script = "uid://fbcs0md2xng0"
 [node name="Rotator" type="Node" parent="."]
 script = ExtResource("5_6o1iy")
 metadata/_custom_type_script = "uid://cwbdmt31inne3"
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

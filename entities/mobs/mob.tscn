@@ -72,6 +72,7 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_o00ia")
 
 [node name="BoidDebug" type="Node2D" parent="." node_paths=PackedStringArray("boid_steering")]
+visible = false
 script = ExtResource("8_0faom")
 boid_steering = NodePath("../BoidSteering")
 metadata/_custom_type_script = "uid://dq1ffjlcyvgr0"

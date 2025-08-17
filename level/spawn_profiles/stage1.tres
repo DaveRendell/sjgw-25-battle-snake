@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="SpawnProfile" load_steps=4 format=3 uid="uid://f77ykgnb8dbf"]
+
+[ext_resource type="Script" uid="uid://f40a5rijb1u7" path="res://level/spawn_profile.gd" id="1_v7a8w"]
+[ext_resource type="PackedScene" uid="uid://bgeyr231l5ca6" path="res://entities/mobs/mob.tscn" id="2_ekevi"]
+[ext_resource type="PackedScene" uid="uid://cqitqejllbd1y" path="res://entities/mobs/formations/mob_swarm.tscn" id="3_ekevi"]
+
+[resource]
+script = ExtResource("1_v7a8w")
+spawn_enemies = true
+spawn_timeout = 1.5
+time = 45.0
+cannon = true
+booster = true
+magnet = false
+flamethrower = false
+teslacoil = false
+spawn_rates = Dictionary[PackedScene, float]({
+ExtResource("2_ekevi"): 1.0,
+ExtResource("3_ekevi"): 0.1
+})
+metadata/_custom_type_script = "uid://f40a5rijb1u7"

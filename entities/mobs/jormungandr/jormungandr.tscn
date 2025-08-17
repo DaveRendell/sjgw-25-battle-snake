@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://84pik03yyo2a"]
+[gd_scene load_steps=10 format=3 uid="uid://84pik03yyo2a"]
 
 [ext_resource type="Script" uid="uid://8n8iycrh7tt" path="res://entities/mobs/jormungandr/jormungandr.gd" id="1_a78gw"]
 [ext_resource type="Script" uid="uid://b26x67y683mfj" path="res://entities/components/vehicle_movement.gd" id="3_gng5u"]
@@ -9,19 +9,17 @@
 [ext_resource type="Script" uid="uid://dfateb8yaoroi" path="res://entities/components/snake_graphics.gd" id="8_dnqwt"]
 [ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="8_pyit7"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_is3ju"]
-radius = 48.0
-
 [sub_resource type="CircleShape2D" id="CircleShape2D_o00ia"]
-radius = 8.0
+radius = 48.0
 
 [node name="Jormungandr" type="Node2D"]
 script = ExtResource("1_a78gw")
-health = 100
+length = 45
+health = 500
 
 [node name="VehicleMovement" type="Node" parent="."]
 script = ExtResource("3_gng5u")
-speed = 80.0
+speed = 120.0
 metadata/_custom_type_script = "uid://b26x67y683mfj"
 
 [node name="BoidSteering" type="Node" parent="." node_paths=PackedStringArray("vehicle_movement")]
@@ -38,12 +36,6 @@ script = ExtResource("6_a78gw")
 target_distance = 300.0
 metadata/_custom_type_script = "uid://ccoo7rbor1to6"
 
-[node name="BehaviourRange" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviourRange"]
-shape = SubResource("CircleShape2D_is3ju")
-
 [node name="Collider" type="StaticBody2D" parent="."]
 collision_layer = 5
 collision_mask = 0
@@ -52,6 +44,7 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_o00ia")
 
 [node name="BoidDebug" type="Node2D" parent="." node_paths=PackedStringArray("boid_steering")]
+visible = false
 script = ExtResource("7_a78gw")
 boid_steering = NodePath("../BoidSteering")
 metadata/_custom_type_script = "uid://dq1ffjlcyvgr0"
@@ -64,16 +57,16 @@ metadata/_custom_type_script = "uid://fbcs0md2xng0"
 autostart = true
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-position = Vector2(0, -0.499998)
-scale = Vector2(3.3, 3.45)
+position = Vector2(9.53674e-07, -1.90735e-06)
+scale = Vector2(6, 6)
 
 [node name="SnakeGraphics" type="Node2D" parent="."]
 script = ExtResource("8_dnqwt")
 colour = Color(0.817324, 0.913215, 0.989904, 1)
 outline_colour = Color(0.796446, 0.31883, 0.759028, 1)
 outline_width = 4.0
-body_width = 36.0
-head_width = 24.0
+body_width = 78.0
+head_width = 48.0
 metadata/_custom_type_script = "uid://dfateb8yaoroi"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

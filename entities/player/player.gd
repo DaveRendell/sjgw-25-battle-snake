@@ -37,8 +37,10 @@ var xp: int = 0
 func _ready() -> void:
 	ScoreManager.reset_score()
 	player_input.player_prefix = player_prefix
-	for i in 2:
+	for i in 3:
 		add_segment_to_tail.call_deferred()
+	await get_tree().process_frame
+	xp_changed.emit(following_segments.size())
 
 func add_segment_to_tail(allow_choose: bool = false) -> void:
 	var segment_scene: PackedScene = await choose_segment() if allow_choose && ((following_segments.size()) % 3 == 0) else SEGMENT
@@ -103,12 +105,11 @@ func consume_pickup(area: Area2D) -> void:
 	xp_changed.emit(needed_for_level_up - xp)
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	if body.get_parent() is Mob:
+	if body.get_parent() is Segment or body.get_parent() is JormungandrSegment:
+		_on_segment_collision()
+	elif body.get_parent() is Mob:
 		var mob: Mob = body.get_parent()
 		_on_mob_collision(mob)
-	
-	if body.get_parent() is Segment:
-		_on_segment_collision()
 
 func _on_mob_collision(mob: Mob) -> void:
 	mob.destroy(false)

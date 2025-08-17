@@ -10,7 +10,8 @@ const MAGNET_SEGMENT = preload("res://entities/player/segments/magnet_segment/ma
 
 func _ready() -> void:
 	PlayerManager.players = [player]
-	SpawnManager.start_game(8)
+	SpawnManager._stages[SpawnManager._stages.size() - 2].time = 5.0
+	SpawnManager.start_game(SpawnManager._stages.size() - 2)
 	MusicManager.start_stage_music()
 	player.remote_transform_2d.remote_path = camera_2d.get_path()
 	for i in 5:

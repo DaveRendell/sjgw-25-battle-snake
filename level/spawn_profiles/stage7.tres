@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="SpawnProfile" load_steps=9 format=3 uid="uid://bnu0sicm7jb5r"]
+
+[ext_resource type="Script" uid="uid://f40a5rijb1u7" path="res://level/spawn_profile.gd" id="1_383ux"]
+[ext_resource type="PackedScene" uid="uid://bgeyr231l5ca6" path="res://entities/mobs/mob.tscn" id="2_30d53"]
+[ext_resource type="PackedScene" uid="uid://cqitqejllbd1y" path="res://entities/mobs/formations/mob_swarm.tscn" id="3_604g0"]
+[ext_resource type="PackedScene" uid="uid://ce0374r0oynk5" path="res://entities/mobs/trailer_mob/trailer_mob.tscn" id="4_qq55q"]
+[ext_resource type="PackedScene" uid="uid://bsagiimfsoh6q" path="res://entities/mobs/wide_mob/wide_mob.tscn" id="5_xwgfk"]
+[ext_resource type="PackedScene" uid="uid://dqvka8b0ye3ls" path="res://entities/mobs/better_mob/better_mob.tscn" id="6_rye3m"]
+[ext_resource type="PackedScene" uid="uid://cltnrgjhbbsxj" path="res://entities/mobs/formations/surrounder.tscn" id="7_quk7y"]
+[ext_resource type="PackedScene" uid="uid://bl41kkuuay3np" path="res://entities/mobs/formations/wall.tscn" id="8_mkd8g"]
+
+[resource]
+script = ExtResource("1_383ux")
+spawn_enemies = true
+spawn_timeout = 0.75
+time = 90.0
+cannon = true
+booster = true
+magnet = true
+flamethrower = true
+teslacoil = true
+spawn_rates = Dictionary[PackedScene, float]({
+ExtResource("2_30d53"): 0.5,
+ExtResource("3_604g0"): 0.2,
+ExtResource("4_qq55q"): 0.4,
+ExtResource("5_xwgfk"): 0.4,
+ExtResource("6_rye3m"): 0.2,
+ExtResource("7_quk7y"): 0.02,
+ExtResource("8_mkd8g"): 0.1
+})
+metadata/_custom_type_script = "uid://f40a5rijb1u7"

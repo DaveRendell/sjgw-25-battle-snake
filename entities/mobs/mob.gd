@@ -8,6 +8,16 @@ const EXPLOSION = preload("res://effects/explosion.tscn")
 
 @export var health: int = 1
 
+func _ready() -> void: 
+	if has_node("VehicleMovement"):
+		if PlayerManager.players.is_empty(): return
+		var vehicle_movement: VehicleMovement = $VehicleMovement
+		var closest_player: Player
+		for player in PlayerManager.players:
+			if closest_player == null or player.position.distance_to(position) < closest_player.position.distance_to(position):
+				closest_player = player
+		vehicle_movement.heading = (closest_player.position - position).normalized()
+
 func destroy(drop_pickup: bool = true) -> void:
 	if drop_pickup:
 		var pickup = PICKUP.instantiate()

@@ -33,18 +33,20 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "SCORE: 0"
 
+[node name="LevelUp" type="Label" parent="Control/Margins/Score"]
+layout_mode = 2
+offset_top = 20.0
+offset_right = 192.0
+offset_bottom = 36.0
+size_flags_horizontal = 0
+text = "TO LVL UP: 5"
+
 [node name="Health" type="Label" parent="Control/Margins"]
 custom_minimum_size = Vector2(208, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "HEALTH: ♥♥♥♥♥"
-
-[node name="LevelUp" type="Label" parent="Control/Margins"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-text = "TO LVL UP: 5"
 
 [node name="GameOver" type="Label" parent="Control"]
 visible = false

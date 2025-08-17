@@ -21,8 +21,8 @@ var _player_oof_player = AudioStreamPlayer.new()
 var _thunder_player = AudioStreamPlayer.new()
 
 func _ready() -> void:
-	_pickup_player.max_polyphony = 4
-	_pickup_player.volume_linear = 0.5
+	_pickup_player.max_polyphony = 2
+	_pickup_player.volume_linear = 0.3
 	_pickup_player.stream = PICKUP
 	add_child(_pickup_player)
 	

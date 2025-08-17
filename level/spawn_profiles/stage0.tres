@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="SpawnProfile" load_steps=3 format=3 uid="uid://du4l7iuho2q1n"]
 
 [ext_resource type="Script" uid="uid://f40a5rijb1u7" path="res://level/spawn_profile.gd" id="1_4i8mu"]
-[ext_resource type="PackedScene" uid="uid://bl41kkuuay3np" path="res://entities/mobs/formations/wall.tscn" id="2_u0rbt"]
+[ext_resource type="PackedScene" uid="uid://bgeyr231l5ca6" path="res://entities/mobs/mob.tscn" id="2_u0rbt"]
 
 [resource]
 script = ExtResource("1_4i8mu")
 spawn_enemies = true
-spawn_timeout = 3.0
+spawn_timeout = 1.5
+time = 30.0
 cannon = true
 booster = true
 magnet = false

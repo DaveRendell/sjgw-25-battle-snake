@@ -37,33 +37,6 @@ func _pick_spawn_scenario() -> void:
 			mob_scene = test_scene
 			break
 	_spawn(mob_scene, relative_position)
-	return
-	
-	var p = randf()
-	if p < spawn_profile.wide_probability: return _spawn(WIDE_MOB, relative_position)
-	else: p -= spawn_profile.wide_probability
-	
-	if p < spawn_profile.trailer_probability: return _spawn(TRAILER_MOB, relative_position)
-	else: p -= spawn_profile.trailer_probability
-	
-	if p < spawn_profile.swarm_probability: return _spawn_swarm(MOB, relative_position, 64, 5)
-	else: p -= spawn_profile.swarm_probability
-	
-	if p < spawn_profile.wall_probability:
-		var wall_length = 5
-		var offset_vector: Vector2 = 80 * relative_position.normalized().rotated(TAU / 4)
-		for i in wall_length:
-			var j = i - ceil(float(wall_length) / 2)
-			_spawn(WIDE_MOB, relative_position + j * offset_vector)
-	else: p -= spawn_profile.wall_probability
-	
-	if p < spawn_profile.surrounder_probability: return _spawn_swarm(MOB, Vector2.ZERO, radius, 50)
-	else: p -= spawn_profile.surrounder_probability
-	
-	if p < spawn_profile.better_probability: return _spawn_swarm(BETTER_MOB, relative_position, 64, 5)
-	else: p -= spawn_profile.better_probability
-	
-	return _spawn(MOB, relative_position)
 
 func _spawn(mob_scene: PackedScene, relative_position: Vector2) -> void:
 	var mob = mob_scene.instantiate()

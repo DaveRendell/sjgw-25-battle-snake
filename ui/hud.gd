@@ -4,7 +4,7 @@ class_name Hud extends CanvasLayer
 
 @onready var score_label: Label = $Control/Margins/Score
 @onready var health_label: Label = $Control/Margins/Health
-@onready var level_up: Label = $Control/Margins/LevelUp
+@onready var level_up: Label = $Control/Margins/Score/LevelUp
 @onready var game_over_label: Label = $Control/GameOver
 
 func _ready() -> void:

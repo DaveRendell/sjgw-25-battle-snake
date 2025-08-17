@@ -49,6 +49,7 @@ metadata/_custom_type_script = "uid://dcn5v68viapqi"
 
 [node name="BehaviourRange" type="Area2D" parent="."]
 collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviourRange"]
 shape = SubResource("CircleShape2D_uvkaa")
