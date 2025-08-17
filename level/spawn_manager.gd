@@ -34,8 +34,8 @@ func _on_timeout() -> void:
 	stage_id += 1
 	print("Setting stage to %d" % stage_id)
 	if stage_id == 9:
-		print("TODO Spawning the boss")
 		stage_timer.stop()
+		MusicManager.start_boss_music()
 		
 		var warning = WARNING.instantiate()
 		get_tree().get_first_node_in_group("hud").add_sibling(warning)

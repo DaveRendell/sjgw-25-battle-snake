@@ -9,6 +9,7 @@ func _ready() -> void:
 	while label.visible_ratio < 1.0:
 		await get_tree().create_timer(0.1).timeout
 		label.visible_characters += 1
+		SfxManager.play_blip()
 	await get_tree().create_timer(5.0).timeout
 	finished.emit()
 	queue_free()

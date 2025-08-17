@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cgimw0wx2vc5i"]
 
-[ext_resource type="Script" uid="uid://djdo1le1ay61m" path="res://entities/mobs/mob.gd" id="1_o5x38"]
+[ext_resource type="Script" uid="uid://be4l7xrjdbr1v" path="res://entities/mobs/trailer_mob/trailer_segment.gd" id="1_eythw"]
 [ext_resource type="Script" uid="uid://dr50ubsrl6g1" path="res://entities/components/rectangle.gd" id="2_oi2fa"]
 [ext_resource type="Script" uid="uid://dfpolplr30ngc" path="res://entities/components/trail_follower.gd" id="3_pifb0"]
 [ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="4_eythw"]
@@ -10,7 +10,7 @@
 size = Vector2(16, 16)
 
 [node name="TrailerSegment" type="Node2D"]
-script = ExtResource("1_o5x38")
+script = ExtResource("1_eythw")
 metadata/_custom_type_script = "uid://djdo1le1ay61m"
 
 [node name="Rectangle" type="Node2D" parent="."]

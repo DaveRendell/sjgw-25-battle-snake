@@ -6,6 +6,7 @@ const CANNON_SEGMENT = preload("res://entities/player/segments/cannon_segment/ca
 func _ready() -> void:
 	PlayerManager.players = [player]
 	SpawnManager.start_game(8)
+	MusicManager.start_stage_music()
 	player.remote_transform_2d.remote_path = camera_2d.get_path()
 	for i in 5:
 		player.add_segment(CANNON_SEGMENT)

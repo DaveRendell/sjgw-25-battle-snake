@@ -22,6 +22,7 @@ ScoreManager="*res://entities/player/score_manager.gd"
 Background="*res://effects/background.tscn"
 SpawnManager="*res://level/spawn_manager.gd"
 PlayerManager="*res://entities/player/player_manager.gd"
+MusicManager="*res://music/music_manager.gd"
 
 [display]
 

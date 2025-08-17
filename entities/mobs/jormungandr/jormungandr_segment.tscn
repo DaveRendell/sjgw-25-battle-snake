@@ -15,7 +15,6 @@ metadata/_custom_type_script = "uid://djdo1le1ay61m"
 
 [node name="Rectangle" type="Node2D" parent="."]
 script = ExtResource("2_w860g")
-filled = null
 width = 64.0
 height = 36.0
 color = Color(1, 1, 1, 1)

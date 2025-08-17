@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dx6v0pqjdv7bi"
+path="res://.godot/imported/Chippy Music 16.mp3-d9861dabf0a2338d9a8cd904044c5219.mp3str"
+
+[deps]
+
+source_file="res://music/Chippy Music 16.mp3"
+dest_files=["res://.godot/imported/Chippy Music 16.mp3-d9861dabf0a2338d9a8cd904044c5219.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

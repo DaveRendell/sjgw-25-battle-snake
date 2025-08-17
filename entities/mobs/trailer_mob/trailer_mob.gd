@@ -12,6 +12,7 @@ func _ready() -> void:
 func add_segment_to_tail() -> void:
 	var trail_to_follow: Trail = _trail if following_segments.is_empty() else following_segments[following_segments.size() - 1].get_node("Trail")
 	var segment = TRAILER_SEGMENT.instantiate()
+	segment.head = self
 	var trail_follower = segment.get_node("TrailFollower")
 	trail_follower.trail = trail_to_follow
 	trail_follower.distance = 30 if following_segments.is_empty() else 20
