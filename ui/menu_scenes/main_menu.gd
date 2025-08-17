@@ -13,6 +13,7 @@ extends MarginContainer
 var _selected_item_index := 0
 
 func _ready() -> void:
+	MusicManager.stop_music()
 	_1p_game_button.pressed.connect(_1p_game_pressed)
 	_2p_game_button.pressed.connect(_2p_game_pressed)
 	_scoreboard_button.pressed.connect(_scoreboard_pressed)

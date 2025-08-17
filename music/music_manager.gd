@@ -24,8 +24,9 @@ func start_boss_music() -> void:
 	_player.stream = BOSS_MUSIC
 	_player.play()
 
-func stop_music(fade_out_time: float = 4.0) -> void:
+func stop_music(fade_out_time: float = 3.0) -> void:
+	if not _player.playing: return
 	var fade_out_tween = get_tree().create_tween()
-	fade_out_tween.tween_property(_player, "volume_linear", 0.0, 3.0)
+	fade_out_tween.tween_property(_player, "volume_linear", 0.0, fade_out_time)
 	await fade_out_tween.finished
 	_player.stop()

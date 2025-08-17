@@ -27,42 +27,42 @@ func _ready() -> void:
 	add_child(_pickup_player)
 	
 	_explosion_player.max_polyphony = 2
-	_explosion_player.volume_linear = 0.5
+	_explosion_player.volume_linear = 0.2
 	_explosion_player.stream = EXPLOSION
 	add_child(_explosion_player)
 	
 	_level_up_player.max_polyphony = 1
-	_level_up_player.volume_linear = 0.4
+	_level_up_player.volume_linear = 0.1
 	_level_up_player.stream = LEVEL_UP
 	add_child(_level_up_player)
 	
 	_blip_player.max_polyphony = 1
-	_blip_player.volume_linear = 0.4
+	_blip_player.volume_linear = 0.1
 	_blip_player.stream = BLIP
 	add_child(_blip_player)
 	
 	_flames_player.max_polyphony = 1
-	_flames_player.volume_linear = 0.4
+	_flames_player.volume_linear = 0.1
 	_flames_player.stream = FLAMES
 	add_child(_flames_player)
 	
 	_shoot_player.max_polyphony = 1
-	_shoot_player.volume_linear = 0.4
+	_shoot_player.volume_linear = 0.1
 	_shoot_player.stream = SHOOT
 	add_child(_shoot_player)
 	
 	_mob_oof_player.max_polyphony = 1
-	_mob_oof_player.volume_linear = 0.4
+	_mob_oof_player.volume_linear = 0.1
 	_mob_oof_player.stream = MOB_HURT
 	add_child(_mob_oof_player)
 	
 	_player_oof_player.max_polyphony = 1
-	_player_oof_player.volume_linear = 0.4
+	_player_oof_player.volume_linear = 0.1
 	_player_oof_player.stream = PLAYER_HURT
 	add_child(_player_oof_player)
 	
 	_thunder_player.max_polyphony = 1
-	_thunder_player.volume_linear = 0.4
+	_thunder_player.volume_linear = 0.1
 	_thunder_player.stream = THUNDER
 	add_child(_thunder_player)
 

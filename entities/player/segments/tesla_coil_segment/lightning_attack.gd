@@ -19,7 +19,7 @@ func _ready() -> void:
 		var position_in_chain = connected_mobs.size()
 		mob.destroyed.connect(func():
 			connected_mobs = connected_mobs.slice(0, position_in_chain)
-			bolts.slice(position_in_chain).filter(func(mob): return mob != null).map(func(bolt): bolt.queue_free())
+			bolts.slice(position_in_chain).filter(func(b): return b != null).map(func(bolt): bolt.queue_free())
 			bolts = bolts.slice(0, position_in_chain)
 		)
 		await get_tree().physics_frame
