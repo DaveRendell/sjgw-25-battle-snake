@@ -36,13 +36,13 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed(_input_group_up) and not _up_press_in_cooldown:
 		up_pressed.emit()
 		_up_press_in_cooldown = true
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.1).timeout
 		_up_press_in_cooldown = false
 		
 	if event.is_action_pressed(_input_group_down) and not _down_press_in_cooldown:
 		down_pressed.emit()
 		_down_press_in_cooldown = true
-		await get_tree().create_timer(0.3).timeout
+		await get_tree().create_timer(0.1).timeout
 		_down_press_in_cooldown = false
 		
 	if event.is_action_pressed(_input_group_accept): accept_pressed.emit()

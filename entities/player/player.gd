@@ -12,6 +12,8 @@ const BOOSTER_SEGMENT = preload("res://entities/player/segments/booster_segment/
 const FLAMETHROWER_SEGMENT = preload("res://entities/player/segments/flamethrower_segment/flamethrower_segment.tscn")
 const TESLA_COIL_SEGMENT = preload("res://entities/player/segments/tesla_coil_segment/tesla_coil_segment.tscn")
 
+const EXPLOSION = preload("res://effects/explosion.tscn")
+
 var segments_by_name = {
 	"CANNON": CANNON_SEGMENT,
 	"BOOSTER": BOOSTER_SEGMENT,
@@ -127,8 +129,14 @@ func _on_segment_collision() -> void:
 func _game_over() -> void:
 	PlayerManager.players.erase(self)
 	queue_free()
+	var explosion = EXPLOSION.instantiate()
+	explosion.position = position
+	add_sibling(explosion)
 	for segment in following_segments:
 		segment.queue_free()
+		var segment_explosion = EXPLOSION.instantiate()
+		segment_explosion.position = segment.position
+		add_sibling(segment_explosion)
 	destroyed.emit()
 
 func boost_speed() -> void:

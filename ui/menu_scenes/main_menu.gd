@@ -45,7 +45,8 @@ func _1p_game_pressed() -> void:
 	get_tree().change_scene_to_file("res://level/single_player.tscn")
 
 func _2p_game_pressed() -> void:
-	get_tree().change_scene_to_file("res://level/multi_player.tscn")
+	SfxManager.play_player_oof()
+	#get_tree().change_scene_to_file("res://level/multi_player.tscn")
 
 func _scoreboard_pressed() -> void:
 	get_tree().change_scene_to_file("res://ui/menu_scenes/scoreboard_page.tscn")

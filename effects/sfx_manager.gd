@@ -57,7 +57,7 @@ func _ready() -> void:
 	add_child(_mob_oof_player)
 	
 	_player_oof_player.max_polyphony = 1
-	_player_oof_player.volume_linear = 0.1
+	_player_oof_player.volume_linear = 0.4
 	_player_oof_player.stream = PLAYER_HURT
 	add_child(_player_oof_player)
 	

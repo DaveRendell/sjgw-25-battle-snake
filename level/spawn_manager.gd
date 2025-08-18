@@ -37,8 +37,10 @@ func _on_timeout() -> void:
 		MusicManager.start_boss_music()
 		
 		var warning = WARNING.instantiate()
-		get_tree().get_first_node_in_group("hud").add_sibling(warning)
-		await warning.finished
+		var hud = get_tree().get_first_node_in_group("hud")
+		if hud:
+			hud.add_sibling(warning)
+			await warning.finished
 		
 		var jormungandr = JORMUNGANDR.instantiate()
 		

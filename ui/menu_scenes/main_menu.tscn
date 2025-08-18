@@ -51,7 +51,8 @@ text = "1P GAME"
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-text = "2P GAME"
+theme_override_colors/font_color = Color(0.299547, 0.299547, 0.299547, 1)
+text = "2P GAME (COMING SOON™)"
 
 [node name="ScoreboardButton" type="Button" parent="Options"]
 layout_mode = 2
