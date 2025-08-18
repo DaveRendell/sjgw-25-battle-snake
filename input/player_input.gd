@@ -15,6 +15,9 @@ var _input_group_left: StringName
 var _input_group_right: StringName
 var _input_group_accept: StringName
 
+var _up_press_in_cooldown: bool
+var _down_press_in_cooldown: bool
+
 func _set_input_groups() -> void:
 	_input_group_up = StringName(player_prefix + "_up")
 	_input_group_down = StringName(player_prefix + "_down")
@@ -30,6 +33,16 @@ func get_x_axis() -> float:
 	return Input.get_axis(_input_group_left, _input_group_right)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(_input_group_up): up_pressed.emit()
-	if event.is_action_pressed(_input_group_down): down_pressed.emit()
+	if event.is_action_pressed(_input_group_up) and not _up_press_in_cooldown:
+		up_pressed.emit()
+		_up_press_in_cooldown = true
+		await get_tree().create_timer(0.3).timeout
+		_up_press_in_cooldown = false
+		
+	if event.is_action_pressed(_input_group_down) and not _down_press_in_cooldown:
+		down_pressed.emit()
+		_down_press_in_cooldown = true
+		await get_tree().create_timer(0.3).timeout
+		_down_press_in_cooldown = false
+		
 	if event.is_action_pressed(_input_group_accept): accept_pressed.emit()

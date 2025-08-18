@@ -5,6 +5,7 @@ extends MarginContainer
 @onready var player_input: PlayerInput = $PlayerInput
 @onready var scoreboard: Scoreboard = $Scoreboard
 
+var _finished: bool = false
 var entered_name := ""
 var current_character_index := 0
 var _player_scoreboard_position := -1
@@ -49,11 +50,13 @@ func _down_pressed() -> void:
 	_update_label()
 
 func _accept_pressed() -> void:
+	if _finished: return
 	SfxManager.play_blip()
 	entered_name += current_character
 	if entered_name.length() == 3:
 		ScoreManager.record_score(entered_name, _player_score)
 		scoreboard.scores = ScoreManager.get_scoreboard()
+		_finished = true
 		await get_tree().create_timer(2.0).timeout
 		get_tree().change_scene_to_file("res://ui/menu_scenes/main_menu.tscn")
 		
