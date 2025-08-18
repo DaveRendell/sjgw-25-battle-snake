@@ -2,12 +2,12 @@ extends MarginContainer
 
 @onready var _options: VBoxContainer = $Options
 
+@onready var _how_to_play_button: Button = $Options/HowToPlayButton
 @onready var _1p_game_button: Button = $"Options/1pGameButton"
 @onready var _2p_game_button: Button = $"Options/2pGameButton"
 @onready var _scoreboard_button: Button = $Options/ScoreboardButton
-@onready var _settings_button: Button = $Options/SettingsButton
 
-@onready var _selected_indicator: Label = $"Options/1pGameButton/SelectedIndicator"
+@onready var _selected_indicator: Label = %SelectedIndicator
 @onready var _player_input: PlayerInput = $PlayerInput
 
 var _selected_item_index := 0
@@ -17,7 +17,7 @@ func _ready() -> void:
 	_1p_game_button.pressed.connect(_1p_game_pressed)
 	_2p_game_button.pressed.connect(_2p_game_pressed)
 	_scoreboard_button.pressed.connect(_scoreboard_pressed)
-	_settings_button.pressed.connect(_settings_pressed)
+	_how_to_play_button.pressed.connect(_how_to_play_pressed)
 	
 	_player_input.up_pressed.connect(_up_pressed)
 	_player_input.down_pressed.connect(_down_pressed)
@@ -50,5 +50,5 @@ func _2p_game_pressed() -> void:
 func _scoreboard_pressed() -> void:
 	get_tree().change_scene_to_file("res://ui/menu_scenes/scoreboard_page.tscn")
 
-func _settings_pressed() -> void:
-	print("Settings selected")
+func _how_to_play_pressed() -> void:
+	get_tree().change_scene_to_file("res://ui/how_to_play.tscn")

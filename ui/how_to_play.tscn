@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://v3mi50a2gku6"]
+
+[ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="1_iungs"]
+[ext_resource type="Script" uid="uid://da5sa44pq2n47" path="res://ui/how_to_play.gd" id="2_sg5qd"]
+[ext_resource type="Script" uid="uid://qfo3na3v3p6v" path="res://input/player_input.gd" id="3_dqhua"]
+[ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="4_8h64t"]
+
+[node name="HowToPlay" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_iungs")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("2_sg5qd")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+text = "1. USE THE JOYSTICK TO STEER BATTLE SNAKE LEFT AND RIGHT - MAKE SURE NOT TO RUN INTO YOURSELF
+
+2. DON'T LET ENEMIES HIT BATTLE SNAKE'S HEAD - PROTECT YOUR HEAD WITH YOUR STRONG TAIL
+
+3. COLLECT XP FROM DEFEATED ENEMIES TO GROW BATTLE SNAKE, AND UNLOCK POWER-UPS
+
+4. GROW LONG AND STRONG - CAN YOU DEFEAT THE BOSS?"
+fit_content = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+text = "HOW TO PLAY"
+horizontal_alignment = 1
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource("3_dqhua")
+metadata/_custom_type_script = "uid://qfo3na3v3p6v"
+
+[node name="ShaderLayer" parent="." instance=ExtResource("4_8h64t")]

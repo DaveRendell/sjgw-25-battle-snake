@@ -27,19 +27,25 @@ stretch_mode = 3
 layout_mode = 2
 size_flags_vertical = 8
 
+[node name="HowToPlayButton" type="Button" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "HOW TO PLAY"
+
+[node name="SelectedIndicator" type="Label" parent="Options/HowToPlayButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 16.0
+text = "▶"
+
 [node name="1pGameButton" type="Button" parent="Options"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "1P GAME"
-
-[node name="SelectedIndicator" type="Label" parent="Options/1pGameButton"]
-layout_mode = 0
-offset_left = -24.0
-offset_top = 4.0
-offset_right = 16.0
-offset_bottom = 20.0
-text = "▶"
 
 [node name="2pGameButton" type="Button" parent="Options"]
 layout_mode = 2
@@ -52,12 +58,6 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "SCOREBOARD"
-
-[node name="SettingsButton" type="Button" parent="Options"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "SETTINGS"
 
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("3_80c2c")
