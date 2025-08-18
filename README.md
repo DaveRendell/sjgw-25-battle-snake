@@ -2,6 +2,8 @@
 
 A game by David Rendell made for SoftJamGameWire 2025
 
+Download on itch: https://daverendell.itch.io/battle-snake
+
 Other credits:
 
 MUSIC FROM "CHIPPY'S CHIPTUNE MUSIC PACK" by CHIPPY01302
