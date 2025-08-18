@@ -3,16 +3,16 @@ extends Node
 signal score_changed(score: int)
 
 var _default_scores: Array[ScoreEntry] = [
-	ScoreEntry.new("ABC", 3000),
-	ScoreEntry.new("XYZ", 2500),
-	ScoreEntry.new("TIE", 2000),
-	ScoreEntry.new("ABC", 2500),
-	ScoreEntry.new("XYZ", 2250),
-	ScoreEntry.new("TIE", 2000),
-	ScoreEntry.new("ABC", 1750),
-	ScoreEntry.new("XYZ", 1500),
-	ScoreEntry.new("TIE", 1000),
-	ScoreEntry.new("TIE", 200),
+	ScoreEntry.new("FRO", 500000),
+	ScoreEntry.new("SAM", 400000),
+	ScoreEntry.new("MER", 300000),
+	ScoreEntry.new("PIP", 200000),
+	ScoreEntry.new("LEG", 100000),
+	ScoreEntry.new("GIM", 50000),
+	ScoreEntry.new("ARA", 25000),
+	ScoreEntry.new("BOR", 10000),
+	ScoreEntry.new("GAN", 5000),
+	ScoreEntry.new("GOL", 1000),
 ]
 
 var _score: int = 0:

@@ -1,0 +1,15 @@
+# BATTLE SNAKE
+
+A game by David Rendell made for SoftJamGameWire 2025
+
+Other credits:
+
+MUSIC FROM "CHIPPY'S CHIPTUNE MUSIC PACK" by CHIPPY01302
+
+"PRESS START 2P" FONT BY CODEMAN38
+
+"PROCRASTINATING PIXIE" FONT BY SAJID AHMED ES
+
+CREATED IN THE GODOT ENGINE - https://godotengine.org/license
+
+SOUND EFFECTS - https://sfxr.me/

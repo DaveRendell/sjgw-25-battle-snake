@@ -45,7 +45,7 @@ func _on_timeout() -> void:
 		var jormungandr = JORMUNGANDR.instantiate()
 		
 		var p1: Player = PlayerManager.players.front()
-		var boss_spawn_point: Vector2 = p1.position + 1700 * Vector2.LEFT
+		var boss_spawn_point: Vector2 = p1.position + 1500 * Vector2.LEFT
 		jormungandr.position = boss_spawn_point
 		
 		p1.get_parent().add_child(jormungandr)

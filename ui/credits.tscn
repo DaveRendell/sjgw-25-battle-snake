@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://bp50t7lompokk"]
+
+[ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="1_1bagf"]
+[ext_resource type="Script" uid="uid://cllutkygjxkib" path="res://ui/credits.gd" id="2_1bagf"]
+[ext_resource type="Script" uid="uid://qfo3na3v3p6v" path="res://input/player_input.gd" id="3_42u7w"]
+[ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="4_d0gn6"]
+
+[node name="Credits" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_1bagf")
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("2_1bagf")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+size_flags_vertical = 4
+text = "GAME BY DAVID RENDELL
+
+MUSIC FROM \"CHIPPY'S CHIPTUNE MUSIC PACK\" by CHIPPY01302
+
+\"PRESS START 2P\" FONT BY CODEMAN38
+
+\"PROCRASTINATING PIXIE\" FONT BY SAJID AHMED ES
+
+CREATED IN THE GODOT ENGINE - https://godotengine.org/license
+
+SOUND EFFECTS - https://sfxr.me/
+
+DEDICATED TO SASH AND THE POTATO
+
+AND TO THE SNAKE WHO ATTACKED ME IN THE WILD WATER RAPIDS AT CENTER PARCS - THE ORIGINAL BATTLE SNAKE"
+fit_content = true
+
+[node name="PlayerInput" type="Node" parent="."]
+script = ExtResource("3_42u7w")
+metadata/_custom_type_script = "uid://qfo3na3v3p6v"
+
+[node name="ShaderLayer" parent="." instance=ExtResource("4_d0gn6")]

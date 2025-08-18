@@ -60,6 +60,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "SCOREBOARD"
 
+[node name="Credits" type="Button" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "CREDITS"
+
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("3_80c2c")
 metadata/_custom_type_script = "uid://qfo3na3v3p6v"

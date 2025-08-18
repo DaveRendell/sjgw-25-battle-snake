@@ -18,7 +18,7 @@ cannon = true
 booster = true
 magnet = true
 flamethrower = true
-teslacoil = false
+teslacoil = true
 spawn_rates = Dictionary[PackedScene, float]({
 ExtResource("2_8yn7h"): 0.8,
 ExtResource("3_thern"): 0.2,
