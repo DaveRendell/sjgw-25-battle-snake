@@ -7,5 +7,7 @@ class_name PlayerSteering extends Node
 @export var steer_speed: float = 3.0
 
 func _physics_process(delta: float) -> void:
+	if not player_input:
+		return
 	var rotation = delta * steer_speed * player_input.get_x_axis()
 	vehicle_movement.ideal_heading = vehicle_movement.heading.rotated(rotation)

@@ -36,3 +36,6 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 text = "WARNING - TITANIC ENEMY CREATURE APPROACHING"
 fit_content = true
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

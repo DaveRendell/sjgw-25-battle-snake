@@ -1,12 +1,12 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfta8j8h8b7mj"]
 
-[ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="1_d153d"]
-[ext_resource type="Script" uid="uid://0wjmcpyaa7ox" path="res://ui/segment_select.gd" id="2_47oek"]
-[ext_resource type="Script" uid="uid://qfo3na3v3p6v" path="res://input/player_input.gd" id="3_qqfc1"]
+[ext_resource type="Script" uid="uid://0wjmcpyaa7ox" path="res://ui/in_game_menu.gd" id="1_5pulu"]
+[ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="2_etjoa"]
+[ext_resource type="Script" uid="uid://qfo3na3v3p6v" path="res://input/player_input.gd" id="3_6wrgd"]
 
 [node name="SegmentSelect" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("2_47oek")
+script = ExtResource("1_5pulu")
 
 [node name="Background" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(360, 128)
@@ -23,7 +23,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 6
-theme = ExtResource("1_d153d")
+theme = ExtResource("2_etjoa")
 color = Color(0.166853, 0.166853, 0.166853, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="Background"]
@@ -74,5 +74,5 @@ offset_bottom = 16.0
 text = "▶"
 
 [node name="PlayerInput" type="Node" parent="."]
-script = ExtResource("3_qqfc1")
+script = ExtResource("3_6wrgd")
 metadata/_custom_type_script = "uid://qfo3na3v3p6v"

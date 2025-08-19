@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bopr7nbdc7y01"]
+
+[sub_resource type="GDScript" id="GDScript_euhrg"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = SubResource("GDScript_euhrg")

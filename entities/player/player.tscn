@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://sphf7vd1y2ld"]
+[gd_scene load_steps=10 format=3 uid="uid://sphf7vd1y2ld"]
 
 [ext_resource type="Script" uid="uid://b3p656wwfrdje" path="res://entities/player/player.gd" id="1_8fjmc"]
 [ext_resource type="Script" uid="uid://bcdjqrhby8xta" path="res://entities/components/circle.gd" id="1_abrql"]
 [ext_resource type="Script" uid="uid://b26x67y683mfj" path="res://entities/components/vehicle_movement.gd" id="2_sglur"]
 [ext_resource type="Script" uid="uid://cqaw6dfxajor3" path="res://entities/components/player_steering.gd" id="3_bls4j"]
-[ext_resource type="Script" uid="uid://qfo3na3v3p6v" path="res://input/player_input.gd" id="4_fkugw"]
 [ext_resource type="Script" uid="uid://fbcs0md2xng0" path="res://entities/components/trail.gd" id="5_fkugw"]
 [ext_resource type="Script" uid="uid://duyukryhjo182" path="res://entities/mobs/mob_spawner.gd" id="7_qiwj3"]
 [ext_resource type="Script" uid="uid://dfateb8yaoroi" path="res://entities/components/snake_graphics.gd" id="8_26q78"]
@@ -52,16 +51,10 @@ shape = SubResource("CircleShape2D_8fjmc")
 script = ExtResource("2_sglur")
 metadata/_custom_type_script = "uid://b26x67y683mfj"
 
-[node name="PlayerSteering" type="Node" parent="." node_paths=PackedStringArray("player_input", "vehicle_movement")]
+[node name="PlayerSteering" type="Node" parent="." node_paths=PackedStringArray("vehicle_movement")]
 script = ExtResource("3_bls4j")
-player_input = NodePath("PlayerInput")
 vehicle_movement = NodePath("../VehicleMovement")
 metadata/_custom_type_script = "uid://cqaw6dfxajor3"
-
-[node name="PlayerInput" type="Node" parent="PlayerSteering"]
-unique_name_in_owner = true
-script = ExtResource("4_fkugw")
-metadata/_custom_type_script = "uid://qfo3na3v3p6v"
 
 [node name="Trail" type="Node" parent="."]
 script = ExtResource("5_fkugw")

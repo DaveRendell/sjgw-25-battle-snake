@@ -4,7 +4,7 @@ signal health_changed(health: int)
 signal xp_changed(to_level_up: int)
 signal destroyed
 
-const SEGMENT_SELECT = preload("res://ui/segment_select.tscn")
+const IN_GAME_MENU = preload("res://ui/in_game_menu.tscn")
 const SEGMENT = preload("res://entities/player/segments/normal_segment/segment.tscn")
 const CANNON_SEGMENT = preload("res://entities/player/segments/cannon_segment/cannon_segment.tscn")
 const MAGNET_SEGMENT = preload("res://entities/player/segments/magnet_segment/magnet_segment.tscn")
@@ -22,7 +22,8 @@ var segments_by_name = {
 	"TESLACOIL": TESLA_COIL_SEGMENT,
 }
 
-@onready var player_input: PlayerInput = %PlayerInput
+var player_id: int = 1
+var player_input: PlayerInput
 @onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
 
 var following_segments: Array[Node2D] = []
@@ -31,18 +32,21 @@ var xp: int = 0
 
 @onready var _trail: Trail = $Trail
 @onready var collider: StaticBody2D = $Collider
+@onready var player_steering: PlayerSteering = $PlayerSteering
 
 @export var separation: float = 20.0
 
-@export var player_prefix: String = "p1"
-
 func _ready() -> void:
 	ScoreManager.reset_score()
-	player_input.player_prefix = player_prefix
+	match player_id:
+		1: player_input = InputManager.p1_input
+		2: player_input = InputManager.p2_input
+	player_steering.player_input = player_input
 	for i in 3:
 		add_segment_to_tail.call_deferred()
 	await get_tree().process_frame
 	xp_changed.emit(following_segments.size())
+	player_input.menu_pressed.connect(_pause)
 
 func add_segment_to_tail(allow_choose: bool = false) -> void:
 	var segment_scene: PackedScene = await choose_segment() if allow_choose && ((following_segments.size()) % 3 == 0) else SEGMENT
@@ -74,9 +78,10 @@ func choose_segment() -> PackedScene:
 	var second_offer: String = first_offer
 	while second_offer == first_offer: second_offer = possible_segments.pick_random()
 	
-	var segment_select = SEGMENT_SELECT.instantiate()
+	var segment_select = IN_GAME_MENU.instantiate()
 	segment_select.options_list.assign([first_offer, second_offer])
 	segment_select.player_prefix = player_input.player_prefix
+	segment_select.header_text = "CHOOSE A POWER-UP!"
 	
 	get_tree().paused = true
 	get_tree().root.add_child(segment_select)
@@ -105,6 +110,28 @@ func consume_pickup(area: Area2D) -> void:
 		SfxManager.play_pickup()
 	
 	xp_changed.emit(needed_for_level_up - xp)
+
+func _pause() -> void:
+	var pause_menu = IN_GAME_MENU.instantiate()
+	pause_menu.options_list.assign(["CONTINUE", "ALSO CONTINUE?"])
+	pause_menu.player_prefix = player_input.player_prefix
+	pause_menu.header_text = "PAUSED"
+	pause_menu.allow_cancel = true
+	
+	get_tree().paused = true
+	get_tree().root.add_child(pause_menu)
+	
+	var selected_index = await pause_menu.option_selected
+	match selected_index:
+		-1:
+			pause_menu.queue_free()
+			get_tree().paused = false
+		0:
+			pause_menu.queue_free()
+			get_tree().paused = false
+		1:
+			pause_menu.queue_free()
+			get_tree().paused = false
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.get_parent() is Segment or body.get_parent() is JormungandrSegment:

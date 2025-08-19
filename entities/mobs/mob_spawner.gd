@@ -11,17 +11,19 @@ const BETTER_MOB = preload("res://entities/mobs/better_mob/better_mob.tscn")
 
 @onready var _parent: Node2D = get_parent()
 
-func _ready() -> void:
-	get_tree().create_timer(timeout).timeout.connect(on_timeout)
+var _spawn_timer: Timer
 
-func on_timeout() -> void:
-	_pick_spawn_scenario()
-	
-	get_tree().create_timer(timeout).timeout.connect(on_timeout)
+func _ready() -> void:
+	_spawn_timer = Timer.new()
+	_spawn_timer.wait_time = timeout
+	_spawn_timer.timeout.connect(_pick_spawn_scenario)
+	add_child(_spawn_timer)
+	_spawn_timer.start()
 
 func _pick_spawn_scenario() -> void:
 	var spawn_profile: SpawnProfile = SpawnManager.get_spawn_profile()
 	if not spawn_profile.spawn_enemies: return
+	_spawn_timer.wait_time = spawn_profile.spawn_timeout
 	
 	var angle = randf_range(0, TAU)
 	var relative_position = radius * Vector2.from_angle(angle)

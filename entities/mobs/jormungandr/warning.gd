@@ -1,5 +1,6 @@
 extends CanvasLayer
 @onready var label: RichTextLabel = $Background/MarginContainer/RichTextLabel
+@onready var timer: Timer = $Timer
 
 signal finished
 
@@ -7,9 +8,11 @@ func _ready() -> void:
 	label.visible_characters = 0
 	
 	while label.visible_ratio < 1.0:
-		await get_tree().create_timer(0.1).timeout
+		timer.start(0.1)
+		await timer.timeout
 		label.visible_characters += 1
 		SfxManager.play_blip()
-	await get_tree().create_timer(5.0).timeout
+	timer.start(5.0)
+	await timer.timeout
 	finished.emit()
 	queue_free()
