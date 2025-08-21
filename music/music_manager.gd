@@ -7,10 +7,15 @@ var _player = AudioStreamPlayer.new()
 
 func _ready() -> void:
 	_player.max_polyphony = 1
-	_player.volume_linear = 0.5
+	_player.volume_linear = SettingsManager.main_volume * SettingsManager.sfx_volume / 2500.0
+	SettingsManager.main_volume_changed.connect(_set_volume.unbind(1))
+	SettingsManager.music_volume_changed.connect(_set_volume.unbind(1))
 	add_child(_player)
 	
 	process_mode = Node.PROCESS_MODE_ALWAYS
+
+func _set_volume() -> void:
+	_player.volume_linear = SettingsManager.main_volume * SettingsManager.sfx_volume / 2500.0
 
 func start_stage_music() -> void:
 	if _player.playing: await stop_music()

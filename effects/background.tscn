@@ -9,10 +9,7 @@ shader = ExtResource("1_yhjvc")
 
 [node name="Background" type="TextureRect"]
 material = SubResource("ShaderMaterial_1gpgy")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+offset_right = 640.0
+offset_bottom = 360.0
 texture = ExtResource("1_6yphs")
 script = ExtResource("3_pq1ug")

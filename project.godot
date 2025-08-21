@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+SettingsManager="*res://settings_manager.gd"
 SfxManager="*res://effects/sfx_manager.gd"
 ScoreManager="*res://entities/player/score_manager.gd"
 Background="*res://effects/background.tscn"

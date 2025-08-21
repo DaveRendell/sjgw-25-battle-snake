@@ -60,6 +60,12 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "SCOREBOARD"
 
+[node name="SettingsButton" type="Button" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "SETTINGS"
+
 [node name="Credits" type="Button" parent="Options"]
 layout_mode = 2
 size_flags_horizontal = 4

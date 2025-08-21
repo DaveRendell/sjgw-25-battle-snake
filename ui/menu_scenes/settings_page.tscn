@@ -1,0 +1,198 @@
+[gd_scene load_steps=3 format=3 uid="uid://c58ktuhr05hp5"]
+
+[ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="1_op0u2"]
+[ext_resource type="Script" uid="uid://bskio5rndc8ia" path="res://ui/menu_scenes/settings_page.gd" id="2_acb6r"]
+
+[node name="SettingsPage" type="MarginContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_op0u2")
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 6
+script = ExtResource("2_acb6r")
+
+[node name="Layout" type="VBoxContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Title" type="Label" parent="Layout"]
+layout_mode = 2
+text = "SETTINGS"
+horizontal_alignment = 1
+
+[node name="MainVolume" type="Control" parent="Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/MainVolume"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 176.0
+grow_vertical = 2
+text = "MAIN VOLUME"
+vertical_alignment = 1
+
+[node name="MainVolumeSlider" type="HSlider" parent="Layout/MainVolume"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+step = 10.0
+
+[node name="SelectedIndicator" type="Label" parent="Layout/MainVolume"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -24.0
+offset_top = -8.0
+offset_right = 16.0
+offset_bottom = 8.0
+text = "▶"
+
+[node name="MusicVolume" type="Control" parent="Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/MusicVolume"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 192.0
+grow_vertical = 2
+text = "MUSIC VOLUME"
+vertical_alignment = 1
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Layout/MusicVolume"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+step = 10.0
+
+[node name="SfxVolume" type="Control" parent="Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/SfxVolume"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 160.0
+grow_vertical = 2
+text = "SFX VOLUME"
+vertical_alignment = 1
+
+[node name="SfxVolumeSlider" type="HSlider" parent="Layout/SfxVolume"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+step = 10.0
+
+[node name="BackgroundAnimation" type="Control" parent="Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/BackgroundAnimation"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 192.0
+grow_vertical = 2
+text = "BG ANIMATION"
+vertical_alignment = 1
+
+[node name="BgAnimationCheckbox" type="CheckBox" parent="Layout/BackgroundAnimation"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="ScreenFilter" type="Control" parent="Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/ScreenFilter"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 208.0
+grow_vertical = 2
+text = "SCREEN FILTER"
+vertical_alignment = 1
+
+[node name="ScreenFilterCheckbox" type="CheckBox" parent="Layout/ScreenFilter"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -12.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="AspectRatio" type="Control" parent="Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/AspectRatio"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 192.0
+grow_vertical = 2
+text = "ASPECT RATIO"
+vertical_alignment = 1
+
+[node name="AspectRatioOptions" type="Label" parent="Layout/AspectRatio"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "◀ 16:9  ▶"

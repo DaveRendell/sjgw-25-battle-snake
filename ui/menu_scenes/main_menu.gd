@@ -6,6 +6,7 @@ extends MarginContainer
 @onready var _1p_game_button: Button = $"Options/1pGameButton"
 @onready var _2p_game_button: Button = $"Options/2pGameButton"
 @onready var _scoreboard_button: Button = $Options/ScoreboardButton
+@onready var _settings_button: Button = $Options/SettingsButton
 @onready var _credits_button: Button = $Options/Credits
 
 @onready var _selected_indicator: Label = %SelectedIndicator
@@ -18,6 +19,7 @@ func _ready() -> void:
 	_1p_game_button.pressed.connect(_1p_game_pressed)
 	_2p_game_button.pressed.connect(_2p_game_pressed)
 	_scoreboard_button.pressed.connect(_scoreboard_pressed)
+	_settings_button.pressed.connect(_settings_pressed)
 	_how_to_play_button.pressed.connect(_how_to_play_pressed)
 	_credits_button.pressed.connect(_credits_pressed)
 	
@@ -52,6 +54,9 @@ func _2p_game_pressed() -> void:
 
 func _scoreboard_pressed() -> void:
 	get_tree().change_scene_to_file("res://ui/menu_scenes/scoreboard_page.tscn")
+
+func _settings_pressed() -> void:
+	get_tree().change_scene_to_file("res://ui/menu_scenes/settings_screen.tscn")
 
 func _how_to_play_pressed() -> void:
 	get_tree().change_scene_to_file("res://ui/how_to_play.tscn")

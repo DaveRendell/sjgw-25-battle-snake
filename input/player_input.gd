@@ -2,6 +2,8 @@ class_name PlayerInput extends Node
 
 signal up_pressed
 signal down_pressed
+signal left_pressed
+signal right_pressed
 signal accept_pressed
 signal cancel_pressed
 signal menu_pressed
@@ -21,6 +23,8 @@ var _input_group_menu: StringName
 
 var _up_press_in_cooldown: bool
 var _down_press_in_cooldown: bool
+var _left_press_in_cooldown: bool
+var _right_press_in_cooldown: bool
 
 func _set_input_groups() -> void:
 	_input_group_up = StringName(player_prefix + "_up")
@@ -50,6 +54,18 @@ func _unhandled_input(event: InputEvent) -> void:
 		_down_press_in_cooldown = true
 		await get_tree().create_timer(0.1).timeout
 		_down_press_in_cooldown = false
+	
+	if event.is_action_pressed(_input_group_left) and not _left_press_in_cooldown:
+		left_pressed.emit()
+		_left_press_in_cooldown = true
+		await get_tree().create_timer(0.1).timeout
+		_left_press_in_cooldown = false
+	
+	if event.is_action_pressed(_input_group_right) and not _right_press_in_cooldown:
+		right_pressed.emit()
+		_right_press_in_cooldown = true
+		await get_tree().create_timer(0.1).timeout
+		_right_press_in_cooldown = false
 		
 	if event.is_action_pressed(_input_group_accept): accept_pressed.emit()
 	if event.is_action_pressed(_input_group_cancel): cancel_pressed.emit()

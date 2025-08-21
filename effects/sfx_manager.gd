@@ -9,7 +9,6 @@ const MOB_HURT = preload("res://effects/sounds/mob_hurt.wav")
 const PLAYER_HURT = preload("res://effects/sounds/player_hurt.wav")
 const THUNDER = preload("res://effects/sounds/thunder.wav")
 
-
 var _pickup_player = AudioStreamPlayer.new()
 var _explosion_player = AudioStreamPlayer.new()
 var _level_up_player = AudioStreamPlayer.new()
@@ -20,51 +19,63 @@ var _mob_oof_player = AudioStreamPlayer.new()
 var _player_oof_player = AudioStreamPlayer.new()
 var _thunder_player = AudioStreamPlayer.new()
 
+	
+
 func _ready() -> void:
 	_pickup_player.max_polyphony = 2
-	_pickup_player.volume_linear = 0.3
 	_pickup_player.stream = PICKUP
 	add_child(_pickup_player)
 	
 	_explosion_player.max_polyphony = 2
-	_explosion_player.volume_linear = 0.2
 	_explosion_player.stream = EXPLOSION
 	add_child(_explosion_player)
 	
 	_level_up_player.max_polyphony = 1
-	_level_up_player.volume_linear = 0.1
 	_level_up_player.stream = LEVEL_UP
 	add_child(_level_up_player)
 	
 	_blip_player.max_polyphony = 1
-	_blip_player.volume_linear = 0.1
 	_blip_player.stream = BLIP
 	add_child(_blip_player)
 	
 	_flames_player.max_polyphony = 1
-	_flames_player.volume_linear = 0.1
 	_flames_player.stream = FLAMES
 	add_child(_flames_player)
 	
 	_shoot_player.max_polyphony = 1
-	_shoot_player.volume_linear = 0.1
 	_shoot_player.stream = SHOOT
 	add_child(_shoot_player)
 	
 	_mob_oof_player.max_polyphony = 1
-	_mob_oof_player.volume_linear = 0.1
 	_mob_oof_player.stream = MOB_HURT
 	add_child(_mob_oof_player)
 	
 	_player_oof_player.max_polyphony = 1
-	_player_oof_player.volume_linear = 0.4
 	_player_oof_player.stream = PLAYER_HURT
 	add_child(_player_oof_player)
 	
 	_thunder_player.max_polyphony = 1
-	_thunder_player.volume_linear = 0.1
 	_thunder_player.stream = THUNDER
 	add_child(_thunder_player)
+	
+	_set_volumes()
+	SettingsManager.sfx_volume_changed.connect(_set_volumes.unbind(1))
+	SettingsManager.main_volume_changed.connect(_set_volumes.unbind(1))
+
+
+func _set_volumes() -> void:
+	var base_value = SettingsManager.main_volume * SettingsManager.sfx_volume / 2500.0
+	_pickup_player.volume_linear = 0.3 * base_value
+	_explosion_player.volume_linear = 0.2 * base_value
+	_level_up_player.volume_linear = 0.1 * base_value
+	_blip_player.volume_linear = 0.1 * base_value
+	_blip_player.volume_linear = 0.1 * base_value
+	_flames_player.volume_linear = 0.1 * base_value
+	_shoot_player.volume_linear = 0.1 * base_value
+	_mob_oof_player.volume_linear = 0.1 * base_value
+	_player_oof_player.volume_linear = 0.4 * base_value
+	_thunder_player.volume_linear = 0.1 * base_value
+	
 
 func play_pickup() -> void:
 	_pickup_player.play()
