@@ -6,6 +6,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1gpgy"]
 shader = ExtResource("1_yhjvc")
+shader_parameter/animation_speed = 0.1
 
 [node name="Background" type="TextureRect"]
 material = SubResource("ShaderMaterial_1gpgy")

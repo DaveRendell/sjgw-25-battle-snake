@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp50t7lompokk"]
+[gd_scene load_steps=4 format=3 uid="uid://bp50t7lompokk"]
 
 [ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="1_1bagf"]
 [ext_resource type="Script" uid="uid://cllutkygjxkib" path="res://ui/credits.gd" id="2_1bagf"]
 [ext_resource type="Script" uid="uid://qfo3na3v3p6v" path="res://input/player_input.gd" id="3_42u7w"]
-[ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="4_d0gn6"]
 
 [node name="Credits" type="MarginContainer"]
 anchors_preset = 15
@@ -41,5 +40,3 @@ fit_content = true
 [node name="PlayerInput" type="Node" parent="."]
 script = ExtResource("3_42u7w")
 metadata/_custom_type_script = "uid://qfo3na3v3p6v"
-
-[node name="ShaderLayer" parent="." instance=ExtResource("4_d0gn6")]

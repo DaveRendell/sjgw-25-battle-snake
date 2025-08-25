@@ -12,6 +12,7 @@ signal option_selected(index: int)
 
 var _selected_index: int = 0
 var header_text: String
+var disabled: bool = false
 
 func _ready() -> void:
 	title.text = header_text
@@ -32,16 +33,19 @@ func _ready() -> void:
 	player_input.player_prefix = player_prefix
 
 func _up_pressed() -> void:
+	if disabled: return
 	_selected_index = posmod(_selected_index - 1, options_list.size())
 	SfxManager.play_blip()
 	_set_selected()
 
 func _down_pressed() -> void:
+	if disabled: return
 	_selected_index = posmod(_selected_index + 1, options_list.size())
 	SfxManager.play_blip()
 	_set_selected()
 
 func _accept_pressed() -> void:
+	if disabled: return
 	SfxManager.play_blip()
 	option_selected.emit(_selected_index)
 
@@ -49,5 +53,6 @@ func _set_selected() -> void:
 	selector.reparent(options.get_child(_selected_index), false)
 
 func _cancel() -> void:
+	if disabled: return
 	SfxManager.play_blip()
 	option_selected.emit(-1)

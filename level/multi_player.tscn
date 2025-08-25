@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://coyd2vrm1s34e"]
+[gd_scene load_steps=8 format=3 uid="uid://coyd2vrm1s34e"]
 
 [ext_resource type="Script" uid="uid://cng5ok307wgqo" path="res://level/multi_player.gd" id="1_jhgwf"]
 [ext_resource type="PackedScene" uid="uid://chw2th4yxcai0" path="res://effects/background.tscn" id="1_y6kvv"]
 [ext_resource type="Script" uid="uid://vdflwkc6eb6n" path="res://level/grid.gd" id="2_jhgwf"]
 [ext_resource type="PackedScene" uid="uid://sphf7vd1y2ld" path="res://entities/player/player.tscn" id="3_wmikq"]
 [ext_resource type="PackedScene" uid="uid://cg1ux6jueq7i5" path="res://ui/hud.tscn" id="4_7bxhl"]
-[ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="5_7fmv7"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_m8u5f"]
 viewport_path = NodePath("TextureRect/SubViewport1")
@@ -46,8 +45,6 @@ unique_name_in_owner = true
 [node name="Hud" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_7bxhl")]
 player = NodePath("../SubViewport/Player1")
 
-[node name="ShaderLayer" parent="." instance=ExtResource("5_7fmv7")]
-
 [node name="SubViewport" type="SubViewport" parent="."]
 unique_name_in_owner = true
 
@@ -73,4 +70,3 @@ position = Vector2(381, 132)
 [node name="Player2" parent="SubViewport" instance=ExtResource("3_wmikq")]
 unique_name_in_owner = true
 position = Vector2(381, 300)
-player_prefix = "p2"

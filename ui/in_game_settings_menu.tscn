@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://b4lqxv2lwgfa"]
+
+[ext_resource type="Script" uid="uid://rxct1knlbp5y" path="res://ui/in_game_settings_menu.gd" id="1_i17w2"]
+[ext_resource type="PackedScene" uid="uid://c58ktuhr05hp5" path="res://ui/menu_scenes/settings_page.tscn" id="1_puypx"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_i17w2")
+
+[node name="InGameSettingsMenu" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 48
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 48
+theme_override_constants/margin_bottom = 48
+
+[node name="ColorRect" type="ColorRect" parent="InGameSettingsMenu"]
+layout_mode = 2
+color = Color(0.166853, 0.166853, 0.166853, 1)
+
+[node name="SettingsPage" parent="InGameSettingsMenu/ColorRect" instance=ExtResource("1_puypx")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[connection signal="finished" from="InGameSettingsMenu/ColorRect/SettingsPage" to="." method="_on_settings_page_finished"]

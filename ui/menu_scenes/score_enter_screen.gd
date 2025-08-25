@@ -28,9 +28,10 @@ func _ready() -> void:
 		return
 	
 	_player_scoreboard_position = board_position
-	var new_scores = old_scores.slice(0, board_position)
+	var new_scores = old_scores.duplicate()
 	new_scores.append(ScoreEntry.new("   ", _player_score))
-	new_scores.append_array(old_scores.slice(board_position + 1, 10))
+	new_scores.sort_custom(func(a, b): return b.score < a.score)
+	new_scores = new_scores.slice(0, 10)
 	scoreboard.highlight_index = board_position
 	scoreboard.scores = new_scores
 	

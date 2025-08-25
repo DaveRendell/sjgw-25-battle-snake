@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://fkjuulv4hjf"]
+[gd_scene load_steps=7 format=3 uid="uid://fkjuulv4hjf"]
 
 [ext_resource type="Script" uid="uid://vdflwkc6eb6n" path="res://level/grid.gd" id="1_is3ju"]
 [ext_resource type="PackedScene" uid="uid://cg1ux6jueq7i5" path="res://ui/hud.tscn" id="1_m8u5f"]
 [ext_resource type="Script" uid="uid://q2hhk2id4iks" path="res://level/single_player.gd" id="1_oj2lp"]
 [ext_resource type="PackedScene" uid="uid://sphf7vd1y2ld" path="res://entities/player/player.tscn" id="1_wt17y"]
 [ext_resource type="PackedScene" uid="uid://chw2th4yxcai0" path="res://effects/background.tscn" id="1_ynsuh"]
-[ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="6_4bqqs"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_m8u5f"]
 viewport_path = NodePath("TextureRect/SubViewport")
@@ -56,5 +55,3 @@ unique_name_in_owner = true
 
 [node name="Hud" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_m8u5f")]
 player = NodePath("../TextureRect/SubViewport/GameWorld/Player")
-
-[node name="ShaderLayer" parent="." instance=ExtResource("6_4bqqs")]

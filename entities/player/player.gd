@@ -5,13 +5,14 @@ signal xp_changed(to_level_up: int)
 signal destroyed
 
 const IN_GAME_MENU = preload("res://ui/in_game_menu.tscn")
+const IN_GAME_SETTINGS_MENU = preload("res://ui/in_game_settings_menu.tscn")
+
 const SEGMENT = preload("res://entities/player/segments/normal_segment/segment.tscn")
 const CANNON_SEGMENT = preload("res://entities/player/segments/cannon_segment/cannon_segment.tscn")
 const MAGNET_SEGMENT = preload("res://entities/player/segments/magnet_segment/magnet_segment.tscn")
 const BOOSTER_SEGMENT = preload("res://entities/player/segments/booster_segment/booster_segment.tscn")
 const FLAMETHROWER_SEGMENT = preload("res://entities/player/segments/flamethrower_segment/flamethrower_segment.tscn")
 const TESLA_COIL_SEGMENT = preload("res://entities/player/segments/tesla_coil_segment/tesla_coil_segment.tscn")
-
 const EXPLOSION = preload("res://effects/explosion.tscn")
 
 var segments_by_name = {
@@ -113,7 +114,7 @@ func consume_pickup(area: Area2D) -> void:
 
 func _pause() -> void:
 	var pause_menu = IN_GAME_MENU.instantiate()
-	pause_menu.options_list.assign(["CONTINUE", "ALSO CONTINUE?"])
+	pause_menu.options_list.assign(["CONTINUE", "SETTINGS", "EXIT"])
 	pause_menu.player_prefix = player_input.player_prefix
 	pause_menu.header_text = "PAUSED"
 	pause_menu.allow_cancel = true
@@ -121,17 +122,28 @@ func _pause() -> void:
 	get_tree().paused = true
 	get_tree().root.add_child(pause_menu)
 	
-	var selected_index = await pause_menu.option_selected
-	match selected_index:
-		-1:
-			pause_menu.queue_free()
-			get_tree().paused = false
-		0:
-			pause_menu.queue_free()
-			get_tree().paused = false
-		1:
-			pause_menu.queue_free()
-			get_tree().paused = false
+	pause_menu.option_selected.connect(func(selected_index: int):
+		match selected_index:
+			-1:
+				pause_menu.queue_free()
+				get_tree().paused = false
+			0:
+				pause_menu.queue_free()
+				get_tree().paused = false
+			1:
+				var settings_menu = IN_GAME_SETTINGS_MENU.instantiate()
+				settings_menu.player_input = pause_menu.player_input
+				pause_menu.add_sibling(settings_menu)
+				pause_menu.disabled = true
+				await settings_menu.finished
+				pause_menu.disabled = false
+				settings_menu.queue_free()
+			2:
+				pause_menu.queue_free()
+				get_tree().paused = false
+				get_tree().change_scene_to_file("res://ui/menu_scenes/main_menu.tscn")
+		)
+	
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.get_parent() is Segment or body.get_parent() is JormungandrSegment:

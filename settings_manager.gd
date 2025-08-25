@@ -11,6 +11,7 @@ signal sfx_volume_changed(value: float)
 signal background_animation_changed(value: bool)
 signal screen_filter_changed(value: bool)
 signal aspect_ratio_changed(value: AspectRatio)
+signal screen_scale_changed(value: int)
 
 func _ready() -> void:
 	_load()
@@ -18,41 +19,53 @@ func _ready() -> void:
 var main_volume: float = 50.0:
 	set(value):
 		main_volume = clamp(value, 0.0, 100.0)
-		main_volume_changed.emit(value)
+		main_volume_changed.emit(main_volume)
 		_save()
 var music_volume: float = 50.0:
 	set(value):
 		music_volume = clamp(value, 0.0, 100.0)
-		music_volume_changed.emit(value)
+		music_volume_changed.emit(music_volume)
 		_save()
 var sfx_volume: float = 50.0:
 	set(value):
 		sfx_volume = clamp(value, 0.0, 100.0)
-		sfx_volume_changed.emit(value)
+		sfx_volume_changed.emit(sfx_volume)
 		_save()
 
 var aspect_ratio: AspectRatio = AspectRatio.RATIO_16_9:
 	set(value):
 		aspect_ratio = posmod(value, AspectRatio.size())
-		aspect_ratio_changed.emit(value)
-		match aspect_ratio:
-			AspectRatio.RATIO_16_9:
-				get_tree().root.size = 3 * Vector2i(640, 360)
-			AspectRatio.RATIO_16_10:
-				get_tree().root.size = 3 * Vector2i(640, 400)
+		aspect_ratio_changed.emit(aspect_ratio)
+		_update_screen_size()
 		_save()
 
 var background_animation: bool = true:
 	set(value):
 		background_animation = value
-		background_animation_changed.emit(value)
+		background_animation_changed.emit(background_animation)
 		_save()
 
 var screen_filter: bool = true:
 	set(value):
 		screen_filter = value
-		screen_filter_changed.emit(value)
+		screen_filter_changed.emit(screen_filter)
 		_save()
+
+var screen_scale: int = 2:
+	set(value):
+		screen_scale = clampi(value, 1, 6)
+		screen_scale_changed.emit(screen_scale)
+		_update_screen_size()
+		_save()
+
+func _update_screen_size() -> void:
+	match aspect_ratio:
+		AspectRatio.RATIO_16_9:
+			get_tree().root.size = screen_scale * Vector2i(640, 360)
+		AspectRatio.RATIO_16_10:
+			get_tree().root.size = screen_scale * Vector2i(640, 400)
+	get_tree().root.content_scale_factor = screen_scale
+	get_tree().root.content_scale_size = get_tree().root.size
 
 func _save() -> void:
 	var settings_file = FileAccess.open("user://settings.json", FileAccess.WRITE)
@@ -64,6 +77,7 @@ func _save() -> void:
 		"background_animation": background_animation,
 		"screen_filter": screen_filter,
 		"aspect_ratio": aspect_ratio,
+		"screen_scale": screen_scale,
 	})
 	settings_file.store_line(settings_json)
 
@@ -88,4 +102,6 @@ func _load() -> void:
 		screen_filter = saved_settings["screen_filter"]
 	if saved_settings.has("aspect_ratio"):
 		aspect_ratio = saved_settings["aspect_ratio"]
+	if saved_settings.has("screen_scale"):
+		aspect_ratio = saved_settings["screen_scale"]
 	

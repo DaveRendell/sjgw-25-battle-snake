@@ -40,7 +40,7 @@ vertical_alignment = 1
 
 [node name="MainVolumeSlider" type="HSlider" parent="Layout/MainVolume"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -77,7 +77,7 @@ vertical_alignment = 1
 
 [node name="MusicVolumeSlider" type="HSlider" parent="Layout/MusicVolume"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -104,7 +104,7 @@ text = "SFX VOLUME"
 vertical_alignment = 1
 
 [node name="SfxVolumeSlider" type="HSlider" parent="Layout/SfxVolume"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(256, 0)
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -196,3 +196,45 @@ offset_bottom = 8.0
 grow_horizontal = 0
 grow_vertical = 2
 text = "◀ 16:9  ▶"
+
+[node name="ScreenScale" type="Control" parent="Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/ScreenScale"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 192.0
+grow_vertical = 2
+text = "SCREEN SCALE"
+vertical_alignment = 1
+
+[node name="ScreenScaleOptions" type="Label" parent="Layout/ScreenScale"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "◀ 2X  ▶"
+
+[node name="Close" type="Control" parent="Layout"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Layout/Close"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -8.0
+offset_right = 80.0
+offset_bottom = 8.0
+grow_vertical = 2
+size_flags_horizontal = 0
+text = "CLOSE"
+vertical_alignment = 1

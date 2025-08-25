@@ -1,22 +1,25 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgdc17q5pyrir"]
+[gd_scene load_steps=4 format=3 uid="uid://dgdc17q5pyrir"]
 
+[ext_resource type="Script" uid="uid://360am1yqwwdo" path="res://effects/shader_layer.gd" id="1_3ka8d"]
 [ext_resource type="Shader" uid="uid://dt3ero8ugw3ls" path="res://effects/scanlines.gdshader" id="1_jhj7r"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3ka8d"]
 shader = ExtResource("1_jhj7r")
-shader_parameter/scanline_count = 360
-shader_parameter/scanline_strength = 0.2
+shader_parameter/scanline_count = 90
+shader_parameter/scanline_strength = 0.1
 shader_parameter/aberration_amount = 0.2
-shader_parameter/aberration_mult = 0.002
+shader_parameter/aberration_mult = 0.004
 shader_parameter/vignette_size = 0.3
 shader_parameter/vignette_opacity = 0.4
 shader_parameter/vignette_mult = 15.0
 shader_parameter/noise_intensity = 0.025
-shader_parameter/glow_strength = 0.01
+shader_parameter/glow_strength = 0.5
 shader_parameter/glow_radius = 1
 shader_parameter/glow_threshold = 0.4
 
 [node name="ShaderLayer" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_3ka8d")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_3ka8d")
@@ -25,4 +28,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 1, 1, 0)

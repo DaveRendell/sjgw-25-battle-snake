@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_v7a8w")
 spawn_enemies = true
-spawn_timeout = 1.5
+spawn_timeout = 2.0
 time = 45.0
 cannon = true
 booster = true

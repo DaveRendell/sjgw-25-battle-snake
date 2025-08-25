@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dduqbu3i84pws"]
+[gd_scene load_steps=8 format=3 uid="uid://dduqbu3i84pws"]
 
 [ext_resource type="Script" uid="uid://dbigl50nqtf0p" path="res://entities/player/segments/tesla_coil_segment/tesla_coil_test_scene.gd" id="1_u6eiu"]
 [ext_resource type="PackedScene" uid="uid://chw2th4yxcai0" path="res://effects/background.tscn" id="2_7dmj2"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://sphf7vd1y2ld" path="res://entities/player/player.tscn" id="4_v5w4v"]
 [ext_resource type="PackedScene" uid="uid://bgeyr231l5ca6" path="res://entities/mobs/mob.tscn" id="5_cnxwg"]
 [ext_resource type="PackedScene" uid="uid://cg1ux6jueq7i5" path="res://ui/hud.tscn" id="6_hdwa6"]
-[ext_resource type="PackedScene" uid="uid://dgdc17q5pyrir" path="res://effects/shader_layer.tscn" id="7_kbkg1"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_m8u5f"]
 viewport_path = NodePath("TextureRect/SubViewport")
@@ -97,5 +96,3 @@ health = null
 
 [node name="Hud" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_hdwa6")]
 player = NodePath("../TextureRect/SubViewport/GameWorld/Player")
-
-[node name="ShaderLayer" parent="." instance=ExtResource("7_kbkg1")]

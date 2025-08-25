@@ -41,12 +41,14 @@ offset_bottom = 36.0
 size_flags_horizontal = 0
 text = "TO LVL UP: 5"
 
-[node name="Health" type="Label" parent="Control/Margins"]
+[node name="Health" type="RichTextLabel" parent="Control/Margins"]
 custom_minimum_size = Vector2(208, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
-text = "HEALTH: ♥♥♥♥♥"
+bbcode_enabled = true
+text = "HEALTH: [color=red]♥♥♥♥♥[/color]"
+fit_content = true
 
 [node name="GameOver" type="Label" parent="Control"]
 visible = false
