@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=3 uid="uid://coyd2vrm1s34e"]
 
 [ext_resource type="Script" uid="uid://cng5ok307wgqo" path="res://level/multi_player.gd" id="1_jhgwf"]
-[ext_resource type="PackedScene" uid="uid://chw2th4yxcai0" path="res://effects/background.tscn" id="1_y6kvv"]
 [ext_resource type="Script" uid="uid://vdflwkc6eb6n" path="res://level/grid.gd" id="2_jhgwf"]
+[ext_resource type="PackedScene" uid="uid://knggatuss3wr" path="res://ui/hud_mp.tscn" id="3_hghx7"]
 [ext_resource type="PackedScene" uid="uid://sphf7vd1y2ld" path="res://entities/player/player.tscn" id="3_wmikq"]
-[ext_resource type="PackedScene" uid="uid://cg1ux6jueq7i5" path="res://ui/hud.tscn" id="4_7bxhl"]
+[ext_resource type="PackedScene" uid="uid://cwojnenbkehbd" path="res://ui/pointer_layer.tscn" id="3_y6kvv"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_m8u5f"]
 viewport_path = NodePath("TextureRect/SubViewport1")
@@ -26,10 +26,36 @@ texture = SubResource("ViewportTexture_m8u5f")
 
 [node name="SubViewport1" type="SubViewport" parent="TextureRect"]
 unique_name_in_owner = true
+transparent_bg = true
+canvas_cull_mask = 4294967291
 size = Vector2i(320, 360)
 
 [node name="Camera1" type="Camera2D" parent="TextureRect/SubViewport1"]
 unique_name_in_owner = true
+zoom = Vector2(0.75, 0.75)
+
+[node name="StaticBackground" type="Parallax2D" parent="TextureRect/SubViewport1"]
+light_mask = 2
+visibility_layer = 2
+z_index = -1
+repeat_size = Vector2(640, 640)
+
+[node name="Grid" type="Node2D" parent="TextureRect/SubViewport1/StaticBackground"]
+light_mask = 2
+visibility_layer = 2
+script = ExtResource("2_jhgwf")
+height = 640
+colour = Color(0.247703, 0.127353, 0.0460209, 0.576471)
+metadata/_custom_type_script = "uid://vdflwkc6eb6n"
+
+[node name="PointerLayer" parent="TextureRect/SubViewport1" node_paths=PackedStringArray("player", "target", "sub_viewport") instance=ExtResource("3_y6kvv")]
+layer = 128
+follow_viewport_enabled = true
+player = NodePath("../../../SubViewport/Player1")
+target = NodePath("../../../SubViewport/Player2")
+sub_viewport = NodePath("..")
+colour = Color(0.872671, 0.000289651, 0.000158928, 1)
+label_text = "P1"
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 2
@@ -37,31 +63,43 @@ texture = SubResource("ViewportTexture_jhgwf")
 
 [node name="SubViewport2" type="SubViewport" parent="TextureRect2"]
 unique_name_in_owner = true
+transparent_bg = true
+canvas_cull_mask = 4294967293
 size = Vector2i(320, 360)
 
 [node name="Camera2" type="Camera2D" parent="TextureRect2/SubViewport2"]
 unique_name_in_owner = true
+zoom = Vector2(0.75, 0.75)
 
-[node name="Hud" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_7bxhl")]
-player = NodePath("../SubViewport/Player1")
+[node name="StaticBackground" type="Parallax2D" parent="TextureRect2/SubViewport2"]
+light_mask = 4
+visibility_layer = 4
+z_index = -1
+repeat_size = Vector2(640, 640)
+
+[node name="Grid" type="Node2D" parent="TextureRect2/SubViewport2/StaticBackground"]
+light_mask = 4
+visibility_layer = 4
+script = ExtResource("2_jhgwf")
+height = 640
+colour = Color(0.0179096, 0.177068, 0.259552, 0.576471)
+metadata/_custom_type_script = "uid://vdflwkc6eb6n"
+
+[node name="PointerLayer" parent="TextureRect2/SubViewport2" node_paths=PackedStringArray("player", "target", "sub_viewport") instance=ExtResource("3_y6kvv")]
+layer = 128
+follow_viewport_enabled = true
+player = NodePath("../../../SubViewport/Player2")
+target = NodePath("../../../SubViewport/Player1")
+sub_viewport = NodePath("..")
+colour = Color(0.337753, 0.401736, 0.884874, 1)
+label_text = "P2"
+
+[node name="HudMp" parent="." node_paths=PackedStringArray("player1", "player2") instance=ExtResource("3_hghx7")]
+player1 = NodePath("../SubViewport/Player1")
+player2 = NodePath("../SubViewport/Player2")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 unique_name_in_owner = true
-
-[node name="Parallax2D" type="Parallax2D" parent="SubViewport"]
-scroll_scale = Vector2(0, 0)
-repeat_size = Vector2(640, 360)
-
-[node name="Background" parent="SubViewport/Parallax2D" instance=ExtResource("1_y6kvv")]
-
-[node name="StaticBackground" type="Parallax2D" parent="SubViewport"]
-repeat_size = Vector2(640, 640)
-
-[node name="Grid" type="Node2D" parent="SubViewport/StaticBackground"]
-script = ExtResource("2_jhgwf")
-height = 640
-colour = Color(0.223529, 0.0901961, 0.294118, 0.576471)
-metadata/_custom_type_script = "uid://vdflwkc6eb6n"
 
 [node name="Player1" parent="SubViewport" instance=ExtResource("3_wmikq")]
 unique_name_in_owner = true
@@ -70,3 +108,4 @@ position = Vector2(381, 132)
 [node name="Player2" parent="SubViewport" instance=ExtResource("3_wmikq")]
 unique_name_in_owner = true
 position = Vector2(381, 300)
+player_id = 2

@@ -17,4 +17,3 @@ func _ready() -> void:
 	
 	sub_viewport_1.world_2d = sub_viewport.world_2d
 	sub_viewport_2.world_2d = sub_viewport.world_2d
-	

@@ -11,7 +11,6 @@ func _ready() -> void:
 	_on_player_health_changed(player.health)
 	player.health_changed.connect(_on_player_health_changed)
 	player.xp_changed.connect(_on_player_xp_changed)
-	player.destroyed.connect(game_over)
 	ScoreManager.score_changed.connect(_set_score)
 
 func _on_player_health_changed(health: int) -> void:
@@ -33,5 +32,3 @@ func game_over() -> void:
 	var final_y_position = game_over_label.position.y
 	game_over_label.position.y = -30
 	await create_tween().tween_property(game_over_label, "position:y", final_y_position, 0.25).finished
-	await get_tree().create_timer(2.0).timeout
-	get_tree().change_scene_to_file("res://ui/menu_scenes/score_enter_screen.tscn")

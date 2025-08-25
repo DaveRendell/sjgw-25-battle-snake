@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwojnenbkehbd"]
+
+[ext_resource type="Script" uid="uid://b328xl4mgq4oj" path="res://ui/pointer_layer.gd" id="1_h04ku"]
+[ext_resource type="Script" uid="uid://btyutyr4turgr" path="res://entities/components/triangle.gd" id="2_gp2dh"]
+[ext_resource type="Theme" uid="uid://45pn6nywi1h5" path="res://ui/default_theme.tres" id="3_gp2dh"]
+
+[node name="PointerLayer" type="CanvasLayer"]
+script = ExtResource("1_h04ku")
+
+[node name="Triangle" type="Node2D" parent="."]
+script = ExtResource("2_gp2dh")
+base = 12.0
+height = 12.0
+metadata/_custom_type_script = "uid://btyutyr4turgr"
+
+[node name="LabelContainer" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="LabelContainer"]
+offset_left = 3.0
+offset_top = -6.0
+offset_right = 35.0
+offset_bottom = 10.0
+scale = Vector2(0.75, 0.75)
+size_flags_horizontal = 0
+theme = ExtResource("3_gp2dh")
+theme_override_colors/font_color = Color(0.588046, 7.46027e-07, 3.36915e-07, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 1
+text = "P2"
+horizontal_alignment = 1
+vertical_alignment = 1

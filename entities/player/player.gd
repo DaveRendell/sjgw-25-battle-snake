@@ -23,7 +23,7 @@ var segments_by_name = {
 	"TESLACOIL": TESLA_COIL_SEGMENT,
 }
 
-var player_id: int = 1
+@export var player_id: int = 1
 var player_input: PlayerInput
 @onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
 
