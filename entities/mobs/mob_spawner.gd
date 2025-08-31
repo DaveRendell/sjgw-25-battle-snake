@@ -25,8 +25,6 @@ func _pick_spawn_scenario() -> void:
 	if not spawn_profile.spawn_enemies: return
 	_spawn_timer.wait_time = spawn_profile.spawn_timeout
 	
-	var angle = randf_range(0, TAU)
-	var relative_position = radius * Vector2.from_angle(angle)
 	
 	var total_weight = spawn_profile.spawn_rates.values().reduce(func(a, b): return a + b, 0)
 	var mob_pick = total_weight * randf()
@@ -38,12 +36,26 @@ func _pick_spawn_scenario() -> void:
 		if acc >= mob_pick:
 			mob_scene = test_scene
 			break
-	_spawn(mob_scene, relative_position)
+	
+	var attempt_count = 0
+	while attempt_count < 15:
+		var angle = randf_range(0, TAU)
+		var relative_position = radius * Vector2.from_angle(angle)
+		if _spawn(mob_scene, relative_position): return
+		attempt_count += 1
+	print("Unable to find spawn position")
 
-func _spawn(mob_scene: PackedScene, relative_position: Vector2) -> void:
+func _spawn(mob_scene: PackedScene, relative_position: Vector2) -> bool:
+	var spawn_position = _parent.position + relative_position
+	if PlayerManager.players.any(func(other_player: Player) -> bool:
+		return other_player != player and player.position.distance_to(spawn_position) < 200.0
+	):
+		return false
+	
 	var mob = mob_scene.instantiate()
 	mob.position = _parent.position + relative_position
 	_parent.add_sibling.call_deferred(mob)
+	return true
 	
 func _spawn_swarm(mob_scene: PackedScene, relative_position: Vector2, spread: float, number: int) -> void:
 	for i in number:

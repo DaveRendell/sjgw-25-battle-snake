@@ -40,6 +40,7 @@ func _physics_process(_delta: float) -> void:
 	label_container.position = point_vector + 0.5 * sub_viewport.size - 24 * pointer_direction + 16 * Vector2.LEFT
 	
 	if point_vector.length() > (target.position - origin).length() - 72:
-		hide()
+		label_container.position = 0.5 * sub_viewport.size + Vector2(-12, -16) + 3 * (target.position - player.position) / 4
+		triangle.hide()
 	else:
-		show()
+		triangle.show()

@@ -94,7 +94,9 @@ func choose_segment() -> PackedScene:
 	var segment_select = IN_GAME_MENU.instantiate()
 	segment_select.options_list.assign([first_offer, second_offer])
 	segment_select.player_prefix = player_input.player_prefix
-	segment_select.header_text = "CHOOSE A POWER-UP!"
+	var player_prefix = "P1: " if player_id == 1 else "P2: "
+	var prefix = "" if not ScoreManager.is_multiplayer else player_prefix
+	segment_select.header_text = prefix + "CHOOSE A POWER-UP!"
 	
 	get_tree().paused = true
 	get_tree().root.add_child(segment_select)

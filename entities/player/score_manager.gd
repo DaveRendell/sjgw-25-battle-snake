@@ -15,6 +15,7 @@ var _default_scores: Array[ScoreEntry] = [
 	ScoreEntry.new("GOL", 1000),
 ]
 
+var is_multiplayer: bool
 var _score: int = 0:
 	set(value):
 		_score = value

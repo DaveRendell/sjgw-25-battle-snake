@@ -17,8 +17,10 @@ const PLAYER = preload("res://entities/player/player.tscn")
 
 func _ready() -> void:
 	ScoreManager.reset_score()
+	ScoreManager.is_multiplayer = true
 	PlayerManager.players = [player_1, player_2]
 	SpawnManager.start_game()
+	MusicManager.start_stage_music()
 	player_1.remote_transform_2d.remote_path = camera_1.get_path()
 	player_2.remote_transform_2d.remote_path = camera_2.get_path()
 	
@@ -61,16 +63,24 @@ func _on_player_destroyed(player: Player) -> void:
 		if player_id == 1:
 			_pointer_layer_p1.player = new_player
 			_pointer_layer_p2.target = new_player
+			_pointer_layer_p2.label.text = _pointer_layer_p2.label_text
+			_pointer_layer_p2.label.add_theme_color_override("font_color", _pointer_layer_p2.colour)
 		else:
 			_pointer_layer_p2.player = new_player
 			_pointer_layer_p1.target = new_player
+			_pointer_layer_p2.label.text = _pointer_layer_p1.label_text
+			_pointer_layer_p2.label.add_theme_color_override("font_color", _pointer_layer_p1.colour)
 		)
 	player.add_sibling.call_deferred(egg)
 	
 	if player_id == 1:
 		_pointer_layer_p2.target = egg
+		_pointer_layer_p2.label.text = "HELP!"
+		_pointer_layer_p2.label.add_theme_color_override("font_color", Color.WHITE)
 	else:
 		_pointer_layer_p1.target = egg
+		_pointer_layer_p1.label.text = "HELP!"
+		_pointer_layer_p1.label.add_theme_color_override("font_color", Color.WHITE)
 
 func _game_over() -> void:
 	await hud_mp.game_over()
