@@ -72,5 +72,13 @@ unique_name_in_owner = true
 script = ExtResource("8_26q78")
 metadata/_custom_type_script = "uid://dfateb8yaoroi"
 
+[node name="InvulnerabilityTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="FlashTimer" type="Timer" parent="."]
+wait_time = 0.2
+autostart = true
+
 [connection signal="area_entered" from="Mouth" to="." method="_on_mouth_area_entered"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

@@ -9,6 +9,7 @@ func _ready() -> void:
 	PlayerManager.players = [player]
 	SpawnManager.start_game()
 	MusicManager.start_stage_music()
+	ScoreManager.reset_score()
 	player.remote_transform_2d.remote_path = camera_2d.get_path()
 	_hud = get_tree().get_first_node_in_group("hud")
 	player.destroyed.connect(_game_over)

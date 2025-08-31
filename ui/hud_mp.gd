@@ -12,13 +12,19 @@ class_name HudMp extends CanvasLayer
 @onready var level_up_p_2: Label = %LevelUpP2
 
 func _ready() -> void:
-	_on_player1_health_changed(player1.health)
-	_on_player2_health_changed(player2.health)
-	player1.health_changed.connect(_on_player1_health_changed)
-	player1.xp_changed.connect(_on_player1_xp_changed)
-	player2.health_changed.connect(_on_player2_health_changed)
-	player2.xp_changed.connect(_on_player2_xp_changed)
+	connect_player1(player1)
+	connect_player2(player2)
 	ScoreManager.score_changed.connect(_set_score)
+
+func connect_player1(player: Player) -> void:
+	_on_player1_health_changed(player.health)
+	player.health_changed.connect(_on_player1_health_changed)
+	player.xp_changed.connect(_on_player1_xp_changed)
+
+func connect_player2(player: Player) -> void:
+	_on_player2_health_changed(player.health)
+	player.health_changed.connect(_on_player2_health_changed)
+	player.xp_changed.connect(_on_player2_xp_changed)
 
 func _on_player1_health_changed(health: int) -> void:
 	var health_text = "HEALTH: [color=red]"

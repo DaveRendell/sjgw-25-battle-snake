@@ -31,14 +31,19 @@ var following_segments: Array[Node2D] = []
 var health: int = 5
 var xp: int = 0
 
+var _is_invulnerable = false
+@onready var _invulnerability_timer: Timer = $InvulnerabilityTimer
+@onready var _flash_timer: Timer = $FlashTimer
+
+
 @onready var _trail: Trail = $Trail
 @onready var collider: StaticBody2D = $Collider
 @onready var player_steering: PlayerSteering = $PlayerSteering
+@onready var _hurtbox: Area2D = $Hurtbox
 
 @export var separation: float = 20.0
 
 func _ready() -> void:
-	ScoreManager.reset_score()
 	match player_id:
 		1: player_input = InputManager.p1_input
 		2: player_input = InputManager.p2_input
@@ -48,6 +53,9 @@ func _ready() -> void:
 	await get_tree().process_frame
 	xp_changed.emit(following_segments.size())
 	player_input.menu_pressed.connect(_pause)
+	_flash_timer.timeout.connect(func():
+		if not _is_invulnerable: return
+		visible = !visible)
 
 func add_segment_to_tail(allow_choose: bool = false) -> void:
 	var segment_scene: PackedScene = await choose_segment() if allow_choose && ((following_segments.size()) % 3 == 0) else SEGMENT
@@ -62,6 +70,10 @@ func add_segment(segment_scene: PackedScene) -> void:
 	trail_follower.trail = trail_to_follow
 	trail_follower.distance = separation
 	segment.position = trail_to_follow.get_point_distance_from_trail(separation)
+	if _is_invulnerable:
+		var segment_collider: StaticBody2D = segment.get_node("Collider")
+		segment_collider.set_collision_layer_value(1, false)
+		segment_collider.set_collision_layer_value(4, false)
 	
 	trail_to_follow.get_parent().add_sibling(segment, true)
 	following_segments.append(segment)
@@ -92,6 +104,28 @@ func choose_segment() -> PackedScene:
 	segment_select.queue_free()
 	
 	return segments_by_name[[first_offer, second_offer][selected_index]]
+
+func make_invulnerable(time: float) -> void:
+	_is_invulnerable = true
+	_hurtbox.set_collision_mask_value(3, false)
+	_hurtbox.set_collision_mask_value(4, false)
+	for segment in following_segments:
+		var segment_collider: StaticBody2D = segment.get_node("Collider")
+		segment_collider.set_collision_layer_value(1, false)
+		segment_collider.set_collision_layer_value(4, false)
+	_invulnerability_timer.start(time)
+	await _invulnerability_timer.timeout
+	make_vulnerable()
+
+func make_vulnerable() -> void:
+	_is_invulnerable = false
+	visible = true
+	_hurtbox.set_collision_mask_value(3, true)
+	_hurtbox.set_collision_mask_value(4, true)
+	for segment in following_segments:
+		var segment_collider: StaticBody2D = segment.get_node("Collider")
+		segment_collider.set_collision_layer_value(1, true)
+		segment_collider.set_collision_layer_value(4, true)
 
 func _on_mouth_area_entered(area: Area2D) -> void:
 	consume_pickup(area)
