@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2mdb63ecwnwr"]
+[gd_scene load_steps=4 format=3 uid="uid://c2mdb63ecwnwr"]
 
+[ext_resource type="Script" uid="uid://cfrxd15lxea2q" path="res://entities/pickups/pickup.gd" id="1_01eld"]
 [ext_resource type="Script" uid="uid://bcdjqrhby8xta" path="res://entities/components/circle.gd" id="1_oxkk6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_01eld"]
 radius = 2.0
 
 [node name="Pickup" type="Node2D"]
+script = ExtResource("1_01eld")
 
 [node name="Circle" type="Node2D" parent="."]
 script = ExtResource("1_oxkk6")

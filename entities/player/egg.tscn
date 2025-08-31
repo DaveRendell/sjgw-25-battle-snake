@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://dmxokykf44fut"]
+[gd_scene load_steps=4 format=3 uid="uid://buafqbtaycxx6"]
 
-[node name="Egg" type="Node2D"]
+[ext_resource type="PackedScene" uid="uid://c2mdb63ecwnwr" path="res://entities/pickups/pickup.tscn" id="1_3kuib"]
+[ext_resource type="Script" uid="uid://dn5g887p3x3ek" path="res://entities/player/egg.gd" id="2_8x04b"]
+[ext_resource type="Texture2D" uid="uid://cx45bggjnnmr5" path="res://entities/player/egg.png" id="3_v5jql"]
+
+[node name="Egg" instance=ExtResource("1_3kuib")]
+script = ExtResource("2_8x04b")
+
+[node name="Circle" parent="." index="0"]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="." index="2"]
+texture = ExtResource("3_v5jql")

@@ -3,7 +3,7 @@ class_name Mob extends Node2D
 signal health_changed(hp: int)
 signal destroyed
 
-const PICKUP = preload("res://entities/pickup.tscn")
+const PICKUP = preload("res://entities/pickups/pickup.tscn")
 const EXPLOSION = preload("res://effects/explosion.tscn")
 
 @export var health: int = 1

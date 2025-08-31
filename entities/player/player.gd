@@ -96,8 +96,7 @@ func choose_segment() -> PackedScene:
 func _on_mouth_area_entered(area: Area2D) -> void:
 	consume_pickup(area)
 
-func consume_pickup(area: Area2D) -> void:
-	area.get_parent().queue_free()
+func gain_xp() -> void:
 	xp += 1
 	ScoreManager.increase_score(750)
 	
@@ -111,6 +110,11 @@ func consume_pickup(area: Area2D) -> void:
 		SfxManager.play_pickup()
 	
 	xp_changed.emit(needed_for_level_up - xp)
+
+func consume_pickup(area: Area2D) -> void:
+	var pickup: Pickup = area.get_parent()
+	area.get_parent().queue_free()
+	pickup.pickup(self)
 
 func _pause() -> void:
 	var pause_menu = IN_GAME_MENU.instantiate()
