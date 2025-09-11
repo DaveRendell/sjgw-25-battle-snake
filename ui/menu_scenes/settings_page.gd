@@ -9,7 +9,6 @@ enum SelectedRow {
 	BG_ANIMATION = 3,
 	SCREEN_FILTER = 4,
 	ASPECT_RATIO = 5,
-	SCREEN_SCALE = 6,
 	CLOSE = 7,
 }
 
@@ -28,7 +27,6 @@ var _option_count: int
 @onready var _bg_animation_checkbox: CheckBox = %BgAnimationCheckbox
 @onready var _screen_filter_checkbox: CheckBox = %ScreenFilterCheckbox
 @onready var _aspect_ratio_options: Label = %AspectRatioOptions
-@onready var _screen_scale_options: Label = $Layout/ScreenScale/ScreenScaleOptions
 
 
 func _ready() -> void:
@@ -57,9 +55,6 @@ func _ready() -> void:
 	
 	_update_aspect_ratio_options(SettingsManager.aspect_ratio)
 	SettingsManager.aspect_ratio_changed.connect(_update_aspect_ratio_options)
-	
-	_update_screen_scale_options(SettingsManager.screen_scale)
-	SettingsManager.screen_scale_changed.connect(_update_screen_scale_options)
 
 func connect_player_input(player_input: PlayerInput) -> void:
 	player_input.up_pressed.connect(_up_pressed)
@@ -88,7 +83,6 @@ func _left_pressed() -> void:
 		SelectedRow.MUSIC_VOLUME: SettingsManager.music_volume -= 10.0
 		SelectedRow.SFX_VOLUME: SettingsManager.sfx_volume -= 10.0
 		SelectedRow.ASPECT_RATIO: SettingsManager.aspect_ratio -= 1
-		SelectedRow.SCREEN_SCALE: SettingsManager.screen_scale -= 1
 		_: return
 	SfxManager.play_blip()
 
@@ -98,7 +92,6 @@ func _right_pressed() -> void:
 		SelectedRow.MUSIC_VOLUME: SettingsManager.music_volume += 10.0
 		SelectedRow.SFX_VOLUME: SettingsManager.sfx_volume += 10.0
 		SelectedRow.ASPECT_RATIO: SettingsManager.aspect_ratio += 1
-		SelectedRow.SCREEN_SCALE: SettingsManager.screen_scale += 1
 		_: return
 	SfxManager.play_blip()
 
@@ -120,6 +113,3 @@ func _update_aspect_ratio_options(value: SettingsManager.AspectRatio) -> void:
 	match value:
 		SettingsManager.AspectRatio.RATIO_16_9: _aspect_ratio_options.text =  "◀ 16:9  ▶"
 		SettingsManager.AspectRatio.RATIO_16_10: _aspect_ratio_options.text = "◀ 16:10 ▶"
-
-func _update_screen_scale_options(value: int) -> void:
-	_screen_scale_options.text = "◀  %dX   ▶" % value

@@ -55,7 +55,7 @@ player = NodePath("../../../SubViewport/Player1")
 target = NodePath("../../../SubViewport/Player2")
 sub_viewport = NodePath("..")
 colour = Color(0.872671, 0.000289651, 0.000158928, 1)
-label_text = "P1"
+label_text = "P2"
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 2
@@ -92,7 +92,7 @@ player = NodePath("../../../SubViewport/Player2")
 target = NodePath("../../../SubViewport/Player1")
 sub_viewport = NodePath("..")
 colour = Color(0.337753, 0.401736, 0.884874, 1)
-label_text = "P2"
+label_text = "P1"
 
 [node name="HudMp" parent="." node_paths=PackedStringArray("player1", "player2") instance=ExtResource("3_hghx7")]
 player1 = NodePath("../SubViewport/Player1")
@@ -109,3 +109,5 @@ position = Vector2(381, 132)
 unique_name_in_owner = true
 position = Vector2(381, 300)
 player_id = 2
+colour = Color(0.186898, 0.391763, 0.76171, 1)
+outline_colour = Color(0.647927, 0.319513, 0.15023, 1)

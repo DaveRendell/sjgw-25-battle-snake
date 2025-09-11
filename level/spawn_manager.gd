@@ -18,11 +18,13 @@ var _stages = [
 	preload("res://level/spawn_profiles/stage9.tres"),
 ]
 
-func start_game(start_stage: int = 0) -> void:
-	stage_id = start_stage
+func _ready() -> void:
 	stage_timer = Timer.new()
 	stage_timer.timeout.connect(_on_timeout)
 	add_child(stage_timer)
+
+func start_game(start_stage: int = 0) -> void:
+	stage_id = start_stage
 	stage_timer.start(_stages[stage_id].time)
 
 func start_custom(profile: SpawnProfile) -> void:

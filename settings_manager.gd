@@ -11,7 +11,6 @@ signal sfx_volume_changed(value: float)
 signal background_animation_changed(value: bool)
 signal screen_filter_changed(value: bool)
 signal aspect_ratio_changed(value: AspectRatio)
-signal screen_scale_changed(value: int)
 
 func _ready() -> void:
 	_load()
@@ -34,10 +33,12 @@ var sfx_volume: float = 50.0:
 
 var aspect_ratio: AspectRatio = AspectRatio.RATIO_16_9:
 	set(value):
-		aspect_ratio = posmod(value, AspectRatio.size())
-		aspect_ratio_changed.emit(aspect_ratio)
-		_update_screen_size()
-		_save()
+		var new_aspect_ratio = posmod(value, AspectRatio.size())
+		if new_aspect_ratio != aspect_ratio:
+			aspect_ratio = new_aspect_ratio
+			aspect_ratio_changed.emit(aspect_ratio)
+			_update_screen_size()
+			_save()
 
 var background_animation: bool = true:
 	set(value):
@@ -51,20 +52,13 @@ var screen_filter: bool = true:
 		screen_filter_changed.emit(screen_filter)
 		_save()
 
-var screen_scale: int = 2:
-	set(value):
-		screen_scale = clampi(value, 1, 6)
-		screen_scale_changed.emit(screen_scale)
-		_update_screen_size()
-		_save()
-
 func _update_screen_size() -> void:
 	match aspect_ratio:
 		AspectRatio.RATIO_16_9:
-			get_tree().root.size = screen_scale * Vector2i(640, 360)
+			get_tree().root.size = 2 * Vector2i(640, 360)
 		AspectRatio.RATIO_16_10:
-			get_tree().root.size = screen_scale * Vector2i(640, 400)
-	get_tree().root.content_scale_factor = screen_scale
+			get_tree().root.size = 2 * Vector2i(640, 400)
+	get_tree().root.content_scale_factor = 2.0
 	get_tree().root.content_scale_size = get_tree().root.size
 
 func _save() -> void:
@@ -77,7 +71,6 @@ func _save() -> void:
 		"background_animation": background_animation,
 		"screen_filter": screen_filter,
 		"aspect_ratio": aspect_ratio,
-		"screen_scale": screen_scale,
 	})
 	settings_file.store_line(settings_json)
 
@@ -102,6 +95,4 @@ func _load() -> void:
 		screen_filter = saved_settings["screen_filter"]
 	if saved_settings.has("aspect_ratio"):
 		aspect_ratio = saved_settings["aspect_ratio"]
-	if saved_settings.has("screen_scale"):
-		aspect_ratio = saved_settings["screen_scale"]
 	

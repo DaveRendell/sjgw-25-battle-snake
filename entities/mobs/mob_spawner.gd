@@ -48,7 +48,7 @@ func _pick_spawn_scenario() -> void:
 func _spawn(mob_scene: PackedScene, relative_position: Vector2) -> bool:
 	var spawn_position = _parent.position + relative_position
 	if PlayerManager.players.any(func(other_player: Player) -> bool:
-		return other_player != player and player.position.distance_to(spawn_position) < 200.0
+		return other_player != player and other_player.position.distance_to(spawn_position) < 300.0
 	):
 		return false
 	

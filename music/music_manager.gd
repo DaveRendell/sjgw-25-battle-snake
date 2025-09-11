@@ -21,20 +21,18 @@ func _set_volume() -> void:
 func start_stage_music() -> void:
 	if _fade_out_tween and _fade_out_tween.is_running():
 		await _fade_out_tween.finished
-		_set_volume()
 	if _player.playing:
 		await stop_music()
-		_set_volume()
+	_set_volume()
 	_player.stream = STAGE_MUSIC
 	_player.play()
 
 func start_boss_music() -> void:
 	if _fade_out_tween and _fade_out_tween.is_running():
 		await _fade_out_tween.finished
-		_set_volume()
 	if _player.playing:
 		await stop_music()
-		_set_volume()
+	_set_volume()
 	_player.stream = BOSS_MUSIC
 	_player.play()
 
@@ -44,3 +42,4 @@ func stop_music(fade_out_time: float = 3.0) -> void:
 	_fade_out_tween.tween_property(_player, "volume_linear", 0.0, fade_out_time)
 	await _fade_out_tween.finished
 	_player.stop()
+	_fade_out_tween = null

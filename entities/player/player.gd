@@ -27,6 +27,9 @@ var segments_by_name = {
 var player_input: PlayerInput
 @onready var remote_transform_2d: RemoteTransform2D = %RemoteTransform2D
 
+@export var colour = Color.WEB_GREEN
+@export var outline_colour = Color.DARK_RED
+
 var following_segments: Array[Node2D] = []
 var health: int = 5
 var xp: int = 0
@@ -40,10 +43,13 @@ var _is_invulnerable = false
 @onready var collider: StaticBody2D = $Collider
 @onready var player_steering: PlayerSteering = $PlayerSteering
 @onready var _hurtbox: Area2D = $Hurtbox
+@onready var _snake_graphics: SnakeGraphics = $SnakeGraphics
 
 @export var separation: float = 20.0
 
 func _ready() -> void:
+	_snake_graphics.colour = colour
+	_snake_graphics.outline_colour = outline_colour
 	match player_id:
 		1: player_input = InputManager.p1_input
 		2: player_input = InputManager.p2_input

@@ -68,8 +68,8 @@ func _on_player_destroyed(player: Player) -> void:
 		else:
 			_pointer_layer_p2.player = new_player
 			_pointer_layer_p1.target = new_player
-			_pointer_layer_p2.label.text = _pointer_layer_p1.label_text
-			_pointer_layer_p2.label.add_theme_color_override("font_color", _pointer_layer_p1.colour)
+			_pointer_layer_p1.label.text = _pointer_layer_p1.label_text
+			_pointer_layer_p1.label.add_theme_color_override("font_color", _pointer_layer_p1.colour)
 		)
 	player.add_sibling.call_deferred(egg)
 	
